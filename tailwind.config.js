@@ -10,6 +10,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      typography: theme => ({
+        DEFAULT: {
+          css: {
+            '*': {
+              color: theme('colors.white'),
+            },
+          },
+        },
+      }),
       colors: {
         brownDark: '#18181B',
         brownLight: '#252529',

@@ -2,7 +2,7 @@ import { projects } from '@/data/projects'
 
 export default function Projects() {
   return (
-    <div className="grid md:grid-cols-2  gap-2 px-6  ">
+    <div className="grid md:grid-cols-2  gap-2 px-6 md:p-0  ">
       {projects.map(project => (
         <div
           key={project.name}
