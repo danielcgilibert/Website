@@ -52,7 +52,7 @@ const Nav = () => {
           <Link
             onClick={changeStateNav}
             className="flex justify-center items-center gap-1 font-medium text-2xl md:text-base"
-            href="/">
+            href="/snippets">
             <AiOutlineCode size={20} />
             Snippets
           </Link>

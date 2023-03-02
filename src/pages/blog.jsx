@@ -4,14 +4,30 @@ import matter from 'gray-matter'
 import Image from 'next/image'
 import Link from 'next/link'
 import path from 'path'
-import { useId, useState } from 'react'
+import { useEffect, useId, useState } from 'react'
 
 export default function Blog({ posts }) {
   const [selectCategory, setSelectCategory] = useState('all')
+  const [search, setSearch] = useState('')
+  const [filterResult, setFilterResult] = useState([])
   const id = useId()
 
+  useEffect(() => {
+    const results = posts
+      .filter(
+        post =>
+          post.frontMatter.category
+            .toLowerCase()
+            .includes(selectCategory.toLowerCase()) || selectCategory === 'all'
+      )
+      .filter(post =>
+        post.frontMatter.title.toLowerCase().includes(search.toLowerCase())
+      )
+    setFilterResult(results)
+  }, [search, selectCategory, posts])
+
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 px-6">
       <div className="flex gap-3">
         {blogCategories.map((category, index) => (
           <button
@@ -26,36 +42,40 @@ export default function Blog({ posts }) {
         ))}
       </div>
 
-      <div className="grid md:grid-cols-2 gap-5 px-6 md:p-0">
-        {posts
-          .filter(
-            post =>
-              post.frontMatter.category === selectCategory ||
-              selectCategory === 'all'
-          )
-          .map((post, index) => (
-            <>
-              <Link
-                className="grid grid-cols-2"
-                key={`${id}`}
-                href={'/blog/' + post.slug}
-                passHref>
-                <h1 className="p-4 gap-2  rounded-lg  border-2 border-[#2525297c] hover:bg-brownLight hover:bg-opacity-30  delay-75">
-                  {post.frontMatter.title}
-                </h1>
-                <Image
-                  width={8000}
-                  height={8000}
-                  style={{
-                    width: '100%',
-                    objectFit: 'cover',
-                  }}
-                  alt={post.frontMatter.title}
-                  src="/images/posts/tailwind-css.png"
-                />
-              </Link>
-            </>
-          ))}
+      <form onSubmit={e => e.preventDefault()}>
+        <input
+          className="w-full bg-transparent border-2 border-[#252529] rounded-lg p-2 placeholder:text-zinc-700"
+          type="text"
+          placeholder="Search posts"
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+        />
+      </form>
+
+      <div className="grid md:grid-cols-2 gap-5  md:p-0">
+        {filterResult.map((post, index) => (
+          <>
+            <Link
+              className="grid grid-cols-2"
+              key={`${id}`}
+              href={'/blog/' + post.slug}
+              passHref>
+              <h1 className="p-4 gap-2  rounded-lg  border-2 border-[#2525297c] hover:bg-brownLight hover:bg-opacity-30  delay-75">
+                {post.frontMatter.title}
+              </h1>
+              <Image
+                width={8000}
+                height={8000}
+                style={{
+                  width: '100%',
+                  objectFit: 'cover',
+                }}
+                alt={post.frontMatter.title}
+                src="/images/posts/tailwind-css.png"
+              />
+            </Link>
+          </>
+        ))}
       </div>
     </div>
   )

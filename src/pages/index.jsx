@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { getPlaiceholder } from 'plaiceholder'
 import { useState } from 'react'
 
-export default function Home({ imageProps }) {
+export default function Home({ repositories, totalContributions, imageProps }) {
   const [isLoading, setLoading] = useState(true)
 
   return (
@@ -40,7 +40,10 @@ export default function Home({ imageProps }) {
 
         <div className="flex flex-col justify-between gap-12   py-2 md:p-0 px-6 md:mt-6">
           <AboutMeSection />
-          <Statistics />
+          <Statistics
+            repositories={repositories}
+            totalContributions={totalContributions}
+          />
           <ProyectsSection />
         </div>
       </div>
@@ -49,14 +52,40 @@ export default function Home({ imageProps }) {
 }
 
 export const getStaticProps = async () => {
-  const { base64, img } = await getPlaiceholder('/images/profile.jpeg')
+  try {
+    const { base64, img } = await getPlaiceholder('/images/profile.jpeg')
+    const bearer = `Bearer ${process.env.ENV_GITHUBTOKEN}`
 
-  return {
-    props: {
-      imageProps: {
-        ...img,
-        blurDataURL: base64,
+    const response = await fetch(
+      'https://api.github.com/users/danielcgilibert/repos',
+      {
+        method: 'GET',
+        withCredentials: true,
+        credentials: 'include',
+        headers: {
+          Authorization: bearer,
+          'Content-Type': 'application/json',
+        },
+      }
+    )
+
+    const responseContribu = await fetch(
+      'https://github-contributions-api.deno.dev/danielcgilibert.json'
+    )
+
+    const { totalContributions } = await responseContribu.json()
+    const repositories = await response.json()
+    return {
+      props: {
+        repositories: repositories.length,
+        totalContributions,
+        imageProps: {
+          ...img,
+          blurDataURL: base64,
+        },
       },
-    },
+    }
+  } catch (error) {
+    console.log(error)
   }
 }

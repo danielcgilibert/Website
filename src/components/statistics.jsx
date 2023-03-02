@@ -1,7 +1,25 @@
+import { useEffect, useState } from 'react'
 import { AiOutlinePlusCircle } from 'react-icons/ai'
 import { GoRepo } from 'react-icons/go'
 
-const Statistics = () => {
+const Statistics = ({ repositories, totalContributions }) => {
+  const [repositoriesCount, setRepositoriesCount] = useState(0)
+  const [contributionsCount, setContributionsCount] = useState(0)
+
+  useEffect(() => {
+    const timeoutRepo = setTimeout(() => {
+      contributionsCount < totalContributions
+        ? setContributionsCount(contributionsCount + 1)
+        : clearInterval(timeoutRepo)
+    }, 5)
+
+    const timeoutCont = setTimeout(() => {
+      repositoriesCount < repositories
+        ? setRepositoriesCount(repositoriesCount + 1)
+        : clearInterval(timeoutCont)
+    }, 130)
+  }, [repositoriesCount, contributionsCount, repositories, totalContributions])
+
   return (
     <section className="flex flex-col gap-5 ">
       <h2 className="prose:text-white  flex gap-1 justify-start items-center antialiased text-sm  tracking-widest uppercase   ">
@@ -11,13 +29,13 @@ const Statistics = () => {
         <div className="flex flex-col justify-center items-center">
           <span>Contribuciones</span>
           <span className="flex  justify-center items-center gap-1">
-            491 <AiOutlinePlusCircle size={20} />
+            {contributionsCount} <AiOutlinePlusCircle size={20} />
           </span>
         </div>
         <div className="flex flex-col justify-center items-center">
           <span>Repositorios</span>
           <span className="flex  justify-center items-center gap-1">
-            29 <GoRepo size={20} />
+            {repositoriesCount} <GoRepo size={20} />
           </span>
         </div>
       </div>
