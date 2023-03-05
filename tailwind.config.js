@@ -19,11 +19,17 @@ module.exports = {
           },
         },
       }),
+      fontFamily: {
+        inter: ['var(--font-inter)'],
+      },
       colors: {
-        brownDark: '#18181B',
-        brownLight: '#252529',
+        brownDark: 'var(--primary)',
+        brownLight: 'var(--secondary)',
       },
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@headlessui/tailwindcss'),
+  ],
 }

@@ -1,18 +1,26 @@
-import { BsBoxArrowInUpRight, BsCodeSquare, BsGithub } from 'react-icons/bs'
+import { FiGithub } from 'react-icons/fi'
 
 const Project = ({ project }) => {
   return (
-    <div className="flex gap-2 justify-between items-center rounded-lg px-4 border-2 border-[#2525297c] w-full h-16 cursor-pointer hover:bg-brownLight hover:bg-opacity-30  delay-75">
-      <div className="flex justify-start items-center gap-2">
-        <BsCodeSquare size={20} name="website" />
-        <span className="tracking-widest">{project.name}</span>
-      </div>
+    <>
+      <div
+        key={project.name}
+        className="grid md:grid-cols-[70%_1fr] p-4 gap-8  rounded-lg  border-2 border-[#2525297c] hover:bg-brownLight hover:bg-opacity-30  delay-75">
+        <div>
+          <h1 className="tracking-widest font-bold text-lg">{project.name}</h1>
+          <p className=" text-sm font-thin ">{project.desc}</p>
+        </div>
 
-      <div className="flex justify-center gap-2 m-0 p-0">
-        <BsBoxArrowInUpRight size={20} name="website" />
-        <BsGithub size={20} name="Github" />
+        <div className="flex flex-col md:flex-row gap-2 md:justify-end md:items-center">
+          <span className="p-3 border-2 border-[#2525297c] rounded-lg flex justify-center">
+            <FiGithub size={20} name="Github" />
+          </span>
+          <span className="p-3 border-2 border-[#2525297c] rounded-lg flex justify-center">
+            <FiGithub size={20} name="Github" />
+          </span>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

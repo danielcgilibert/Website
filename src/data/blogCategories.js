@@ -1,1 +1,1 @@
-export const blogCategories = ['all', 'CSS', 'JavaScript']
+export const blogCategories = ['all ', 'CSS', 'JavaScript']

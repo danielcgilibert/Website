@@ -5,6 +5,7 @@ import { GoRepo } from 'react-icons/go'
 const Statistics = ({ repositories, totalContributions }) => {
   const [repositoriesCount, setRepositoriesCount] = useState(0)
   const [contributionsCount, setContributionsCount] = useState(0)
+  const [positionMouse, setPositionMouse] = useState(0)
 
   useEffect(() => {
     const timeoutRepo = setTimeout(() => {
@@ -21,11 +22,12 @@ const Statistics = ({ repositories, totalContributions }) => {
   }, [repositoriesCount, contributionsCount, repositories, totalContributions])
 
   return (
-    <section className="flex flex-col gap-5 ">
-      <h2 className="prose:text-white  flex gap-1 justify-start items-center antialiased text-sm  tracking-widest uppercase   ">
+    <section className={`flex flex-col gap-5 `}>
+      <h2 className="prose:text-white  flex gap-1 justify-start items-center antialiased text-sm  tracking-widest uppercase ">
         Estadisticas GitHub
       </h2>
-      <div className="prose:text-white  flex ll gap-2 justify-around items-center rounded-lg px-4 border-2 border-[#2525297c] w-full h-16 cursor-pointer hover:bg-brownLight hover:bg-opacity-30  delay-75">
+      <div
+        className={`flex  gap-2 justify-around items-center rounded-lg px-4 border-2 border-[#2525297c] w-full h-16 cursor-pointer hover:bg-brownLight hover:bg-opacity-30  delay-75`}>
         <div className="flex flex-col justify-center items-center">
           <span>Contribuciones</span>
           <span className="flex  justify-center items-center gap-1">

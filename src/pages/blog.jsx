@@ -1,16 +1,15 @@
 import { blogCategories } from '@/data/blogCategories'
+import { RadioGroup } from '@headlessui/react'
 import fs from 'fs'
 import matter from 'gray-matter'
-import Image from 'next/image'
 import Link from 'next/link'
 import path from 'path'
-import { useEffect, useId, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Blog({ posts }) {
-  const [selectCategory, setSelectCategory] = useState('all')
+  const [selectCategory, setSelectCategory] = useState(blogCategories[0])
   const [search, setSearch] = useState('')
   const [filterResult, setFilterResult] = useState([])
-  const id = useId()
 
   useEffect(() => {
     const results = posts
@@ -18,7 +17,8 @@ export default function Blog({ posts }) {
         post =>
           post.frontMatter.category
             .toLowerCase()
-            .includes(selectCategory.toLowerCase()) || selectCategory === 'all'
+            .includes(selectCategory.toLowerCase()) ||
+          selectCategory.toLowerCase() === blogCategories[0]
       )
       .filter(post =>
         post.frontMatter.title.toLowerCase().includes(search.toLowerCase())
@@ -27,20 +27,23 @@ export default function Blog({ posts }) {
   }, [search, selectCategory, posts])
 
   return (
-    <div className="flex flex-col gap-5 px-6">
-      <div className="flex gap-3">
-        {blogCategories.map((category, index) => (
-          <button
-            className={`${
-              category === selectCategory &&
-              'border-white bg-brownLight bg-opacity-90'
-            } px-4 p-1 text-lg rounded-lg  border-2 border-[#252529]  hover:bg-brownLight hover:bg-opacity-90 `}
-            onClick={() => setSelectCategory(category)}
-            key={`${id}-${index}`}>
-            {category}
-          </button>
-        ))}
-      </div>
+    <div className="flex flex-col gap-5 px-6 md:p-0">
+      <form onSubmit={e => e.preventDefault()}>
+        <RadioGroup
+          value={selectCategory}
+          onChange={setSelectCategory}
+          className="flex  gap-3"
+          name="plan">
+          {blogCategories.map(category => (
+            <RadioGroup.Option
+              className={`px-4  p-1 text-lg rounded-lg  border-2  border-[#252529]  hover:bg-brownLight hover:bg-opacity-90 ui-checked:border-white ui-checked:bg-brownLight ui-checked:bg-opacity-90 `}
+              key={category}
+              value={category}>
+              {category}
+            </RadioGroup.Option>
+          ))}
+        </RadioGroup>
+      </form>
 
       <form onSubmit={e => e.preventDefault()}>
         <input
@@ -52,29 +55,16 @@ export default function Blog({ posts }) {
         />
       </form>
 
-      <div className="grid md:grid-cols-2 gap-5  md:p-0">
+      <div className="grid  gap-5  md:p-0">
         {filterResult.map((post, index) => (
-          <>
-            <Link
-              className="grid grid-cols-2"
-              key={`${id}`}
-              href={'/blog/' + post.slug}
-              passHref>
-              <h1 className="p-4 gap-2  rounded-lg  border-2 border-[#2525297c] hover:bg-brownLight hover:bg-opacity-30  delay-75">
-                {post.frontMatter.title}
-              </h1>
-              <Image
-                width={8000}
-                height={8000}
-                style={{
-                  width: '100%',
-                  objectFit: 'cover',
-                }}
-                alt={post.frontMatter.title}
-                src="/images/posts/tailwind-css.png"
-              />
-            </Link>
-          </>
+          <Link
+            className="grid"
+            key={post.frontMatter.title}
+            href={'/blog/' + post.slug}>
+            <h1 className="p-4 gap-2  rounded-lg  border-2 border-[#2525297c] hover:bg-brownLight hover:bg-opacity-30  delay-75">
+              {post.frontMatter.title}
+            </h1>
+          </Link>
         ))}
       </div>
     </div>
