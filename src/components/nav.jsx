@@ -1,10 +1,14 @@
 import { routes } from '@/data/routes'
 import { CustomLink } from '@/ui/link'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { AiOutlineClose, AiOutlineHome } from 'react-icons/ai'
 import { BiMenuAltRight } from 'react-icons/bi'
 
 const Nav = () => {
+  const router = useRouter()
+  const path = router.pathname.split('/')[1]
+
   const [toggleNav, setToggleNav] = useState(false)
   const changeStateNav = () => {
     console.log(toggleNav)
@@ -37,8 +41,9 @@ const Nav = () => {
             className="flex  justify-center items-center gap-1 font-medium text-2xl md:text-base">
             <CustomLink
               onClick={changeStateNav}
-              className="flex justify-center items-center gap-1 font-medium text-2xl text-white  md:text-base"
-              active={route.href}
+              className={`flex justify-center items-center gap-1 font-medium text-2xl text-white  md:text-base ${
+                path == route.href ? 'opacity-100' : 'opacity-50'
+              }`}
               href={`/${route.href}`}>
               {route.icon}
               {route.name}

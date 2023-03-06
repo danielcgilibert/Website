@@ -2,14 +2,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 export const CustomLink = props => {
-  const router = useRouter()
-  const path = router.pathname.split('/')[1]
   return (
-    <Link
-      href={props.href}
-      className={`${props.className} ${
-        path == props.active ? 'opacity-100' : 'opacity-50'
-      } `}>
+    <Link href={props.href} className={`${props.className} `} {...props}>
       {props.children}
     </Link>
   )

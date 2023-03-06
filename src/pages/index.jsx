@@ -11,7 +11,7 @@ export default function Home({ repositories, totalContributions, imageProps }) {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-[43%_auto] content-center place-content-center gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-[43%_auto] content-center place-content-center gap-8">
         <header>
           <Image
             alt="profile"
