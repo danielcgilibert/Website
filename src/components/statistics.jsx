@@ -27,7 +27,7 @@ const Statistics = ({ repositories, totalContributions }) => {
         Estadisticas GitHub
       </h2>
       <div
-        className={`flex  gap-2 justify-around items-center rounded-lg px-4 border-2 border-[#2525297c] w-full h-16 cursor-pointer hover:bg-brownLight hover:bg-opacity-30  delay-75`}>
+        className={`flex  gap-2 justify-around items-center rounded-lg px-4 border-2 border-[#2525297c] w-full h-16  hover:bg-brownLight hover:bg-opacity-30  delay-75`}>
         <div className="flex flex-col justify-center items-center">
           <span>Contribuciones</span>
           <span className="flex  justify-center items-center gap-1">

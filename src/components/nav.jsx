@@ -41,7 +41,7 @@ const Nav = () => {
             className="flex  justify-center items-center gap-1 font-medium text-2xl md:text-base">
             <CustomLink
               onClick={changeStateNav}
-              className={`flex justify-center items-center gap-1 font-medium text-2xl text-white  md:text-base ${
+              className={`flex justify-center items-center gap-1 font-medium text-2xl text-white  md:text-base hover:text-zinc-100 hover:opacity-80 ${
                 path == route.href ? 'opacity-100' : 'opacity-50'
               }`}
               href={`/${route.href}`}>
