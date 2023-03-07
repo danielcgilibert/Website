@@ -24,6 +24,9 @@ export default function Home({ repositories, totalContributions, imageProps }) {
                md:rounded-lg h-64 md:h-full duration-700 ease-in-out group-hover:opacity-75 
               ${isLoading ? 'blur-lg grayscale opacity-20 ' : 'blur-0'})`}
             onLoadingComplete={() => setLoading(false)}
+            sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
             style={{
               width: '100%',
               objectFit: 'cover',

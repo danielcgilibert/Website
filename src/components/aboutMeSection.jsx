@@ -10,8 +10,8 @@ const AboutMeSection = () => {
         </h2>
       </header>
       <p className="antialiased leading-relaxed">
-        Siempre interesado en seguir desarrollando en este apasionante mundo del
-        desarrollo.
+        Siempre <span> interesado </span> en seguir desarrollando en este
+        apasionante mundo del desarrollo.
       </p>
       <p className="antialiased leading-relaxed">
         Si quieres contactarme, háblame por{' '}
@@ -20,7 +20,7 @@ const AboutMeSection = () => {
           className="font-semibold underline hover:decoration-dotted">
           LinkedIn
         </ExternalLink>{' '}
-        y te responderé con la mayor brevedad posible.
+        y te responderé con la mayor brevedad <span> posible</span>.
       </p>
     </section>
   )

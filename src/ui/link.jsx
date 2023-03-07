@@ -1,9 +1,12 @@
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 
 export const CustomLink = props => {
   return (
-    <Link href={props.href} className={`${props.className} `} {...props}>
+    <Link
+      href={props.href}
+      className={`${props.className} `}
+      {...props}
+      aria-label={props.href}>
       {props.children}
     </Link>
   )
@@ -15,6 +18,7 @@ export const ExternalLink = props => {
       href={props.href}
       target="_blank"
       rel="noreferrer"
+      aria-label={props.href}
       className={props.className}>
       {props.children}
     </a>
