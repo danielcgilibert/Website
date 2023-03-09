@@ -1,13 +1,13 @@
 /* eslint-disable react/jsx-key */
 import {
   FcAnswers,
+  FcBullish,
   FcBusinessman,
   FcConferenceCall,
   FcFilmReel,
   FcNeutralDecision,
   FcPieChart,
   FcTodoList,
-  FcBullish,
 } from 'react-icons/fc'
 
 export const projects = [
@@ -38,7 +38,7 @@ export const projects = [
     desc: 'Antiguo portfolio con blog, snippets...',
     icon: <FcBusinessman size={25} />,
     hrefCode: 'https://github.com/danielcgilibert/portfolio',
-    hrefWeb: 'https://portfolio-eight-rho-97.vercel.app/',
+    hrefWeb: 'https://portfolio-uwxs.vercel.app',
   },
   {
     name: 'Post It',
