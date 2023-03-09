@@ -13,7 +13,7 @@ const Footer = () => {
           <ExternalLink href="https://github.com/danielcgilibert">
             <FaGithubSquare size={22} name="Github" />
           </ExternalLink>
-          <ExternalLink href="https://dev.to/danielcgilibe">
+          <ExternalLink href="https://dev.to/danielcgilibert">
             <FaDev size={22} />
           </ExternalLink>
           <ExternalLink href="https://status.danielcg.dev/">

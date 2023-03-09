@@ -1,97 +1,72 @@
 /* eslint-disable react/jsx-key */
-import { DiCss3, DiJavascript1, DiReact } from 'react-icons/di'
 import {
   FcAnswers,
   FcBusinessman,
   FcConferenceCall,
-  FcDataSheet,
-  FcDoughnutChart,
   FcFilmReel,
+  FcNeutralDecision,
+  FcPieChart,
+  FcTodoList,
+  FcBullish,
 } from 'react-icons/fc'
-import { SiRedux } from 'react-icons/si'
 
 export const projects = [
+  {
+    name: 'Jira-Clone',
+    desc: 'Jira-Clone con NextJS y MaterialUI',
+    icon: <FcConferenceCall size={25} />,
+    hrefCode: 'https://github.com/danielcgilibert/Jira-Clone',
+    hrefWeb: '',
+  },
   {
     name: 'Filmoteca',
     desc: 'Aplicación con llamadas a distintas API, construida con firebase y react',
     icon: <FcFilmReel size={25} />,
     hrefCode: 'https://github.com/danielcgilibert/Filmoteca',
     hrefWeb: 'https://filmoteca-994ba.web.app/',
-    stack: [
-      <DiReact size={25} />,
-      <DiJavascript1 size={25} />,
-      <DiCss3 size={25} />,
-      <SiRedux size={25} />,
-    ],
+  },
+  {
+    name: 'Challenges',
+    desc: 'Repositorio con challenges de frontendmentor.io',
+    icon: <FcTodoList size={25} />,
+    hrefCode: 'https://github.com/danielcgilibert/challenges-FrontendMentor',
+    hrefWeb: '',
+  },
+
+  {
+    name: 'Portfolio',
+    desc: 'Antiguo portfolio con blog, snippets...',
+    icon: <FcBusinessman size={25} />,
+    hrefCode: 'https://github.com/danielcgilibert/portfolio',
+    hrefWeb: 'https://portfolio-eight-rho-97.vercel.app/',
+  },
+  {
+    name: 'Post It',
+    desc: 'Aplicación CRUD con prisma, nextjs, tailwind',
+    icon: <FcNeutralDecision size={25} />,
+    hrefCode: 'https://github.com/danielcgilibert/PostIt',
+    hrefWeb: '',
   },
   {
     name: 'Fiber',
     desc: 'Landing Page',
     icon: <FcAnswers size={25} />,
-
     hrefCode: 'https://github.com/danielcgilibert/Fiber-Landing-Page',
     hrefWeb: 'https://danielcgilibert.github.io/Fiber-Landing-Page/',
-    stack: [
-      <DiReact size={25} />,
-      <DiJavascript1 size={25} />,
-      <DiCss3 size={25} />,
-      <SiRedux size={25} />,
-    ],
-  },
-  {
-    name: 'Portfolio',
-    desc: 'Antiguo portfolio',
-    icon: <FcBusinessman size={25} />,
-    hrefCode: 'https://github.com/danielcgilibert/Portfolio',
-    hrefWeb: 'https://portfolio-eight-rho-97.vercel.app/',
-    stack: [
-      <DiReact size={25} />,
-      <DiJavascript1 size={25} />,
-      <DiCss3 size={25} />,
-      <SiRedux size={25} />,
-    ],
   },
   {
     name: 'Chart',
-    desc: 'Gráfica dinamica',
-    icon: <FcDoughnutChart size={25} />,
+    desc: 'Expenses chart component',
+    icon: <FcPieChart size={25} />,
     hrefCode: 'https://github.com/danielcgilibert/challenges-FrontendMentor',
     hrefWeb: 'https://challenges-fronted-mentor-chart-component.vercel.app/',
-
-    stack: [
-      <DiReact size={25} />,
-      <DiJavascript1 size={25} />,
-      <DiCss3 size={25} />,
-      <SiRedux size={25} />,
-    ],
   },
-  {
-    name: 'Layout Grid',
-    desc: 'Grid layout',
-    icon: <FcDataSheet size={25} />,
 
+  {
+    name: 'Crowdfunding product page',
+    desc: 'Website de crowdfunding con React y vite',
+    icon: <FcBullish size={25} />,
     hrefCode: 'https://github.com/danielcgilibert/challenges-FrontendMentor',
-    hrefWeb: 'https://cfm-grid.netlify.app/',
-
-    stack: [
-      <DiReact size={25} />,
-      <DiJavascript1 size={25} />,
-      <DiCss3 size={25} />,
-      <SiRedux size={25} />,
-    ],
-  },
-
-  {
-    name: 'Jira-Clone',
-    desc: 'Jira-Clone with NextJS and MaterialUI',
-    icon: <FcConferenceCall size={25} />,
-    hrefCode: 'https://github.com/danielcgilibert/Jira-Clone',
-    hrefWeb: '',
-    stack: [
-      <DiReact size={25} />,
-      <DiJavascript1 size={25} />,
-      <DiCss3 size={25} />,
-      <SiRedux size={25} />,
-    ],
+    hrefWeb: 'https://cfm-crowdfunding.vercel.app/',
   },
 ]

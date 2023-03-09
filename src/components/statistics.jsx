@@ -23,13 +23,11 @@ const Statistics = ({ repositories, totalContributions }) => {
   }, [repositoriesCount, contributionsCount, repositories, totalContributions])
 
   return (
-    <section>
-      <ExternalLink
-        href="https://github.com/danielcgilibert"
-        className={`flex flex-col gap-5 `}>
-        <h2 className="prose:text-white  flex gap-1 justify-start items-center antialiased text-sm  tracking-widest uppercase ">
-          Estadisticas GitHub
-        </h2>
+    <section className={`flex flex-col gap-5 `}>
+      <h2 className="prose:text-white  flex gap-1 justify-start items-center antialiased text-sm  tracking-widest uppercase ">
+        Estadisticas GitHub
+      </h2>
+      <ExternalLink href="https://github.com/danielcgilibert">
         <div
           className={`flex  gap-2 justify-around items-center rounded-lg px-4 border-2 border-[#2525297c] w-full h-16  hover:bg-brownLight hover:bg-opacity-30  delay-75`}>
           <div className="flex flex-col justify-center items-center">

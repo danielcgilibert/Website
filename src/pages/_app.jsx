@@ -18,7 +18,6 @@ export default function App({ Component, pageProps, router }) {
   return (
     <Container fonts={[inter]}>
       <NextNProgress color="#fde9ca" options={{ showSpinner: false }} />
-
       <DefaultSeo {...SEO} />
       <Nav />
       <Transition key={router.route}>
