@@ -22,7 +22,7 @@ const ProyectsSection = () => {
               </span>
             </ExternalLink>
 
-            <div className="flex justify-center gap-2 m-0 p-0">
+            <div className="flex justify-center gap-2 m-0 p-0  ">
               <ExternalLink href={project.hrefWeb}>
                 <BsBoxArrowInUpRight size={20} name="website" />
               </ExternalLink>

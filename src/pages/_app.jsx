@@ -6,6 +6,7 @@ import Container from '@/ui/container'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import { Inter } from 'next/font/google'
+import NextNProgress from 'nextjs-progressbar'
 
 const inter = Inter({
   weight: ['400', '500', '600', '700'],
@@ -16,6 +17,8 @@ const inter = Inter({
 export default function App({ Component, pageProps, router }) {
   return (
     <Container fonts={[inter]}>
+      <NextNProgress color="#fde9ca" options={{ showSpinner: false }} />
+
       <DefaultSeo {...SEO} />
       <Nav />
       <Transition key={router.route}>

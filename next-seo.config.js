@@ -8,7 +8,7 @@ export default {
     description: 'Daniel Carmona - Desarrollador web Front-End',
     images: [
       {
-        url: 'https://mikelgoig.com/static/images/og-image-mikel-goig-website.png',
+        url: 'https://techcrunch.com/wp-content/uploads/2015/04/codecode.jpg',
         width: 1200,
         height: 1200,
         alt: 'Daniel Carmona',
