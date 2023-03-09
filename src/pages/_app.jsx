@@ -3,6 +3,7 @@ import Nav from '@/components/nav'
 import Transition from '@/motions/transition'
 import '@/styles/globals.css'
 import Container from '@/ui/container'
+import { Analytics } from '@vercel/analytics/react'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import { Inter } from 'next/font/google'
@@ -18,6 +19,7 @@ export default function App({ Component, pageProps, router }) {
   return (
     <Container fonts={[inter]}>
       <NextNProgress color="#fde9ca" options={{ showSpinner: false }} />
+      <Analytics />
       <DefaultSeo {...SEO} />
       <Nav />
       <Transition key={router.route}>
