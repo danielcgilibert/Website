@@ -79,5 +79,13 @@ export const getStaticProps = async () => {
     }
   } catch (error) {
     console.log(error)
+    return {
+      props: {
+        repositories: 0,
+        totalContributions: 0,
+        imageProps: {},
+        projects: [],
+      },
+    }
   }
 }
