@@ -1,29 +1,27 @@
-import { blogCategories } from '@/data/blogCategories'
+import { api } from '@/utils/api'
 import { RadioGroup } from '@headlessui/react'
-import fs from 'fs'
-import matter from 'gray-matter'
 import Image from 'next/image'
 import Link from 'next/link'
-import path from 'path'
 import { useEffect, useState } from 'react'
-
-export default function Blog({ posts }) {
-  const [selectCategory, setSelectCategory] = useState(blogCategories[0])
+export default function Blog({ posts, categories }) {
+  const [selectCategory, setSelectCategory] = useState(1)
   const [search, setSearch] = useState('')
-  const [filterResult, setFilterResult] = useState([])
+  const [filterResult, setFilterResult] = useState(posts)
 
   useEffect(() => {
     const results = posts
+      // filter by category
       .filter(
         post =>
-          post.frontMatter.category
-            .toLowerCase()
-            .includes(selectCategory.toLowerCase()) ||
-          selectCategory.toLowerCase() === blogCategories[0]
+          post.attributes.category.data.id === selectCategory ||
+          selectCategory === 1
       )
+
+      // filter by search
       .filter(post =>
-        post.frontMatter.title.toLowerCase().includes(search.toLowerCase())
+        post.attributes.name.toLowerCase().includes(search.toLowerCase())
       )
+
     setFilterResult(results)
   }, [search, selectCategory, posts])
 
@@ -35,14 +33,26 @@ export default function Blog({ posts }) {
           onChange={setSelectCategory}
           className="flex  gap-3"
           name="plan">
-          {blogCategories.map(category => (
-            <RadioGroup.Option
-              className={`px-4 p-1  text-base rounded-lg  border-2  border-[#252529]  hover:bg-brownLight hover:bg-opacity-90 ui-checked:border-white ui-checked:bg-brownLight ui-checked:text-white ui-checked:bg-opacity-90 text-zinc-500 cursor-pointer `}
-              key={category}
-              value={category}>
-              {category}
-            </RadioGroup.Option>
-          ))}
+          <RadioGroup.Option
+            className={`px-4 p-1  text-base rounded-lg  border-2  border-[#252529]  hover:bg-brownLight hover:bg-opacity-90 ui-checked:border-white ui-checked:bg-brownLight ui-checked:text-white ui-checked:bg-opacity-90 text-zinc-500 cursor-pointer `}
+            value={1}>
+            all
+          </RadioGroup.Option>
+          {categories.map(category => {
+            const {
+              attributes: { name },
+              id,
+            } = category
+
+            return (
+              <RadioGroup.Option
+                className={`px-4 p-1  text-base rounded-lg  border-2  border-[#252529]  hover:bg-brownLight hover:bg-opacity-90 ui-checked:border-white ui-checked:bg-brownLight ui-checked:text-white ui-checked:bg-opacity-90 text-zinc-500 cursor-pointer `}
+                key={id}
+                value={id}>
+                {name}
+              </RadioGroup.Option>
+            )
+          })}
         </RadioGroup>
       </form>
 
@@ -56,47 +66,56 @@ export default function Blog({ posts }) {
         />
       </form>
 
-      <div className="grid  gap-5  md:p-0">
-        {filterResult.map((post, index) => (
-          <div key={post.frontMatter.title}>
-            <Link
-              className="flex items-center p-4 gap-2  rounded-lg  border-2 border-[#2525297c] hover:bg-brownLight hover:bg-opacity-30  delay-75"
-              href={'/blog/' + post.slug}>
-              <Image
-                width={30}
-                height={30}
-                alt={post.frontMatter.title}
-                src={`/images/posts/${post.frontMatter.thumbnailUrl}`}
-                className="rounded-full"
-              />
-              <h1>{post.frontMatter.title}</h1>
-            </Link>
-          </div>
-        ))}
+      <div className="grid gap-5 md:p-0">
+        {filterResult.map(post => {
+          const {
+            attributes: { name, urlSlug },
+            id,
+          } = post
+          return (
+            <div key={id}>
+              <Link
+                className="flex items-center p-4 gap-2  rounded-lg  border-2 border-[#2525297c] hover:bg-brownLight hover:bg-opacity-30  delay-75"
+                href={'blog/' + urlSlug}>
+                <Image
+                  width={30}
+                  height={30}
+                  alt={name}
+                  src={`/images/posts/${post.icon}`}
+                  className="rounded-full"
+                />
+                <h1>{name}</h1>
+              </Link>
+            </div>
+          )
+        })}
       </div>
     </div>
   )
 }
 
 export const getStaticProps = async () => {
-  const files = fs.readdirSync(path.join('posts'))
+  try {
+    const {
+      data: { data: posts },
+    } = await api.get('/posts?populate=*')
 
-  const posts = files.map(filename => {
-    const markdownWithMeta = fs.readFileSync(
-      path.join('posts', filename),
-      'utf-8'
-    )
-    const { data: frontMatter } = matter(markdownWithMeta)
+    const {
+      data: { data: categories },
+    } = await api.get('/categories')
 
     return {
-      frontMatter,
-      slug: filename.split('.')[0],
+      props: {
+        posts,
+        categories,
+      },
     }
-  })
-
-  return {
-    props: {
-      posts,
-    },
+  } catch (error) {
+    return {
+      props: {
+        posts: [],
+        categories: [],
+      },
+    }
   }
 }
