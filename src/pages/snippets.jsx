@@ -3,8 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Snippets({ snippets }) {
-  console.log(snippets)
-
   return (
     <div className="grid md:grid-cols-1  gap-2 px-6 md:p-0  ">
       <div className="grid md:grid-cols-3 gap-5 md:p-0">

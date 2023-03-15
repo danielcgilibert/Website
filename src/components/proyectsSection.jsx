@@ -2,8 +2,6 @@ import { ExternalLink } from '@/ui/link'
 import { BsBoxArrowInUpRight, BsCodeSquare, BsGithub } from 'react-icons/bs'
 
 const ProyectsSection = ({ projects }) => {
-  console.log(projects)
-
   return (
     <section className="flex flex-col  gap-3">
       <header>

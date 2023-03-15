@@ -2,7 +2,6 @@ import SyntaxHighlighterCustom from '@/components/syntaxHighlighterCustom'
 import { api } from '@/utils/api'
 import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
-import Image from 'next/image'
 
 const components = { SyntaxHighlighterCustom }
 
@@ -13,7 +12,7 @@ const PostPage = ({ post: { attributes }, mdxSource }) => {
     <div className="mx-auto px-6   prose ">
       <h1 className="text-left m-0 text-amber-400">{name}</h1>
       <span className="text-amber-500">{createdAt}</span>
-      <Image
+      {/* <Image
         width={800}
         height={800}
         alt={name}
@@ -24,7 +23,7 @@ const PostPage = ({ post: { attributes }, mdxSource }) => {
           objectFit: 'cover',
         }}
         className="rounded-lg"
-      />
+      /> */}
       <MDXRemote {...mdxSource} components={components} />
     </div>
   )
@@ -41,8 +40,6 @@ const getStaticPaths = async () => {
         slug: post.attributes.urlSlug,
       },
     }))
-
-    console.log(paths)
 
     return {
       paths,

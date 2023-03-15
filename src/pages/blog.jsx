@@ -69,9 +69,10 @@ export default function Blog({ posts, categories }) {
       <div className="grid gap-5 md:p-0">
         {filterResult.map(post => {
           const {
-            attributes: { name, urlSlug },
+            attributes: { name, urlSlug, icon },
             id,
           } = post
+
           return (
             <div key={id}>
               <Link
@@ -81,7 +82,7 @@ export default function Blog({ posts, categories }) {
                   width={30}
                   height={30}
                   alt={name}
-                  src={`/images/posts/${post.icon}`}
+                  src={icon.data.attributes.url}
                   className="rounded-full"
                 />
                 <h1>{name}</h1>
@@ -100,13 +101,29 @@ export const getStaticProps = async () => {
       data: { data: posts },
     } = await api.get('/posts?populate=*')
 
+    const filterPosts = posts.map(post => {
+      const {
+        id,
+        attributes: { name, urlSlug, icon, description, category },
+      } = post
+      return {
+        id,
+        attributes: {
+          name,
+          urlSlug,
+          icon,
+          description,
+          category,
+        },
+      }
+    })
     const {
       data: { data: categories },
     } = await api.get('/categories')
 
     return {
       props: {
-        posts,
+        posts: filterPosts,
         categories,
       },
     }
