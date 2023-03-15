@@ -1,12 +1,17 @@
 import AboutMeSection from '@/components/aboutMeSection'
 import ProyectsSection from '@/components/proyectsSection'
 import Statistics from '@/components/statistics'
+import { api, apiContribu, apiGitHub } from '@/utils/api'
 import Image from 'next/image'
-
 import { getPlaiceholder } from 'plaiceholder'
 import { useState } from 'react'
 
-export default function Home({ repositories, totalContributions, imageProps }) {
+export default function Home({
+  repositories,
+  totalContributions,
+  imageProps,
+  projects,
+}) {
   const [isLoading, setLoading] = useState(true)
 
   return (
@@ -40,7 +45,7 @@ export default function Home({ repositories, totalContributions, imageProps }) {
             repositories={repositories}
             totalContributions={totalContributions}
           />
-          <ProyectsSection />
+          <ProyectsSection projects={projects} />
         </div>
       </div>
     </>
@@ -49,28 +54,18 @@ export default function Home({ repositories, totalContributions, imageProps }) {
 
 export const getStaticProps = async () => {
   try {
+    const {
+      data: { data: projects },
+    } = await api.get('/projects')
+
     const { base64, img } = await getPlaiceholder('/images/profile.jpeg')
-    const bearer = `Bearer ${process.env.ENV_GITHUBTOKEN}`
 
-    const response = await fetch(
-      'https://api.github.com/users/danielcgilibert/repos',
-      {
-        method: 'GET',
-        withCredentials: true,
-        credentials: 'include',
-        headers: {
-          Authorization: bearer,
-          'Content-Type': 'application/json',
-        },
-      }
-    )
+    const { data: repositories } = await apiGitHub.get('/repos')
 
-    const responseContribu = await fetch(
-      'https://github-contributions-api.deno.dev/danielcgilibert.json'
-    )
+    const {
+      data: { totalContributions },
+    } = await apiContribu.get('/danielcgilibert.json')
 
-    const { totalContributions } = await responseContribu.json()
-    const repositories = await response.json()
     return {
       props: {
         repositories: repositories.length,
@@ -79,6 +74,7 @@ export const getStaticProps = async () => {
           ...img,
           blurDataURL: base64,
         },
+        projects,
       },
     }
   } catch (error) {

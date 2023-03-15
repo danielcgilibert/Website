@@ -1,23 +1,24 @@
 import SyntaxHighlighterCustom from '@/components/syntaxHighlighterCustom'
-import fs from 'fs'
-import matter from 'gray-matter'
+import { api } from '@/utils/api'
 import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import Image from 'next/image'
-import path from 'path'
 
 const components = { SyntaxHighlighterCustom }
 
-const PostPage = ({ frontMatter: { title, date, img }, mdxSource }) => {
+const PostPage = ({ post: { attributes }, mdxSource }) => {
+  const { name, createdAt } = attributes
+
   return (
     <div className="mx-auto px-6   prose ">
-      <h1 className="text-left m-0 text-amber-400">{title}</h1>
-      <span className="text-amber-500">{date}</span>
+      <h1 className="text-left m-0 text-amber-400">{name}</h1>
+      <span className="text-amber-500">{createdAt}</span>
       <Image
         width={800}
         height={800}
-        alt={title}
-        src={`/images/posts/${img}`}
+        alt={name}
+        src={`/images/posts/${name}`}
+        placeholder={'empty'}
         style={{
           width: '100%',
           objectFit: 'cover',
@@ -30,36 +31,53 @@ const PostPage = ({ frontMatter: { title, date, img }, mdxSource }) => {
 }
 
 const getStaticPaths = async () => {
-  const files = fs.readdirSync(path.join('posts'))
+  try {
+    const {
+      data: { data: posts },
+    } = await api.get('/posts')
 
-  const paths = files.map(filename => ({
-    params: {
-      slug: filename.replace('.mdx', ''),
-    },
-  }))
+    const paths = posts.map(post => ({
+      params: {
+        slug: post.attributes.urlSlug,
+      },
+    }))
 
-  return {
-    paths,
-    fallback: false,
+    console.log(paths)
+
+    return {
+      paths,
+      fallback: false,
+    }
+  } catch (error) {
+    return {
+      paths: [],
+      fallback: false,
+    }
   }
 }
 
 const getStaticProps = async ({ params: { slug } }) => {
-  const markdownWithMeta = fs.readFileSync(
-    path.join('posts', slug + '.mdx'),
-    'utf-8'
-  )
+  try {
+    const {
+      data: { data: posts },
+    } = await api.get('/posts')
 
-  const { data: frontMatter, content } = matter(markdownWithMeta)
-  const mdxSource = await serialize(content)
-  console.log(frontMatter)
+    const [post] = posts.filter(post => post.attributes.urlSlug === slug)
+    const mdxSource = await serialize(post.attributes.content)
 
-  return {
-    props: {
-      frontMatter,
-      slug,
-      mdxSource,
-    },
+    return {
+      props: {
+        post,
+        mdxSource,
+      },
+    }
+  } catch (error) {
+    return {
+      props: {
+        post: [],
+        mdxSource: [],
+      },
+    }
   }
 }
 

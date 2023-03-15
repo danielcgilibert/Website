@@ -1,31 +1,28 @@
 import { blogCategories } from '@/data/blogCategories'
+import { api } from '@/utils/api'
 import { RadioGroup } from '@headlessui/react'
-import fs from 'fs'
-import matter from 'gray-matter'
 import Image from 'next/image'
 import Link from 'next/link'
-import path from 'path'
-import { useEffect, useState } from 'react'
-
+import { useState } from 'react'
 export default function Blog({ posts }) {
   const [selectCategory, setSelectCategory] = useState(blogCategories[0])
   const [search, setSearch] = useState('')
-  const [filterResult, setFilterResult] = useState([])
+  const [filterResult, setFilterResult] = useState(posts)
 
-  useEffect(() => {
-    const results = posts
-      .filter(
-        post =>
-          post.frontMatter.category
-            .toLowerCase()
-            .includes(selectCategory.toLowerCase()) ||
-          selectCategory.toLowerCase() === blogCategories[0]
-      )
-      .filter(post =>
-        post.frontMatter.title.toLowerCase().includes(search.toLowerCase())
-      )
-    setFilterResult(results)
-  }, [search, selectCategory, posts])
+  // useEffect(() => {
+  //   const results = posts
+  //     .filter(
+  //       post =>
+  //         post.frontMatter.category
+  //           .toLowerCase()
+  //           .includes(selectCategory.toLowerCase()) ||
+  //         selectCategory.toLowerCase() === blogCategories[0]
+  //     )
+  //     .filter(post =>
+  //       post.frontMatter.title.toLowerCase().includes(search.toLowerCase())
+  //     )
+  //   setFilterResult(results)
+  // }, [search, selectCategory, posts])
 
   return (
     <div className="flex flex-col gap-5 px-6 md:p-0">
@@ -57,19 +54,19 @@ export default function Blog({ posts }) {
       </form>
 
       <div className="grid  gap-5  md:p-0">
-        {filterResult.map((post, index) => (
-          <div key={post.frontMatter.title}>
+        {filterResult.map(post => (
+          <div key={post.attributes.name}>
             <Link
               className="flex items-center p-4 gap-2  rounded-lg  border-2 border-[#2525297c] hover:bg-brownLight hover:bg-opacity-30  delay-75"
-              href={'/blog/' + post.slug}>
+              href={'blog/' + post.attributes.urlSlug}>
               <Image
                 width={30}
                 height={30}
-                alt={post.frontMatter.title}
-                src={`/images/posts/${post.frontMatter.thumbnailUrl}`}
+                alt={post.attributes.name}
+                src={`/images/posts/${post.icon}`}
                 className="rounded-full"
               />
-              <h1>{post.frontMatter.title}</h1>
+              <h1>{post.attributes.name}</h1>
             </Link>
           </div>
         ))}
@@ -79,24 +76,21 @@ export default function Blog({ posts }) {
 }
 
 export const getStaticProps = async () => {
-  const files = fs.readdirSync(path.join('posts'))
-
-  const posts = files.map(filename => {
-    const markdownWithMeta = fs.readFileSync(
-      path.join('posts', filename),
-      'utf-8'
-    )
-    const { data: frontMatter } = matter(markdownWithMeta)
+  try {
+    const {
+      data: { data: posts },
+    } = await api.get('/posts')
 
     return {
-      frontMatter,
-      slug: filename.split('.')[0],
+      props: {
+        posts,
+      },
     }
-  })
-
-  return {
-    props: {
-      posts,
-    },
+  } catch (error) {
+    return {
+      props: {
+        posts: [],
+      },
+    }
   }
 }
