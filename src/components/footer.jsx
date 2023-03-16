@@ -4,7 +4,7 @@ import { FaDev, FaGithubSquare, FaInfoCircle, FaLinkedin } from 'react-icons/fa'
 const Footer = () => {
   const date = new Date()
   return (
-    <footer className="text-white  w-full flex flex-col justify-between gap-2 border-t-2 border-[#393942] border-opacity-50 p-6">
+    <footer className="w-full flex flex-col justify-between gap-2 border-t-2 border-customGray  p-6">
       <div className="flex w-full justify-center ">
         <div className="w-full flex  justify-end gap-2 ">
           <ExternalLink href="https://es.linkedin.com/in/danielcarmonagilibert">

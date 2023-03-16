@@ -43,14 +43,16 @@ export default function Blog({ posts, categories }) {
 
   return (
     <div className="flex flex-col gap-5 px-6 md:p-0">
-      <form onSubmit={e => e.preventDefault()}>
+      <form
+        className="flex justify-between items-center"
+        onSubmit={e => e.preventDefault()}>
         <RadioGroup
           value={selectCategory}
           onChange={setSelectCategory}
           className="flex gap-3"
           name="plan">
           <RadioGroup.Option
-            className={`px-4 p-1  text-base rounded-lg  border-2  border-[#252529]  hover:bg-brownLight hover:bg-opacity-90 ui-checked:border-white ui-checked:bg-brownLight ui-checked:text-white ui-checked:bg-opacity-90 text-zinc-500 cursor-pointer `}
+            className={`px-4 p-1  text-base rounded-lg  border-2  border-customGray  hover:bg-lightBrown hover:bg-opacity-90 ui-checked:border-white ui-checked:bg-lightBrown ui-checked:text-white ui-checked:bg-opacity-90 text-zinc-500 cursor-pointer `}
             value={1}>
             All
           </RadioGroup.Option>
@@ -62,7 +64,7 @@ export default function Blog({ posts, categories }) {
 
             return (
               <RadioGroup.Option
-                className={`px-4 p-1 text-base rounded-lg  border-2  border-[#252529]  hover:bg-brownLight hover:bg-opacity-90 ui-checked:border-white ui-checked:bg-brownLight ui-checked:text-white ui-checked:bg-opacity-90 text-zinc-500 cursor-pointer `}
+                className={`px-4 p-1 text-base rounded-lg  border-2  border-customGray  hover:bg-lightBrown hover:bg-opacity-90 ui-checked:border-white ui-checked:bg-lightBrown ui-checked:text-white ui-checked:bg-opacity-90 text-zinc-500 cursor-pointer `}
                 key={id}
                 value={id}>
                 {name}
@@ -70,10 +72,13 @@ export default function Blog({ posts, categories }) {
             )
           })}
         </RadioGroup>
+        <span className="text-white text-opacity-50">
+          {`${filterResult.length}`} Post
+        </span>
       </form>
       <form onSubmit={e => e.preventDefault()}>
         <input
-          className="w-full bg-transparent border-2 border-[#252529] rounded-lg p-2 placeholder:text-zinc-700 shadow-none    outline-none focus:border-white focus:border-opacity-30 transition-colors delay-75  "
+          className="w-full bg-transparent border-2 border-customGray rounded-lg p-2 placeholder:text-zinc-700 shadow-none    outline-none focus:border-white focus:border-opacity-30 transition-colors delay-75  "
           type="text"
           placeholder="Search posts..."
           value={search}
@@ -84,7 +89,7 @@ export default function Blog({ posts, categories }) {
         variants={container}
         initial="hidden"
         animate="show"
-        className="grid gap-5 md:p-0  ">
+        className="grid gap-3 md:p-0  ">
         {filterResult.map(post => {
           const {
             attributes: { name, urlSlug, icon },
@@ -92,9 +97,12 @@ export default function Blog({ posts, categories }) {
           } = post
 
           return (
-            <motion.li variants={item} key={id}>
+            <motion.li
+              variants={item}
+              key={id}
+              className=" hover:-translate-y-1 transition delay-75 duration-100 ease-in-out">
               <Link
-                className="flex items-center p-4 gap-2  rounded-lg  border-2 border-[#2525297c] hover:bg-brownLight hover:bg-opacity-30  "
+                className="flex items-center p-4 gap-2  rounded-lg  border-2 border-lightGray hover:bg-lightBrown hover:bg-opacity-30  "
                 href={'blog/' + urlSlug}>
                 <Image
                   width={30}

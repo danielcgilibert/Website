@@ -5,7 +5,7 @@ const AboutMeSection = () => {
     <section className="flex flex-col gap-5 md:pr-24">
       <header>
         <h1 className="font-bold text-4xl md:text-5xl ">Daniel Carmona</h1>
-        <h2 className="text-[#ffd2b4] md:text-xl antialiased text-sm tracking-widest  ">
+        <h2 className="text-lightOrange md:text-xl antialiased text-sm tracking-widest  ">
           FRONT-END DEVELOPER
         </h2>
       </header>
@@ -17,7 +17,7 @@ const AboutMeSection = () => {
         Si quieres contactarme, háblame por{' '}
         <ExternalLink
           href="https://es.linkedin.com/in/danielcarmonagilibert"
-          className="text-[#ffd2b4] font-semibold underline hover:decoration-dotted">
+          className="text-lightOrange font-semibold underline hover:decoration-dotted">
           LinkedIn
         </ExternalLink>{' '}
         y te responderé con la mayor brevedad posible.

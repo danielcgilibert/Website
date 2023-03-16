@@ -17,7 +17,7 @@ const ProyectsSection = ({ projects }) => {
 
           return (
             <div
-              className="flex gap-2 justify-between items-center rounded-lg px-4 border-2 border-[#2525297c] w-full h-16  hover:bg-brownLight hover:bg-opacity-30  delay-75"
+              className="flex gap-2 justify-between items-center rounded-lg px-4 border-2 border-lightGray w-full h-16  hover:bg-lightBrown hover:bg-opacity-30  delay-75"
               key={name}>
               <ExternalLink href={urlCode}>
                 <span className="flex justify-start items-center gap-2 tracking-widest">

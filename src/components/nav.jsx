@@ -41,7 +41,7 @@ const Nav = () => {
           className="flex justify-center items-center gap-1 font-medium text-2xl md:text-base "
           active={''}
           href="/">
-          <div className="hover:bg-brownLight bg-opacity-50 p-1  rounded-full border-2">
+          <div className="hover:bg-lightBrown bg-opacity-50 p-1  rounded-full border-2">
             <AiOutlineHome size={16} />
           </div>
         </CustomLink>

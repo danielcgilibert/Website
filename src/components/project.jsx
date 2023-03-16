@@ -4,8 +4,6 @@ import { BsBoxArrowInUpRight } from 'react-icons/bs'
 import { FiGithub } from 'react-icons/fi'
 
 const Project = ({ project }) => {
-  console.log(project)
-
   const { name, urlCode, urlWeb, desc, icon } = project
   const {
     data: {

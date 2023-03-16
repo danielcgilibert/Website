@@ -7,23 +7,13 @@ const components = { SyntaxHighlighterCustom }
 
 const PostPage = ({ post: { attributes }, mdxSource }) => {
   const { name, createdAt } = attributes
+  const date = new Date(createdAt)
+  const formatDate = `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`
 
   return (
     <div className="mx-auto px-6   prose ">
-      <h1 className="text-left m-0 text-amber-400">{name}</h1>
-      <span className="text-amber-500">{createdAt}</span>
-      {/* <Image
-        width={800}
-        height={800}
-        alt={name}
-        src={`/images/posts/${name}`}
-        placeholder={'empty'}
-        style={{
-          width: '100%',
-          objectFit: 'cover',
-        }}
-        className="rounded-lg"
-      /> */}
+      <h1 className="text-left m-0 text-lightOrange">{name}</h1>
+      <span className="text-darkOrange">{formatDate}</span>
       <MDXRemote {...mdxSource} components={components} />
     </div>
   )
