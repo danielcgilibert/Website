@@ -1,8 +1,24 @@
 import { api } from '@/utils/api'
 import { RadioGroup } from '@headlessui/react'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+}
+
+const item = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1 },
+}
+
 export default function Blog({ posts, categories }) {
   const [selectCategory, setSelectCategory] = useState(1)
   const [search, setSearch] = useState('')
@@ -31,12 +47,12 @@ export default function Blog({ posts, categories }) {
         <RadioGroup
           value={selectCategory}
           onChange={setSelectCategory}
-          className="flex  gap-3"
+          className="flex gap-3"
           name="plan">
           <RadioGroup.Option
             className={`px-4 p-1  text-base rounded-lg  border-2  border-[#252529]  hover:bg-brownLight hover:bg-opacity-90 ui-checked:border-white ui-checked:bg-brownLight ui-checked:text-white ui-checked:bg-opacity-90 text-zinc-500 cursor-pointer `}
             value={1}>
-            all
+            All
           </RadioGroup.Option>
           {categories.map(category => {
             const {
@@ -46,7 +62,7 @@ export default function Blog({ posts, categories }) {
 
             return (
               <RadioGroup.Option
-                className={`px-4 p-1  text-base rounded-lg  border-2  border-[#252529]  hover:bg-brownLight hover:bg-opacity-90 ui-checked:border-white ui-checked:bg-brownLight ui-checked:text-white ui-checked:bg-opacity-90 text-zinc-500 cursor-pointer `}
+                className={`px-4 p-1 text-base rounded-lg  border-2  border-[#252529]  hover:bg-brownLight hover:bg-opacity-90 ui-checked:border-white ui-checked:bg-brownLight ui-checked:text-white ui-checked:bg-opacity-90 text-zinc-500 cursor-pointer `}
                 key={id}
                 value={id}>
                 {name}
@@ -55,18 +71,20 @@ export default function Blog({ posts, categories }) {
           })}
         </RadioGroup>
       </form>
-
       <form onSubmit={e => e.preventDefault()}>
         <input
-          className="w-full bg-transparent border-2 border-[#252529] rounded-lg p-2 placeholder:text-zinc-700"
+          className="w-full bg-transparent border-2 border-[#252529] rounded-lg p-2 placeholder:text-zinc-700 shadow-none    outline-none focus:border-white focus:border-opacity-30 transition-colors delay-75  "
           type="text"
           placeholder="Search posts..."
           value={search}
           onChange={e => setSearch(e.target.value)}
         />
       </form>
-
-      <div className="grid gap-5 md:p-0">
+      <motion.ul
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="grid gap-5 md:p-0  ">
         {filterResult.map(post => {
           const {
             attributes: { name, urlSlug, icon },
@@ -74,9 +92,9 @@ export default function Blog({ posts, categories }) {
           } = post
 
           return (
-            <div key={id}>
+            <motion.li variants={item} key={id}>
               <Link
-                className="flex items-center p-4 gap-2  rounded-lg  border-2 border-[#2525297c] hover:bg-brownLight hover:bg-opacity-30  delay-75"
+                className="flex items-center p-4 gap-2  rounded-lg  border-2 border-[#2525297c] hover:bg-brownLight hover:bg-opacity-30  "
                 href={'blog/' + urlSlug}>
                 <Image
                   width={30}
@@ -87,10 +105,10 @@ export default function Blog({ posts, categories }) {
                 />
                 <h1>{name}</h1>
               </Link>
-            </div>
+            </motion.li>
           )
         })}
-      </div>
+      </motion.ul>
     </div>
   )
 }

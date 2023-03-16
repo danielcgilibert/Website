@@ -6,7 +6,6 @@ import { GoRepo } from 'react-icons/go'
 const Statistics = ({ repositories, totalContributions }) => {
   const [repositoriesCount, setRepositoriesCount] = useState(0)
   const [contributionsCount, setContributionsCount] = useState(0)
-  const [positionMouse, setPositionMouse] = useState(0)
 
   useEffect(() => {
     const timeoutRepo = setTimeout(() => {
@@ -23,7 +22,7 @@ const Statistics = ({ repositories, totalContributions }) => {
   }, [repositoriesCount, contributionsCount, repositories, totalContributions])
 
   return (
-    <section className={`flex flex-col gap-5 `}>
+    <section className={`flex flex-col gap-3 `}>
       <h2 className="prose:text-white  flex gap-1 justify-start items-center antialiased text-sm  tracking-widest uppercase ">
         Estadisticas GitHub
       </h2>
