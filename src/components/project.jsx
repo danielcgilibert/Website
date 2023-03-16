@@ -1,24 +1,34 @@
 import { ExternalLink } from '@/ui/link'
+import Image from 'next/image'
 import { BsBoxArrowInUpRight } from 'react-icons/bs'
 import { FiGithub } from 'react-icons/fi'
 
 const Project = ({ project }) => {
+  console.log(project)
+
+  const { name, urlCode, urlWeb, desc, icon } = project
+  const {
+    data: {
+      attributes: { url },
+    },
+  } = icon
+
   return (
     <>
       <div
-        key={project.name}
+        key={name}
         className="grid  md:grid-cols-[70%_1fr] p-4 gap-8  rounded-lg  border-2 border-[#2525297c]   delay-75">
         <div className="flex  flex-start items-center flex-1 gap-5">
-          {/* <span> {<IconoDinamico nombreIcono={project.icon} />}</span> */}
+          <Image width={25} height={25} src={url} alt={name} />
           <div>
-            <h1>{project.name}</h1>
-            <p className="text-zinc-400 text-sm">{project.desc}</p>
+            <h1>{name}</h1>
+            <p className="text-zinc-400 text-sm">{desc}</p>
           </div>
         </div>
         <div className="flex gap-2 md:justify-end md:items-center">
           <ExternalLink
-            className="p-2  basis-full md:basis-0     border-2 border-[#2525297c] rounded-lg flex justify-center items-center hover:bg-zinc-800 "
-            href={project.urlCode}>
+            className="p-2 basis-full md:basis-0 border-2 border-[#2525297c] rounded-lg flex justify-center items-center hover:bg-zinc-800 "
+            href={urlCode}>
             <span>
               <FiGithub size={20} name="Github" />
             </span>
@@ -26,9 +36,9 @@ const Project = ({ project }) => {
 
           <ExternalLink
             className={`p-2  basis-full md:basis-0 border-2 border-[#2525297c] rounded-lg flex justify-center items-center hover:bg-zinc-800 ${
-              !project.urlWeb && 'opacity-20  pointer-events-none '
+              !urlWeb && 'opacity-20  pointer-events-none '
             }`}
-            href={project.urlWeb}>
+            href={urlWeb}>
             <span>
               <BsBoxArrowInUpRight size={20} name="website" />
             </span>

@@ -15,7 +15,7 @@ export const getStaticProps = async () => {
   try {
     const {
       data: { data: projects },
-    } = await api.get('/projects')
+    } = await api.get('/projects?populate=*')
 
     return {
       props: {
