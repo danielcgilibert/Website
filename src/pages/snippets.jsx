@@ -19,7 +19,7 @@ export default function Snippets({ snippets }) {
 
           return (
             <Link
-              className="flex items-center p-4 gap-2  rounded-lg  border-2 border-[#2525297c] hover:bg-brownLight hover:bg-opacity-30  delay-75"
+              className="flex items-center p-4 gap-2  rounded-lg  border-2 border-[#2525297c] hover:bg-customGray hover:bg-opacity-30  delay-75"
               key={`${index}`}
               href={'/snippets/' + urlSlug}
               passHref>

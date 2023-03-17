@@ -6,6 +6,9 @@ const SyntaxHighlighterCustom = ({ children }) => {
     <SyntaxHighlighter
       style={dracula}
       showLineNumbers={true}
+      customStyle={{
+        width: '100%',
+      }}
       language={'javascript'}>
       {children}
     </SyntaxHighlighter>
