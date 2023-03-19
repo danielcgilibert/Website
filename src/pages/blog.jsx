@@ -108,7 +108,7 @@ export default function Blog({ posts, categories }) {
                   width={30}
                   height={30}
                   alt={name}
-                  src={icon.data.attributes.url}
+                  src={icon}
                   className="rounded-full"
                 />
                 <h1>{name}</h1>
@@ -137,7 +137,7 @@ export const getStaticProps = async () => {
         attributes: {
           name,
           urlSlug,
-          icon,
+          icon: icon.data.attributes.url,
           description,
           category,
         },
