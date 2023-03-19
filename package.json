@@ -1,12 +1,13 @@
 {
-  "name": "portfolio-headless",
+  "name": "website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "playwright test"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.13",
@@ -28,6 +29,7 @@
     "sharp": "^0.31.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.31.2",
     "@tailwindcss/typography": "^0.5.9",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "autoprefixer": "^10.4.13",

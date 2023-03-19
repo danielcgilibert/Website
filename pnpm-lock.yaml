@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@headlessui/react': ^1.7.13
   '@headlessui/tailwindcss': ^0.1.2
+  '@playwright/test': ^1.31.2
   '@tailwindcss/typography': ^0.5.9
   '@typescript-eslint/eslint-plugin': ^5.43.0
   '@vercel/analytics': ^0.1.11
@@ -51,6 +52,7 @@ dependencies:
   sharp: 0.31.3
 
 devDependencies:
+  '@playwright/test': 1.31.2
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.7
   '@typescript-eslint/eslint-plugin': 5.55.0_byynos7ffx3cepxtk6gvolkky4
   autoprefixer: 10.4.13_postcss@8.4.21
@@ -350,6 +352,17 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@playwright/test/1.31.2:
+    resolution: {integrity: sha512-BYVutxDI4JeZKV1+ups6dt5WiqKhjBtIYowyZIJ3kBDmJgsuPKsqqKNIMFbUePLSCmp2cZu+BDL427RcNKTRYw==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dependencies:
+      '@types/node': 18.15.3
+      playwright-core: 1.31.2
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
   /@rushstack/eslint-patch/1.2.0:
     resolution: {integrity: sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==}
     dev: false
@@ -428,6 +441,10 @@ packages:
   /@types/ms/0.7.31:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
     dev: false
+
+  /@types/node/18.15.3:
+    resolution: {integrity: sha512-p6ua9zBxz5otCmbpb5D3U4B5Nanw6Pk3PPyX05xnxbB/fRv71N7CPmORg7uAD5P70T0xmx1pzAx/FUfa5X+3cw==}
+    dev: true
 
   /@types/nprogress/0.2.0:
     resolution: {integrity: sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A==}
@@ -3181,6 +3198,12 @@ packages:
       node-fetch: 2.6.7_encoding@0.1.13
       sharp: 0.31.3
     dev: false
+
+  /playwright-core/1.31.2:
+    resolution: {integrity: sha512-a1dFgCNQw4vCsG7bnojZjDnPewZcw7tZUNFN0ZkcLYKj+mPmXvg4MpaaKZ5SgqPsOmqIf2YsVRkgqiRDxD+fDQ==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: true
 
   /postcss-import/14.1.0_postcss@8.4.21:
     resolution: {integrity: sha512-flwI+Vgm4SElObFVPpTIT7SU7R3qk2L7PyduMcokiaVKuWv9d/U+Gm/QAd8NDLuykTWTkcrjOeD2Pp1rMeBTGw==}
