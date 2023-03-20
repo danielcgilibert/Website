@@ -12,13 +12,13 @@ import NextNProgress from 'nextjs-progressbar'
 const inter = Inter({
   weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-inter'
 })
 
 export default function App({ Component, pageProps, router }) {
   return (
     <Container fonts={[inter]}>
-      <NextNProgress color="#fde9ca" options={{ showSpinner: false }} />
+      <NextNProgress color='#fde9ca' options={{ showSpinner: false }} />
       <Analytics />
       <DefaultSeo {...SEO} />
       <Nav />

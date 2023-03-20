@@ -12,12 +12,12 @@ export default {
         url: 'https://techcrunch.com/wp-content/uploads/2015/04/codecode.jpg',
         width: 1200,
         height: 1200,
-        alt: 'Daniel Carmona',
-      },
+        alt: 'Daniel Carmona'
+      }
     ],
     defaultImageHeight: 1200,
     defaultImageWidth: 1200,
     locale: 'es_ES',
-    site_name: 'danielcg.dev',
-  },
+    site_name: 'danielcg.dev'
+  }
 }

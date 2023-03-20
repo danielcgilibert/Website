@@ -7,9 +7,10 @@ const SyntaxHighlighterCustom = ({ children }) => {
       style={dracula}
       showLineNumbers={true}
       customStyle={{
-        width: '100%',
+        width: '100%'
       }}
-      language={'javascript'}>
+      language={'javascript'}
+    >
       {children}
     </SyntaxHighlighter>
   )

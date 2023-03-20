@@ -2,7 +2,8 @@ const Container = ({ children, fonts }) => {
   const [inter] = fonts
   return (
     <main
-      className={`max-w-xl md:max-w-4xl mx-auto grid grid-cols-1 auto-rows-[auto_1fr_auto] gap-4 md:gap-14  ${inter.variable}  font-inter`}>
+      className={`mx-auto grid max-w-xl auto-rows-[auto_1fr_auto] grid-cols-1 gap-4 md:max-w-4xl md:gap-14  ${inter.variable}  font-inter`}
+    >
       {children}
     </main>
   )

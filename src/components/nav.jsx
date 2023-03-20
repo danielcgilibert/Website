@@ -18,7 +18,7 @@ const Nav = () => {
     }
   }, [])
 
-  const listener = e => {
+  const listener = (e) => {
     if (e.target.innerWidth >= 768) {
       setOpenMenu(false)
       document.body.classList.remove('overflow-hidden')
@@ -35,32 +35,36 @@ const Nav = () => {
   }
 
   return (
-    <nav className="z-10 p-6 md:p-0 md:pt-8  flex flex-row justify-between items-center inset-0 md:static">
-      <div className="flex justify-center items-center gap-1">
+    <nav className='inset-0 z-10 flex flex-row  items-center justify-between p-6 md:static md:p-0 md:pt-8'>
+      <div className='flex items-center justify-center gap-1'>
         <CustomLink
-          className="flex justify-center items-center gap-1 font-medium text-2xl md:text-base "
+          className='flex items-center justify-center gap-1 text-2xl font-medium md:text-base '
           active={''}
-          href="/">
-          <div className="hover:bg-lightBrown bg-opacity-50 p-1  rounded-full border-2">
+          href='/'
+        >
+          <div className='rounded-full border-2 bg-opacity-50  p-1 hover:bg-lightBrown'>
             <AiOutlineHome size={16} />
           </div>
         </CustomLink>
       </div>
 
       <ul
-        className={`bg-black bg-opacity-95 md:bg-transparent w-screen md:w-full h-screen md:h-full  top-0 left-0  flex gap-4 fixed  flex-col md:flex-row justify-start md:justify-end items-center p-24 md:p-0  transition delay-75 duration-300 ease-in-out z-40  md:static ${
+        className={`fixed top-0 left-0 z-40 flex h-screen w-screen  flex-col items-center  justify-start gap-4 bg-black  bg-opacity-95 p-24 transition delay-75 duration-300 ease-in-out md:static  md:h-full md:w-full md:flex-row md:justify-end md:bg-transparent  md:p-0 ${
           openMenu ? 'translate-x-0' : 'translate-x-[100vw]'
-        } md:transform-none`}>
-        {routes.map(route => (
+        } md:transform-none`}
+      >
+        {routes.map((route) => (
           <li
             key={route.name}
-            className="flex  justify-center items-center gap-1 font-medium text-2xl md:text-base">
+            className='flex  items-center justify-center gap-1 text-2xl font-medium md:text-base'
+          >
             <CustomLink
               onClick={changeStateNav}
-              className={`flex justify-center items-center gap-1 font-medium text-2xl text-white  md:text-base hover:text-zinc-100 hover:opacity-80 ${
-                path == route.href ? 'opacity-100' : 'opacity-50'
+              className={`flex items-center justify-center gap-1 text-2xl font-medium text-white  hover:text-zinc-100 hover:opacity-80 md:text-base ${
+                path === route.href ? 'opacity-100' : 'opacity-50'
               }`}
-              href={`/${route.href}`}>
+              href={`/${route.href}`}
+            >
               {route.icon}
               {route.name}
             </CustomLink>
@@ -69,12 +73,13 @@ const Nav = () => {
       </ul>
 
       <button
-        aria-controls="primary-navigation"
-        className="z-50 md:hidden"
-        aria-expanded="false"
-        role="button"
-        aria-label="toggle nav"
-        onClick={changeStateNav}>
+        aria-controls='primary-navigation'
+        className='z-50 md:hidden'
+        aria-expanded='false'
+        role='button'
+        aria-label='toggle nav'
+        onClick={changeStateNav}
+      >
         {openMenu ? <AiOutlineClose size={32} /> : <BiMenuAltRight size={32} />}
       </button>
     </nav>

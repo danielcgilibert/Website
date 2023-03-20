@@ -6,10 +6,10 @@ import { serialize } from 'next-mdx-remote/serialize'
 const components = { SyntaxHighlighterCustom }
 
 const SnippetPage = ({ snippet: { attributes }, mdxSource }) => {
-  const { name, createdAt } = attributes
+  const { name } = attributes
 
   return (
-    <div className="mt-4 px-6 prose">
+    <div className='prose mt-4 px-6'>
       <h1>{name}</h1>
       <MDXRemote {...mdxSource} components={components} />
     </div>
@@ -19,34 +19,34 @@ const SnippetPage = ({ snippet: { attributes }, mdxSource }) => {
 const getStaticPaths = async () => {
   try {
     const {
-      data: { data: snippets },
+      data: { data: snippets }
     } = await api.get('/snippets')
 
-    const paths = snippets.map(snippet => ({
+    const paths = snippets.map((snippet) => ({
       params: {
-        slug: snippet.attributes.urlSlug,
-      },
+        slug: snippet.attributes.urlSlug
+      }
     }))
 
     return {
       paths,
-      fallback: false,
+      fallback: false
     }
   } catch (error) {
     return {
       paths: [],
-      fallback: false,
+      fallback: false
     }
   }
 }
 
 const getStaticProps = async ({ params: { slug } }) => {
   const {
-    data: { data: snippets },
+    data: { data: snippets }
   } = await api.get('/snippets')
 
   const [snippet] = snippets.filter(
-    snippet => snippet.attributes.urlSlug === slug
+    (snippet) => snippet.attributes.urlSlug === slug
   )
 
   const mdxSource = await serialize(snippet.attributes.content)
@@ -54,8 +54,8 @@ const getStaticProps = async ({ params: { slug } }) => {
   return {
     props: {
       snippet,
-      mdxSource,
-    },
+      mdxSource
+    }
   }
 }
 

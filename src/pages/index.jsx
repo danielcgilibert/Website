@@ -10,36 +10,36 @@ export default function Home({
   repositories,
   totalContributions,
   imageProps,
-  projects,
+  projects
 }) {
   const [isLoading, setLoading] = useState(true)
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-[43%_auto] content-center place-content-center gap-8">
+      <div className='grid grid-cols-1 place-content-center content-center gap-8 md:grid-cols-[43%_auto]'>
         <header>
           <Image
-            alt="profile"
+            alt='profile'
             width={8000}
             height={8000}
             quality={100}
             {...imageProps}
-            placeholder="blur"
+            placeholder='blur'
             className={`
-               md:rounded-lg h-64 md:h-full duration-700 ease-in-out group-hover:opacity-75 
-              ${isLoading ? 'blur-lg grayscale opacity-20 ' : 'blur-0'})`}
+               h-64 duration-700 ease-in-out group-hover:opacity-75 md:h-full md:rounded-lg 
+              ${isLoading ? 'opacity-20 blur-lg grayscale ' : 'blur-0'})`}
             onLoadingComplete={() => setLoading(false)}
-            sizes="(max-width: 768px) 100vw,
+            sizes='(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
-              33vw"
+              33vw'
             style={{
               width: '100%',
-              objectFit: 'cover',
+              objectFit: 'cover'
             }}
           />
         </header>
 
-        <div className="flex flex-col justify-between gap-12   py-2 md:p-0 px-6 md:mt-6">
+        <div className='flex flex-col justify-between gap-12   py-2 px-6 md:mt-6 md:p-0'>
           <AboutMeSection />
           <Statistics
             repositories={repositories}
@@ -55,7 +55,7 @@ export default function Home({
 export const getStaticProps = async () => {
   try {
     const {
-      data: { data: projects },
+      data: { data: projects }
     } = await api.get('/projects')
 
     const { base64, img } = await getPlaiceholder('/images/profile.jpeg')
@@ -63,7 +63,7 @@ export const getStaticProps = async () => {
     const { data: repositories } = await apiGitHub.get('/repos')
 
     const {
-      data: { totalContributions },
+      data: { totalContributions }
     } = await apiContribu.get('/danielcgilibert.json')
 
     return {
@@ -72,10 +72,10 @@ export const getStaticProps = async () => {
         totalContributions,
         imageProps: {
           ...img,
-          blurDataURL: base64,
+          blurDataURL: base64
         },
-        projects,
-      },
+        projects
+      }
     }
   } catch (error) {
     console.log(error)
@@ -84,8 +84,8 @@ export const getStaticProps = async () => {
         repositories: 0,
         totalContributions: 0,
         imageProps: {},
-        projects: [],
-      },
+        projects: []
+      }
     }
   }
 }

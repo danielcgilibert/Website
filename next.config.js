@@ -2,16 +2,16 @@
 const nextConfig = {
   reactStrictMode: true,
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
+    removeConsole: process.env.NODE_ENV === 'production'
   },
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'res.cloudinary.com',
-      },
-    ],
-  },
+        hostname: 'res.cloudinary.com'
+      }
+    ]
+  }
 }
 
 module.exports = nextConfig

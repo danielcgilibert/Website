@@ -6,21 +6,21 @@ export const routes = [
   {
     name: 'Projects',
     href: 'projects',
-    icon: <BsCodeSquare size={20} />,
+    icon: <BsCodeSquare size={20} />
   },
   {
     name: 'Blog',
     href: 'blog',
-    icon: <HiOutlineNewspaper size={20} />,
+    icon: <HiOutlineNewspaper size={20} />
   },
   {
     name: 'Snippets',
     href: 'snippets',
-    icon: <AiOutlineCode size={20} />,
+    icon: <AiOutlineCode size={20} />
   },
   {
     name: 'Resources',
     href: 'resources',
-    icon: <BsArchive size={20} />,
-  },
+    icon: <BsArchive size={20} />
+  }
 ]

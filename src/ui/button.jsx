@@ -1,9 +1,10 @@
-const Button = props => {
+const Button = (props) => {
   return (
     <button
       {...props}
-      className={`rounded-lg px-4 py-2 border-2 hover:bg-lightBrown border-lightGray ${props.className}`}
-      type={props.type}>
+      className={`rounded-lg border-2 border-lightGray px-4 py-2 hover:bg-lightBrown ${props.className}`}
+      type={props.type}
+    >
       {props.children}
     </button>
   )

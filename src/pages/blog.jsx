@@ -9,14 +9,14 @@ const container = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.3,
-    },
-  },
+      staggerChildren: 0.3
+    }
+  }
 }
 
 const item = {
   hidden: { opacity: 0 },
-  show: { opacity: 1 },
+  show: { opacity: 1 }
 }
 
 export default function Blog({ posts, categories }) {
@@ -28,13 +28,13 @@ export default function Blog({ posts, categories }) {
     const results = posts
       // filter by category
       .filter(
-        post =>
+        (post) =>
           post.attributes.category.data.id === selectCategory ||
           selectCategory === 1
       )
 
       // filter by search
-      .filter(post =>
+      .filter((post) =>
         post.attributes.name.toLowerCase().includes(search.toLowerCase())
       )
 
@@ -42,74 +42,81 @@ export default function Blog({ posts, categories }) {
   }, [search, selectCategory, posts])
 
   return (
-    <div className="flex flex-col gap-5 px-6 md:p-0">
+    <div className='flex flex-col gap-5 px-6 md:p-0'>
       <form
-        className="flex justify-between items-center"
-        onSubmit={e => e.preventDefault()}>
+        className='flex items-center justify-between'
+        onSubmit={(e) => e.preventDefault()}
+      >
         <RadioGroup
           value={selectCategory}
           onChange={setSelectCategory}
-          className="flex gap-3"
-          name="plan">
+          className='flex gap-3'
+          name='plan'
+        >
           <RadioGroup.Option
-            className={`px-4 p-1  text-base rounded-lg  border-2  border-customGray  hover:bg-lightBrown hover:bg-opacity-90 ui-checked:border-white ui-checked:bg-lightBrown ui-checked:text-white ui-checked:bg-opacity-90 text-zinc-500 cursor-pointer `}
-            value={1}>
+            className={`cursor-pointer rounded-lg  border-2 border-customGray  p-1  px-4  text-base text-zinc-500 hover:bg-lightBrown hover:bg-opacity-90 ui-checked:border-white ui-checked:bg-lightBrown ui-checked:bg-opacity-90 ui-checked:text-white `}
+            value={1}
+          >
             All
           </RadioGroup.Option>
-          {categories.map(category => {
+          {categories.map((category) => {
             const {
               attributes: { name },
-              id,
+              id
             } = category
 
             return (
               <RadioGroup.Option
-                className={`px-4 p-1 text-base rounded-lg  border-2  border-customGray  hover:bg-lightBrown hover:bg-opacity-90 ui-checked:border-white ui-checked:bg-lightBrown ui-checked:text-white ui-checked:bg-opacity-90 text-zinc-500 cursor-pointer `}
+                className={`cursor-pointer rounded-lg border-2 border-customGray  p-1  px-4  text-base text-zinc-500 hover:bg-lightBrown hover:bg-opacity-90 ui-checked:border-white ui-checked:bg-lightBrown ui-checked:bg-opacity-90 ui-checked:text-white `}
                 key={id}
-                value={id}>
+                value={id}
+              >
                 {name}
               </RadioGroup.Option>
             )
           })}
         </RadioGroup>
-        <span className="text-white text-opacity-50">
+        <span className='text-white text-opacity-50'>
           {`${filterResult.length}`} Post
         </span>
       </form>
-      <form onSubmit={e => e.preventDefault()}>
+      <form onSubmit={(e) => e.preventDefault()}>
         <input
-          className="w-full bg-transparent border-2 border-customGray rounded-lg p-2 placeholder:text-zinc-700 shadow-none    outline-none focus:border-white focus:border-opacity-30 transition-colors delay-75  "
-          type="text"
-          placeholder="Search posts..."
+          className='w-full rounded-lg border-2 border-customGray bg-transparent p-2 shadow-none outline-none    transition-colors delay-75 placeholder:text-zinc-700 focus:border-white focus:border-opacity-30  '
+          type='text'
+          placeholder='Search posts...'
           value={search}
-          onChange={e => setSearch(e.target.value)}
+          onChange={(e) => setSearch(e.target.value)}
         />
       </form>
       <motion.ul
         variants={container}
-        initial="hidden"
-        animate="show"
-        className="grid gap-3 md:p-0  ">
-        {filterResult.map(post => {
+        initial='hidden'
+        animate='show'
+        className='grid gap-3 md:p-0  '
+      >
+        {filterResult.map((post) => {
           const {
             attributes: { name, urlSlug, icon },
-            id,
+            id
           } = post
 
           return (
             <motion.li
               variants={item}
               key={id}
-              className=" hover:-translate-y-1 transition delay-75 duration-100 ease-in-out">
+              className=' transition delay-75 duration-100 ease-in-out hover:-translate-y-1'
+            >
               <Link
-                className="flex items-center p-4 gap-2  rounded-lg  border-2 border-lightGray hover:bg-lightBrown hover:bg-opacity-30  "
-                href={'blog/' + urlSlug}>
+                className='flex items-center gap-2 rounded-lg  border-2  border-lightGray p-4 hover:bg-lightBrown hover:bg-opacity-30  '
+                href={'blog/' + urlSlug}
+              >
                 <Image
                   width={30}
                   height={30}
                   alt={name}
                   src={icon}
-                  className="rounded-full"
+                  className='rounded-full'
                 />
                 <h1>{name}</h1>
               </Link>
@@ -124,13 +131,13 @@ export default function Blog({ posts, categories }) {
 export const getStaticProps = async () => {
   try {
     const {
-      data: { data: posts },
+      data: { data: posts }
     } = await api.get('/posts?populate=*')
 
-    const filterPosts = posts.map(post => {
+    const filterPosts = posts.map((post) => {
       const {
         id,
-        attributes: { name, urlSlug, icon, description, category },
+        attributes: { name, urlSlug, icon, description, category }
       } = post
       return {
         id,
@@ -139,26 +146,26 @@ export const getStaticProps = async () => {
           urlSlug,
           icon: icon.data.attributes.url,
           description,
-          category,
-        },
+          category
+        }
       }
     })
     const {
-      data: { data: categories },
+      data: { data: categories }
     } = await api.get('/categories')
 
     return {
       props: {
         posts: filterPosts,
-        categories,
-      },
+        categories
+      }
     }
   } catch (error) {
     return {
       props: {
         posts: [],
-        categories: [],
-      },
+        categories: []
+      }
     }
   }
 }

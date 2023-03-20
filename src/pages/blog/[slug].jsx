@@ -17,7 +17,7 @@ const canvasStyles = {
   width: '100%',
   height: '100%',
   top: 0,
-  left: 0,
+  left: 0
 }
 const PostPage = ({ post: { attributes }, mdxSource }) => {
   const { name, createdAt } = attributes
@@ -26,7 +26,7 @@ const PostPage = ({ post: { attributes }, mdxSource }) => {
   const refAnimationInstance = useRef(null)
   const router = useRouter()
 
-  const getInstance = useCallback(instance => {
+  const getInstance = useCallback((instance) => {
     refAnimationInstance.current = instance
   }, [])
 
@@ -34,7 +34,7 @@ const PostPage = ({ post: { attributes }, mdxSource }) => {
     refAnimationInstance.current &&
       refAnimationInstance.current({
         ...opts,
-        particleCount: Math.floor(500 * particleRatio),
+        particleCount: Math.floor(500 * particleRatio)
       })
   }, [])
 
@@ -43,22 +43,23 @@ const PostPage = ({ post: { attributes }, mdxSource }) => {
       spread: 120,
       startVelocity: 25,
       decay: 0.9,
-      scalar: 1,
+      scalar: 1
     })
   }, [makeShot])
   return (
-    <div className="px-8 md:p-0">
-      <header className=" flex justify-between items-center mb-8">
+    <div className='px-8 md:p-0'>
+      <header className=' mb-8 flex items-center justify-between'>
         <Button
-          className="flex justify-center items-center font-light text-sm px-4"
-          onClick={() => router.back()}>
+          className='flex items-center justify-center px-4 text-sm font-light'
+          onClick={() => router.back()}
+        >
           <IoIosArrowBack size={20} />
           Atras
         </Button>
 
-        <div className="relative md:w-fit flex justify-end items-center gap-4 md:border-b-2 border-customGray pb-2 ">
+        <div className='relative flex items-center justify-end gap-4 border-customGray pb-2 md:w-fit md:border-b-2 '>
           <ReactCanvasConfetti refConfetti={getInstance} style={canvasStyles} />
-          <span className="font-extralight text-sm opacity-60 hidden md:block">
+          <span className='hidden text-sm font-extralight opacity-60 md:block'>
             Tiempo 5 min
           </span>
           <Button
@@ -66,15 +67,16 @@ const PostPage = ({ post: { attributes }, mdxSource }) => {
               navigator.clipboard.writeText(window.location.href)
               fire()
             }}
-            className=" flex justify-center items-center gap-1 font-light text-sm">
+            className=' flex items-center justify-center gap-1 text-sm font-light'
+          >
             <AiOutlineShareAlt size={20} /> Share
           </Button>
         </div>
       </header>
 
-      <article className="prose">
-        <h1 className="m-0 text-lightOrange">{name}</h1>
-        <span className="text-darkOrange">{formatDate}</span>
+      <article className='prose'>
+        <h1 className='m-0 text-lightOrange'>{name}</h1>
+        <span className='text-darkOrange'>{formatDate}</span>
         <MDXRemote {...mdxSource} components={components} />
       </article>
     </div>
@@ -84,23 +86,23 @@ const PostPage = ({ post: { attributes }, mdxSource }) => {
 const getStaticPaths = async () => {
   try {
     const {
-      data: { data: posts },
+      data: { data: posts }
     } = await api.get('/posts')
 
-    const paths = posts.map(post => ({
+    const paths = posts.map((post) => ({
       params: {
-        slug: post.attributes.urlSlug,
-      },
+        slug: post.attributes.urlSlug
+      }
     }))
 
     return {
       paths,
-      fallback: false,
+      fallback: false
     }
   } catch (error) {
     return {
       paths: [],
-      fallback: false,
+      fallback: false
     }
   }
 }
@@ -108,24 +110,24 @@ const getStaticPaths = async () => {
 const getStaticProps = async ({ params: { slug } }) => {
   try {
     const {
-      data: { data: posts },
+      data: { data: posts }
     } = await api.get('/posts')
 
-    const [post] = posts.filter(post => post.attributes.urlSlug === slug)
+    const [post] = posts.filter((post) => post.attributes.urlSlug === slug)
     const mdxSource = await serialize(post.attributes.content)
 
     return {
       props: {
         post,
-        mdxSource,
-      },
+        mdxSource
+      }
     }
   } catch (error) {
     return {
       props: {
         post: [],
-        mdxSource: [],
-      },
+        mdxSource: []
+      }
     }
   }
 }
