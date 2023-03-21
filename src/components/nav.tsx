@@ -18,8 +18,10 @@ const Nav = () => {
     }
   }, [])
 
-  const listener = (e) => {
-    if (e.target.innerWidth >= 768) {
+  const listener = (e: UIEvent) => {
+    const w = e.target as Window
+
+    if (w.innerWidth >= 768) {
       setOpenMenu(false)
       document.body.classList.remove('overflow-hidden')
     }

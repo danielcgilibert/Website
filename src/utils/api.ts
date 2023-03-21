@@ -12,7 +12,6 @@ export const apiGitHub = axios.create({
   baseURL: `https://api.github.com/users/danielcgilibert`,
   timeout: 1000,
   withCredentials: true,
-  credentials: 'include',
   headers: {
     Authorization: `Bearer ${process.env.ENV_GITHUBTOKEN}`,
     'Content-Type': 'application/json'

@@ -1,10 +1,16 @@
+import { Attributes } from '@/types/project'
 import { ExternalLink } from '@/ui/link'
 import Image from 'next/image'
 import { BsBoxArrowInUpRight } from 'react-icons/bs'
 import { FiGithub } from 'react-icons/fi'
+type ProjectProps = {
+  project: Attributes
+}
 
-const Project = ({ project }) => {
-  const { name, urlCode, urlWeb, desc, icon } = project
+const Project = ({ project }: ProjectProps) => {
+  console.log(project)
+
+  const { name, urlCode, urlWeb, description, icon } = project
   const {
     data: {
       attributes: { url }
@@ -21,7 +27,7 @@ const Project = ({ project }) => {
           <Image width={25} height={25} src={url} alt={name} />
           <div>
             <h1>{name}</h1>
-            <p className='text-sm text-zinc-400'>{desc}</p>
+            <p className='text-sm text-zinc-400'>{description}</p>
           </div>
         </div>
         <div className='flex gap-2 md:items-center md:justify-end'>
@@ -38,7 +44,7 @@ const Project = ({ project }) => {
             className={`flex  basis-full items-center justify-center rounded-lg border-2 border-[#2525297c] p-2 hover:bg-zinc-800 md:basis-0 ${
               !urlWeb && 'pointer-events-none  opacity-20 '
             }`}
-            href={urlWeb}
+            href={urlWeb ? urlWeb : ' '}
           >
             <span>
               <BsBoxArrowInUpRight size={20} name='website' />

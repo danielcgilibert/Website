@@ -1,7 +1,11 @@
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 
-const SyntaxHighlighterCustom = ({ children }) => {
+type Props = {
+  children: string
+}
+
+const SyntaxHighlighterCustom = ({ children }: Props) => {
   return (
     <SyntaxHighlighter
       style={dracula}

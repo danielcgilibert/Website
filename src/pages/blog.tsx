@@ -1,6 +1,9 @@
+import { ICategory } from '@/types/category'
+import { IPost } from '@/types/post'
 import { api } from '@/utils/api'
 import { RadioGroup } from '@headlessui/react'
 import { motion } from 'framer-motion'
+import { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -19,7 +22,12 @@ const item = {
   show: { opacity: 1 }
 }
 
-export default function Blog({ posts, categories }) {
+type BlogProps = {
+  posts: IPost[]
+  categories: ICategory[]
+}
+
+const Blog: NextPage<BlogProps> = ({ posts, categories }) => {
   const [selectCategory, setSelectCategory] = useState(1)
   const [search, setSearch] = useState('')
   const [filterResult, setFilterResult] = useState(posts)
@@ -134,7 +142,7 @@ export const getStaticProps = async () => {
       data: { data: posts }
     } = await api.get('/posts?populate=*')
 
-    const filterPosts = posts.map((post) => {
+    const filterPosts = posts.map((post: any) => {
       const {
         id,
         attributes: { name, urlSlug, icon, description, category }
@@ -169,3 +177,5 @@ export const getStaticProps = async () => {
     }
   }
 }
+
+export default Blog
