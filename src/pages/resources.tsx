@@ -1,6 +1,7 @@
+import { NextPage } from 'next'
 import Link from 'next/link'
 
-export default function Resources() {
+const Resources: NextPage = () => {
   return (
     <div className='grid place-content-center gap-2 px-6 md:p-0  '>
       ⚠️ Página en desarrollo ⚠️
@@ -13,3 +14,4 @@ export default function Resources() {
     </div>
   )
 }
+export default Resources

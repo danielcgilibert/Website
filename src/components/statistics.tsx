@@ -3,7 +3,12 @@ import { useEffect, useState } from 'react'
 import { AiOutlinePlusCircle } from 'react-icons/ai'
 import { GoRepo } from 'react-icons/go'
 
-const Statistics = ({ repositories, totalContributions }) => {
+type StatisticsProps = {
+  repositories: number
+  totalContributions: number
+}
+
+const Statistics = ({ repositories, totalContributions }: StatisticsProps) => {
   const [repositoriesCount, setRepositoriesCount] = useState(0)
   const [contributionsCount, setContributionsCount] = useState(0)
 

@@ -1,11 +1,21 @@
 import SyntaxHighlighterCustom from '@/components/syntaxHighlighterCustom'
+import { ISnippet } from '@/types/snippet'
 import { api } from '@/utils/api'
+import { NextPage } from 'next'
 import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 
 const components = { SyntaxHighlighterCustom }
 
-const SnippetPage = ({ snippet: { attributes }, mdxSource }) => {
+type SnippetProps = {
+  snippet: any
+  mdxSource: any
+}
+
+const SnippetPage: NextPage<SnippetProps> = ({
+  snippet: { attributes },
+  mdxSource
+}) => {
   const { name } = attributes
 
   return (
@@ -22,7 +32,7 @@ const getStaticPaths = async () => {
       data: { data: snippets }
     } = await api.get('/snippets')
 
-    const paths = snippets.map((snippet) => ({
+    const paths = snippets.map((snippet: ISnippet) => ({
       params: {
         slug: snippet.attributes.urlSlug
       }
@@ -40,13 +50,13 @@ const getStaticPaths = async () => {
   }
 }
 
-const getStaticProps = async ({ params: { slug } }) => {
+const getStaticProps = async ({ params: { slug } }: any) => {
   const {
     data: { data: snippets }
   } = await api.get('/snippets')
 
   const [snippet] = snippets.filter(
-    (snippet) => snippet.attributes.urlSlug === slug
+    (snippet: ISnippet) => snippet.attributes.urlSlug === slug
   )
 
   const mdxSource = await serialize(snippet.attributes.content)

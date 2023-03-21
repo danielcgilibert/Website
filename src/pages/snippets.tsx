@@ -1,14 +1,20 @@
+import { ISnippet } from '@/types/snippet'
 import { api } from '@/utils/api'
+import { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function Snippets({ snippets }) {
+type SnippetsProps = {
+  snippets: ISnippet[]
+}
+
+const Snippets: NextPage<SnippetsProps> = ({ snippets }) => {
   return (
-    <div className='grid gap-2  px-6 md:grid-cols-1 md:p-0  '>
+    <div className='grid gap-2 px-6 md:grid-cols-1 md:p-0'>
       <div className='grid gap-5 md:grid-cols-3 md:p-0'>
-        {snippets.map((snippet, index) => {
+        {snippets.map((snippet) => {
           const {
-            attributes: { name, urlSlug, icon }
+            attributes: { name, description, urlSlug, icon }
           } = snippet
           const {
             data: {
@@ -33,7 +39,7 @@ export default function Snippets({ snippets }) {
               />
               <div>
                 <h1>{name}</h1>
-                <p className='text-sm text-zinc-400'>{snippet.description}</p>
+                <p className='text-sm text-zinc-400'>{description}</p>
               </div>
             </Link>
           )
@@ -49,7 +55,7 @@ export const getStaticProps = async () => {
       data: { data: snippets }
     } = await api.get('/snippets?populate=*')
 
-    const filterSnippets = snippets.map((snippet) => {
+    const filterSnippets = snippets.map((snippet: ISnippet) => {
       return {
         id: snippet.id,
         attributes: {
@@ -70,3 +76,5 @@ export const getStaticProps = async () => {
     }
   }
 }
+
+export default Snippets

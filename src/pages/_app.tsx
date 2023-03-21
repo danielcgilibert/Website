@@ -5,9 +5,10 @@ import '@/styles/globals.css'
 import Container from '@/ui/container'
 import { Analytics } from '@vercel/analytics/react'
 import { DefaultSeo } from 'next-seo'
-import SEO from 'next-seo.config'
+import type { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
 import NextNProgress from 'nextjs-progressbar'
+import { configSEO } from '../../next-seo.config'
 
 const inter = Inter({
   weight: ['400', '500', '600', '700'],
@@ -15,12 +16,12 @@ const inter = Inter({
   variable: '--font-inter'
 })
 
-export default function App({ Component, pageProps, router }) {
+export default function App({ Component, pageProps, router }: AppProps) {
   return (
     <Container fonts={[inter]}>
       <NextNProgress color='#fde9ca' options={{ showSpinner: false }} />
       <Analytics />
-      <DefaultSeo {...SEO} />
+      <DefaultSeo {...configSEO} />
       <Nav />
       <Transition key={router.route}>
         <Component {...pageProps} />

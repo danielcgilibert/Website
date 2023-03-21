@@ -1,4 +1,11 @@
-const Container = ({ children, fonts }) => {
+import { ReactNode } from 'react'
+
+type ContainerProps = {
+  children: ReactNode
+  fonts: any
+}
+
+const Container = ({ children, fonts }: ContainerProps) => {
   const [inter] = fonts
   return (
     <main

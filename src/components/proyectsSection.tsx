@@ -1,7 +1,12 @@
+import { IProject } from '@/types/project'
 import { ExternalLink } from '@/ui/link'
 import { BsBoxArrowInUpRight, BsCodeSquare, BsGithub } from 'react-icons/bs'
 
-const ProyectsSection = ({ projects }) => {
+type ProyectsSectionProps = {
+  projects: IProject[]
+}
+
+const ProyectsSection = ({ projects }: ProyectsSectionProps) => {
   return (
     <section className='flex flex-col  gap-3'>
       <header>
@@ -29,7 +34,7 @@ const ProyectsSection = ({ projects }) => {
 
               <div className='m-0 flex justify-center gap-2 p-0  '>
                 <ExternalLink
-                  href={urlWeb}
+                  href={urlWeb ? urlWeb : ' '}
                   className={`${!urlWeb && 'pointer-events-none  opacity-20 '}`}
                 >
                   <BsBoxArrowInUpRight size={20} name='website' />

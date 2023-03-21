@@ -1,7 +1,15 @@
 import Project from '@/components/project'
+import { IProject } from '@/types/project'
 import { api } from '@/utils/api'
+import { NextPage } from 'next'
 
-export default function Projects({ projects }) {
+type ProjectsProps = {
+  projects: IProject[]
+}
+
+const Projects: NextPage<ProjectsProps> = ({ projects }) => {
+  console.log(projects)
+
   return (
     <div className='grid gap-2 px-6  md:grid-cols-1 md:p-0    '>
       {projects?.map((project) => (
@@ -30,3 +38,5 @@ export const getStaticProps = async () => {
     }
   }
 }
+
+export default Projects

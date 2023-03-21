@@ -1,18 +1,35 @@
 import AboutMeSection from '@/components/aboutMeSection'
 import ProyectsSection from '@/components/proyectsSection'
 import Statistics from '@/components/statistics'
+import { IProject } from '@/types/project'
 import { api, apiContribu, apiGitHub } from '@/utils/api'
+import { NextPage } from 'next'
 import Image from 'next/image'
 import { getPlaiceholder } from 'plaiceholder'
 import { useState } from 'react'
 
-export default function Home({
+type HomeProps = {
+  repositories: number
+  totalContributions: number
+  imageProps: {
+    blurDataURL: string
+    height: number
+    src: string
+    type: string
+    width: number
+  }
+  projects: IProject[]
+}
+
+const Home: NextPage<HomeProps> = ({
   repositories,
   totalContributions,
   imageProps,
   projects
-}) {
+}) => {
   const [isLoading, setLoading] = useState(true)
+
+  console.log(projects)
 
   return (
     <>
@@ -20,8 +37,8 @@ export default function Home({
         <header>
           <Image
             alt='profile'
-            width={8000}
-            height={8000}
+            // width={8000}
+            // height={8000}
             quality={100}
             {...imageProps}
             placeholder='blur'
@@ -89,3 +106,4 @@ export const getStaticProps = async () => {
     }
   }
 }
+export default Home

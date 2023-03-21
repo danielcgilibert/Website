@@ -1,36 +1,38 @@
 import SyntaxHighlighterCustom from '@/components/syntaxHighlighterCustom'
+import { IPost } from '@/types/post'
+import { Attributes } from '@/types/project'
 import Button from '@/ui/button'
 import { api } from '@/utils/api'
+import { NextPage } from 'next'
 import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import { useRouter } from 'next/router'
 import { useCallback, useRef } from 'react'
 import ReactCanvasConfetti from 'react-canvas-confetti'
-
 import { AiOutlineShareAlt } from 'react-icons/ai'
 import { IoIosArrowBack } from 'react-icons/io'
 
 const components = { SyntaxHighlighterCustom }
-const canvasStyles = {
-  position: 'absolute',
-  pointerEvents: 'none',
-  width: '100%',
-  height: '100%',
-  top: 0,
-  left: 0
+
+type PostProps = {
+  post: {
+    attributes: Attributes
+  }
+  mdxSource: any
 }
-const PostPage = ({ post: { attributes }, mdxSource }) => {
+
+const PostPage: NextPage<PostProps> = ({ post: { attributes }, mdxSource }) => {
   const { name, createdAt } = attributes
   const date = new Date(createdAt)
   const formatDate = `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`
-  const refAnimationInstance = useRef(null)
+  const refAnimationInstance = useRef<any>(null)
   const router = useRouter()
 
-  const getInstance = useCallback((instance) => {
+  const getInstance = useCallback((instance: any) => {
     refAnimationInstance.current = instance
   }, [])
 
-  const makeShot = useCallback((particleRatio, opts) => {
+  const makeShot = useCallback((particleRatio: number, opts: any) => {
     refAnimationInstance.current &&
       refAnimationInstance.current({
         ...opts,
@@ -58,7 +60,17 @@ const PostPage = ({ post: { attributes }, mdxSource }) => {
         </Button>
 
         <div className='relative flex items-center justify-end gap-4 border-customGray pb-2 md:w-fit md:border-b-2 '>
-          <ReactCanvasConfetti refConfetti={getInstance} style={canvasStyles} />
+          <ReactCanvasConfetti
+            refConfetti={getInstance}
+            style={{
+              position: 'absolute',
+              pointerEvents: 'none',
+              width: '100%',
+              height: '100%',
+              top: 0,
+              left: 0
+            }}
+          />
           <span className='hidden text-sm font-extralight opacity-60 md:block'>
             Tiempo 5 min
           </span>
@@ -89,7 +101,7 @@ const getStaticPaths = async () => {
       data: { data: posts }
     } = await api.get('/posts')
 
-    const paths = posts.map((post) => ({
+    const paths = posts.map((post: IPost) => ({
       params: {
         slug: post.attributes.urlSlug
       }
@@ -107,13 +119,15 @@ const getStaticPaths = async () => {
   }
 }
 
-const getStaticProps = async ({ params: { slug } }) => {
+const getStaticProps = async ({ params: { slug } }: any) => {
   try {
     const {
       data: { data: posts }
     } = await api.get('/posts')
 
-    const [post] = posts.filter((post) => post.attributes.urlSlug === slug)
+    const [post] = posts.filter(
+      (post: IPost) => post.attributes.urlSlug === slug
+    )
     const mdxSource = await serialize(post.attributes.content)
 
     return {
