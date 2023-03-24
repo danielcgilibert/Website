@@ -20,6 +20,10 @@ module.exports = {
       fontFamily: {
         inter: ['var(--font-inter)']
       },
+      gridTemplateColumns: {
+        fluid: 'repeat(auto-fill, minmax(350px, 1fr))'
+      },
+
       colors: {
         darkBrown: 'var(--primary)',
         lightBrown: 'var(--secondary)',

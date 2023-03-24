@@ -8,6 +8,14 @@ export const api = axios.create({
   }
 })
 
+export const apiNotion = axios.create({
+  baseURL: `https://api.notion.com/v1`,
+  timeout: 1000,
+  headers: {
+    Authorization: `Bearer ${process.env.ENV_TOKEN_NOTION}`
+  }
+})
+
 export const apiGitHub = axios.create({
   baseURL: `https://api.github.com/users/danielcgilibert`,
   timeout: 1000,

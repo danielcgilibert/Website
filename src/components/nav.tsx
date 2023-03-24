@@ -40,7 +40,10 @@ const Nav = () => {
     <nav className='inset-0 z-10 flex flex-row  items-center justify-between p-6 md:static md:p-0 md:pt-8'>
       <div className='flex items-center justify-center gap-1'>
         <CustomLink
-          className='flex items-center justify-center gap-1 text-2xl font-medium md:text-base '
+          className={`flex items-center justify-center gap-1 text-2xl font-medium md:text-base           ${
+            path === '' ? 'opacity-100' : 'opacity-50'
+          }
+`}
           active={''}
           href='/'
         >

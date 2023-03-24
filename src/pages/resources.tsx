@@ -1,17 +1,52 @@
+import ResourceCard from '@/components/resourceCard'
+import { IResource } from '@/types/resource'
+import { apiNotion } from '@/utils/api'
 import { NextPage } from 'next'
-import Link from 'next/link'
 
-const Resources: NextPage = () => {
+type ResourcesProps = {
+  resources: IResource[]
+}
+
+const Resources: NextPage<ResourcesProps> = ({ resources }) => {
   return (
-    <div className='grid place-content-center gap-2 px-6 md:p-0  '>
-      ⚠️ Página en desarrollo ⚠️
-      <Link
-        className='rounded-lg border-4 border-lightGray px-4 py-2 text-center hover:bg-lightBrown'
-        href='/'
-      >
-        Volver a inicio
-      </Link>
-    </div>
+    <section className='px-6 md:p-0 '>
+      <div className=' grid grid-cols-1 gap-8 md:grid-cols-3   md:p-0   '>
+        {resources.map((resource: any) => (
+          <ResourceCard key={resource.id} {...resource} />
+        ))}
+      </div>
+    </section>
   )
 }
 export default Resources
+
+export const getStaticProps = async () => {
+  const {
+    data: { results }
+  } = await apiNotion.post(
+    '/databases/d17faf5d8c124793b49931c9a8c733c6/query',
+    null,
+    {
+      headers: {
+        'Notion-Version': '2022-06-28'
+      }
+    }
+  )
+
+  const resultFiter = results.map((resource: any) => {
+    return {
+      id: resource.id,
+      name: resource.properties.Name.title[0].plain_text,
+      description:
+        resource.properties.description.rich_text[0]?.plain_text ||
+        'Sin descripción',
+      icon: resource.icon.external.url,
+      url: resource.properties.URL.url
+    }
+  })
+  console.log(resultFiter)
+
+  return {
+    props: { resources: resultFiter }
+  }
+}
