@@ -44,7 +44,6 @@ export const getStaticProps = async () => {
       url: resource.properties.URL.url
     }
   })
-  console.log(resultFiter)
 
   return {
     props: { resources: resultFiter }

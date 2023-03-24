@@ -8,8 +8,6 @@ type ProjectProps = {
 }
 
 const Project = ({ project }: ProjectProps) => {
-  console.log(project)
-
   const { name, urlCode, urlWeb, description, icon } = project
   const {
     data: {

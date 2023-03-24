@@ -29,8 +29,6 @@ const Home: NextPage<HomeProps> = ({
 }) => {
   const [isLoading, setLoading] = useState(true)
 
-  console.log(projects)
-
   return (
     <>
       <div className='grid grid-cols-1 place-content-center content-center gap-8 md:grid-cols-[43%_auto]'>
