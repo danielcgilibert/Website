@@ -11,6 +11,7 @@ import { useRouter } from 'next/router'
 import { useCallback, useRef } from 'react'
 import ReactCanvasConfetti from 'react-canvas-confetti'
 import { AiOutlineShareAlt } from 'react-icons/ai'
+import { BsFillCalendarDateFill } from 'react-icons/bs'
 import { IoIosArrowBack } from 'react-icons/io'
 
 const components = { SyntaxHighlighterCustom }
@@ -91,7 +92,10 @@ const PostPage: NextPage<PostProps> = ({ post: { attributes }, mdxSource }) => {
 
         <article className='prose mx-auto w-full'>
           <h1 className='m-0 text-lightOrange'>{name}</h1>
-          <span className='text-darkOrange'>{formatDate}</span>
+          <span className='ml-1 flex items-center  gap-2  text-sm '>
+            <BsFillCalendarDateFill size={15} />
+            {formatDate}
+          </span>
           <MDXRemote {...mdxSource} components={components} />
         </article>
       </div>
