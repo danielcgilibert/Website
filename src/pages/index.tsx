@@ -1,4 +1,5 @@
 import AboutMeSection from '@/components/aboutMeSection'
+import Bot from '@/components/bot'
 import ProyectsSection from '@/components/proyectsSection'
 import Statistics from '@/components/statistics'
 import { IProject } from '@/types/project'
@@ -31,7 +32,7 @@ const Home: NextPage<HomeProps> = ({
 
   return (
     <>
-      <div className='grid grid-cols-1 place-content-center content-center gap-8 md:grid-cols-[43%_auto]'>
+      <div className=' grid grid-cols-1 place-content-center content-center gap-8 md:grid-cols-[43%_auto]'>
         <header>
           <Image
             alt='profile'
@@ -54,7 +55,7 @@ const Home: NextPage<HomeProps> = ({
           />
         </header>
 
-        <div className='flex flex-col justify-between gap-12   py-2 px-6 md:mt-6 md:p-0'>
+        <div className=' relative  flex flex-col justify-between gap-12   py-2 px-6 md:mt-6 md:p-0'>
           <AboutMeSection />
           <Statistics
             repositories={repositories}
