@@ -11,7 +11,7 @@ const AboutMeSection = () => {
         <h2 className='flex gap-2 text-sm tracking-widest text-lightOrange antialiased md:text-xl  '>
           FRONT-END DEVELOPER <Bot />
         </h2>
-        <div className='mt-3 flex gap-2 text-white text-opacity-50 '>
+        <div className='mt-3 flex items-center justify-items-start gap-5  text-white text-opacity-50 '>
           <ExternalLink href='https://github.com/danielcgilibert'>
             <span className='hover: flex gap-1 transition-colors  ease-linear hover:text-gray-200'>
               <BsGithub size={20} name='Github' />

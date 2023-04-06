@@ -1,6 +1,7 @@
 import { IProject } from '@/types/project'
 import { ExternalLink } from '@/ui/link'
 import { BsBoxArrowInUpRight, BsCodeSquare, BsGithub } from 'react-icons/bs'
+import { TfiWorld } from 'react-icons/tfi'
 
 type ProyectsSectionProps = {
   projects: IProject[]
@@ -37,7 +38,7 @@ const ProyectsSection = ({ projects }: ProyectsSectionProps) => {
                   href={urlWeb ? urlWeb : ' '}
                   className={`${!urlWeb && 'pointer-events-none  opacity-20 '}`}
                 >
-                  <BsBoxArrowInUpRight size={20} name='website' />
+                  <TfiWorld size={20} name='website' />
                 </ExternalLink>
                 <ExternalLink href={urlCode}>
                   <BsGithub size={20} name='Github' />
