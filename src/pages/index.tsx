@@ -1,5 +1,4 @@
 import AboutMeSection from '@/components/aboutMeSection'
-import Bot from '@/components/bot'
 import ProyectsSection from '@/components/proyectsSection'
 import Statistics from '@/components/statistics'
 import { IProject } from '@/types/project'
