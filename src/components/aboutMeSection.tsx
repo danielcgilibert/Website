@@ -1,7 +1,6 @@
 import { ExternalLink } from '@/ui/link'
 import { AiFillLinkedin } from 'react-icons/ai'
 import { BsGithub } from 'react-icons/bs'
-import Bot from './bot'
 
 const AboutMeSection = () => {
   return (
@@ -9,9 +8,9 @@ const AboutMeSection = () => {
       <header>
         <h1 className='text-4xl font-bold md:text-5xl '>Daniel Carmona</h1>
         <h2 className='flex gap-2 text-sm tracking-widest text-lightOrange antialiased md:text-xl  '>
-          FRONT-END DEVELOPER <Bot />
+          FRONT-END DEVELOPER 
         </h2>
-        <div className='mt-3 flex gap-2 text-white text-opacity-50 '>
+        <div className='mt-3 flex items-center justify-items-start gap-5  text-white text-opacity-50 '>
           <ExternalLink href='https://github.com/danielcgilibert'>
             <span className='hover: flex gap-1 transition-colors  ease-linear hover:text-gray-200'>
               <BsGithub size={20} name='Github' />
