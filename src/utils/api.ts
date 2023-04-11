@@ -30,7 +30,7 @@ export const apiBot = axios.create({
   baseURL: `https://api.cohere.ai/v1/classify`,
   timeout: 10000,
   headers: {
-    Authorization: `Bearer BnYyKrmBAhZrvCKSujwnTbAoiTfBDt8JXV2au8Yc`,
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_COHERE}`,
     'Content-Type': 'application/json'
   }
 })

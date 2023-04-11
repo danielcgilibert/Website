@@ -12,5 +12,7 @@ export const ANSWERS = {
         Contacto
       </a>
     </p>
-  )
+  ),
+  saludo: 'Hola, soy Daniel, un desarrollador web de Sevilla 👋.',
+  teg: 'Tengo experiencia en ReactJS, NextJS, NodeJS, Express, MongoDB, MySQL, HTML, CSS, JavaScript, TypeScript, Git, GitHub.'
 }
