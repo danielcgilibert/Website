@@ -1,30 +1,26 @@
 import { AiOutlineCode } from 'react-icons/ai'
-import {
-  BsFolder,
-  BsLaptop,
-  BsCodeSlash,
-  BsFileEarmarkText
-} from 'react-icons/bs'
-const SIZE = 20
+import { BsArchive, BsCodeSquare } from 'react-icons/bs'
+import { HiOutlineNewspaper } from 'react-icons/hi'
+
 export const routes = [
   {
     name: 'Projects',
     href: 'projects',
-    icon: <BsLaptop size={SIZE} />
+    icon: <BsCodeSquare size={20} />
   },
   {
     name: 'Blog',
     href: 'blog',
-    icon: <BsFileEarmarkText size={SIZE} />
+    icon: <HiOutlineNewspaper size={20} />
   },
   {
     name: 'Snippets',
     href: 'snippets',
-    icon: <BsCodeSlash size={SIZE} />
+    icon: <AiOutlineCode size={20} />
   },
   {
     name: 'Resources',
     href: 'resources',
-    icon: <BsFolder size={SIZE} />
+    icon: <BsArchive size={20} />
   }
 ]
