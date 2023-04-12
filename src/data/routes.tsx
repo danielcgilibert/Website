@@ -8,7 +8,7 @@ import {
 const SIZE = 20
 export const routes = [
   {
-    name: 'Projects',
+    name: 'Projectos',
     href: 'projects',
     icon: <BsLaptop size={SIZE} />
   },
@@ -23,7 +23,7 @@ export const routes = [
     icon: <BsCodeSlash size={SIZE} />
   },
   {
-    name: 'Resources',
+    name: 'Recursos',
     href: 'resources',
     icon: <BsFolder size={SIZE} />
   }

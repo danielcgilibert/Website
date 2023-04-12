@@ -92,7 +92,7 @@ const Blog: NextPage<BlogProps> = ({ posts, categories }) => {
         <input
           className='w-full rounded-lg border-2 border-customGray bg-transparent p-2 shadow-none outline-none    transition-colors delay-75 placeholder:text-zinc-700 focus:border-white focus:border-opacity-30  '
           type='text'
-          placeholder='Search posts...'
+          placeholder='Buscar posts...'
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />

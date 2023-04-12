@@ -29,7 +29,7 @@ const Statistics = ({ repositories, totalContributions }: StatisticsProps) => {
   return (
     <section className={`flex flex-col gap-3  `}>
       <h2 className='prose:text-white  flex items-center justify-start gap-1 text-sm uppercase  tracking-widest antialiased '>
-        Estadisticas GitHub
+        Estadísticas GitHub
       </h2>
       <ExternalLink href='https://github.com/danielcgilibert'>
         <div
