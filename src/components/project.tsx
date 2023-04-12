@@ -22,7 +22,13 @@ const Project = ({ project }: ProjectProps) => {
         className='grid  gap-8 rounded-lg border-2  border-[#2525297c]  p-4 delay-75   md:grid-cols-[70%_1fr]'
       >
         <div className='flex-start  flex flex-1 items-center gap-5'>
-          <Image width={25} height={25} src={url} alt={name} />
+          <Image
+            width={25}
+            height={25}
+            src={url}
+            alt={name}
+            className='rounded-full'
+          />
           <div>
             <h1>{name}</h1>
             <p className='text-sm text-zinc-400'>{description}</p>
