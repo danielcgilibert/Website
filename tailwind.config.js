@@ -13,7 +13,12 @@ module.exports = {
           css: {
             '*': {
               color: theme('colors.white')
-            }
+            },
+            pre: false,
+            code: false,
+            'pre code': false,
+            'code::before': false,
+            'code::after': false
           }
         }
       }),

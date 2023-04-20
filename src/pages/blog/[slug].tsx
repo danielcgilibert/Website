@@ -7,6 +7,7 @@ import { NextPage } from 'next'
 import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import { NextSeo } from 'next-seo'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useCallback, useRef } from 'react'
 import ReactCanvasConfetti from 'react-canvas-confetti'
@@ -14,7 +15,9 @@ import { AiOutlineShareAlt } from 'react-icons/ai'
 import { BsFillCalendarDateFill } from 'react-icons/bs'
 import { IoIosArrowBack } from 'react-icons/io'
 
-const components = { SyntaxHighlighterCustom }
+const components = {
+  code: SyntaxHighlighterCustom
+}
 
 type PostProps = {
   post: {
