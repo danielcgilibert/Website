@@ -5,7 +5,7 @@ import { NextPage } from 'next'
 import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 
-const components = { SyntaxHighlighterCustom }
+const components = { code: SyntaxHighlighterCustom }
 
 type SnippetProps = {
   snippet: any
