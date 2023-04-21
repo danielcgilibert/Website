@@ -1,26 +1,11 @@
 import { ICategory } from '@/types/category'
 import { IPost } from '@/types/post'
 import { api } from '@/utils/api'
-import { RadioGroup } from '@headlessui/react'
-import { motion } from 'framer-motion'
+import { RadioGroup, Menu } from '@headlessui/react'
 import { NextPage } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
+import { IoIosArrowDown } from 'react-icons/io'
 import { useEffect, useState } from 'react'
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3
-    }
-  }
-}
-
-const item = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1 }
-}
+import ListPosts from '@/components/listPost'
 
 type BlogProps = {
   posts: IPost[]
@@ -84,9 +69,6 @@ const Blog: NextPage<BlogProps> = ({ posts, categories }) => {
             )
           })}
         </RadioGroup>
-        <span className='text-white text-opacity-50'>
-          {`${filterResult.length}`} Post
-        </span>
       </form>
       <form onSubmit={(e) => e.preventDefault()}>
         <input
@@ -97,41 +79,51 @@ const Blog: NextPage<BlogProps> = ({ posts, categories }) => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </form>
-      <motion.ul
-        variants={container}
-        initial='hidden'
-        animate='show'
-        className='grid gap-3 md:p-0  '
-      >
-        {filterResult.map((post) => {
-          const {
-            attributes: { name, urlSlug, icon },
-            id
-          } = post
 
-          return (
-            <motion.li
-              variants={item}
-              key={id}
-              className=' transition delay-75 duration-100 ease-in-out hover:-translate-y-1'
-            >
-              <Link
-                className='flex items-center gap-2 rounded-lg  border-2  border-lightGray p-4 hover:bg-lightBrown hover:bg-opacity-30  '
-                href={'blog/' + urlSlug}
-              >
-                <Image
-                  width={30}
-                  height={30}
-                  alt={name}
-                  src={icon}
-                  className='rounded-full'
-                />
-                <h1>{name}</h1>
-              </Link>
-            </motion.li>
-          )
-        })}
-      </motion.ul>
+      <div className='flex items-center justify-between'>
+        <span className='text-lg text-white text-opacity-50'>
+          {`${filterResult.length}`} Post
+        </span>
+        {/* <Menu as='div' className='relative flex justify-end'>
+          <Menu.Button className='flex w-28 items-center justify-center gap-1  rounded-lg border-2 border-customGray bg-transparent py-2'>
+            Fecha <IoIosArrowDown />
+          </Menu.Button>
+          <Menu.Items className='absolute top-12 flex  w-64  flex-col items-start justify-start gap-5 rounded border-2 border-customGray bg-darkBrown p-4  '>
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  className={`w-full ${active && 'bg-slate-400 '}`}
+                  href='/account-settings'
+                >
+                  Fecha
+                </a>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  className={`w-full ${active && 'bg-slate-400 '}`}
+                  href='/account-settings'
+                >
+                  Tiempo de lectura
+                </a>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  className={`w-full ${active && 'bg-slate-400 '}`}
+                  href='/account-settings'
+                >
+                  Visitas
+                </a>
+              )}
+            </Menu.Item>
+          </Menu.Items>
+        </Menu> */}
+      </div>
+
+      <ListPosts posts={filterResult} />
     </div>
   )
 }
@@ -145,7 +137,15 @@ export const getStaticProps = async () => {
     const filterPosts = posts.map((post: any) => {
       const {
         id,
-        attributes: { name, urlSlug, icon, description, category }
+        attributes: {
+          name,
+          urlSlug,
+          icon,
+          description,
+          category,
+          images,
+          publishedAt
+        }
       } = post
       return {
         id,
@@ -154,7 +154,9 @@ export const getStaticProps = async () => {
           urlSlug,
           icon: icon.data.attributes.url,
           description,
-          category
+          category,
+          images,
+          publishedAt
         }
       }
     })
