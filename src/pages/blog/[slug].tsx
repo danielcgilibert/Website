@@ -3,6 +3,7 @@ import { IPost } from '@/types/post'
 import { Attributes } from '@/types/project'
 import Button from '@/ui/button'
 import { api } from '@/utils/api'
+import { formatDate } from '@/utils/date'
 import { NextPage } from 'next'
 import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
@@ -28,8 +29,6 @@ type PostProps = {
 
 const PostPage: NextPage<PostProps> = ({ post: { attributes }, mdxSource }) => {
   const { name, createdAt } = attributes
-  const date = new Date(createdAt)
-  const formatDate = `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`
   const refAnimationInstance = useRef<any>(null)
   const router = useRouter()
 
@@ -97,7 +96,7 @@ const PostPage: NextPage<PostProps> = ({ post: { attributes }, mdxSource }) => {
           <h1 className='m-0 text-lightOrange'>{name}</h1>
           <span className='ml-1 flex items-center  gap-2  text-sm '>
             <BsFillCalendarDateFill size={15} />
-            {formatDate}
+            {formatDate(createdAt)}
           </span>
           <MDXRemote {...mdxSource} components={components} />
         </article>
