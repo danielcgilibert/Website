@@ -11,9 +11,9 @@ const SyntaxHighlighterCustom = ({ children }: Props) => {
       style={dracula}
       showLineNumbers={true}
       customStyle={{
-        width: '100%'
+        width: '100%',
+        borderRadius: '0.2rem'
       }}
-      language={'javascript'}
     >
       {children}
     </SyntaxHighlighter>

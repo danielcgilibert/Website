@@ -19,7 +19,7 @@ const SnippetPage: NextPage<SnippetProps> = ({
   const { name } = attributes
 
   return (
-    <div className='prose mt-4 px-6'>
+    <div className='prose mt-4 '>
       <h1>{name}</h1>
       <MDXRemote {...mdxSource} components={components} />
     </div>
