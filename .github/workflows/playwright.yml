@@ -20,6 +20,11 @@ jobs:
         run: pnpm install
       - name: Install Playwright Browsers
         run: pnpm exec playwright install --with-deps
+        env:
+          ENV_GITHUBTOKEN: ${{ secrets.ENV_GITHUBTOKEN }}
+          ENV_TOKEN_API: ${{ secrets.ENV_TOKEN_API }}
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+          ENV_TOKEN_NOTION: ${{ secrets.ENV_TOKEN_NOTION }}
       - name: pnpm build
         run: pnpm run build
       - name: Run Playwright tests
