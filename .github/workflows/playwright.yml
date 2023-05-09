@@ -1,36 +1,29 @@
 name: Playwright Tests
-on:
-  push:
-    branches: [main, master]
-  pull_request:
-    branches: [main, master]
-
 env:
   ENV_GITHUBTOKEN: ${{ secrets.ENV_GITHUBTOKEN }}
   ENV_TOKEN_API: ${{ secrets.ENV_TOKEN_API }}
   ENV_TOKEN_NOTION: ${{ secrets.ENV_TOKEN_NOTION }}
   NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
-
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 7
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
       - name: Install dependencies
-        run: pnpm install
+        run: npm ci
       - name: Install Playwright Browsers
-        run: pnpm exec playwright install --with-deps
-      - name: pnpm build
-        run: pnpm run build
+        run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: pnpm exec playwright test
+        run: npx playwright test
       - uses: actions/upload-artifact@v3
         if: always()
         with:
