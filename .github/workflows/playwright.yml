@@ -8,8 +8,8 @@ on:
 env:
   ENV_GITHUBTOKEN: ${{ secrets.ENV_GITHUBTOKEN }}
   ENV_TOKEN_API: ${{ secrets.ENV_TOKEN_API }}
-  NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
   ENV_TOKEN_NOTION: ${{ secrets.ENV_TOKEN_NOTION }}
+  NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
 
 jobs:
   test:
