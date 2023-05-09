@@ -5,12 +5,6 @@ on:
   pull_request:
     branches: [main, master]
 
-env:
-  ENV_GITHUBTOKEN: ${{ secrets.ENV_GITHUBTOKEN }}
-  ENV_TOKEN_API: ${{ secrets.ENV_TOKEN_API }}
-  ENV_TOKEN_NOTION: ${{ secrets.ENV_TOKEN_NOTION }}
-  NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
-
 jobs:
   test:
     timeout-minutes: 60
@@ -24,6 +18,9 @@ jobs:
         run: npm i
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
+      - name: 'Create env file'
+        run: |
+          echo "${{ secrets.ENV_FILE }}" > .env
       - name: Build app
         run: npm run build
       - name: Run Playwright tests
