@@ -1,5 +1,7 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test'
+const PORT = process.env.PORT || 3000
+const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`
 
 /**
  * Read environment variables from file.
@@ -36,7 +38,7 @@ module.exports = defineConfig({
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'http://127.0.0.1:3000',
+    baseURL: BASE_URL,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry'
@@ -85,8 +87,9 @@ module.exports = defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'pnpm run start',
-    url: 'http://127.0.0.1:3000',
+    command: `npm run dev`,
+    url: BASE_URL,
+    timeout: 120 * 1000,
     reuseExistingServer: !process.env.CI
   }
 })
