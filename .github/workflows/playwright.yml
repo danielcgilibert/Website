@@ -1,9 +1,4 @@
 name: Playwright Tests
-env:
-  ENV_GITHUBTOKEN: ${{ secrets.ENV_GITHUBTOKEN }}
-  ENV_TOKEN_API: ${{ secrets.ENV_TOKEN_API }}
-  ENV_TOKEN_NOTION: ${{ secrets.ENV_TOKEN_NOTION }}
-  NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
 on:
   push:
     branches: [main, master]
@@ -20,6 +15,11 @@ jobs:
           node-version: 18
       - name: Install dependencies
         run: npm i
+        env:
+          ENV_GITHUBTOKEN: ${{ secrets.ENV_GITHUBTOKEN }}
+          ENV_TOKEN_API: ${{ secrets.ENV_TOKEN_API }}
+          ENV_TOKEN_NOTION: ${{ secrets.ENV_TOKEN_NOTION }}
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Build app
