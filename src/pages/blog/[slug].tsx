@@ -1,24 +1,17 @@
-import SyntaxHighlighterCustom from '@/components/syntaxHighlighterCustom'
+import Markdown from '@/components/markdown'
 import { IPost } from '@/types/post'
 import { Attributes } from '@/types/project'
 import Button from '@/ui/button'
 import { api } from '@/utils/api'
 import { formatDate } from '@/utils/date'
 import { NextPage } from 'next'
-import { MDXRemote } from 'next-mdx-remote'
-import { serialize } from 'next-mdx-remote/serialize'
 import { NextSeo } from 'next-seo'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useCallback, useRef } from 'react'
 import ReactCanvasConfetti from 'react-canvas-confetti'
 import { AiOutlineShareAlt } from 'react-icons/ai'
 import { BsFillCalendarDateFill } from 'react-icons/bs'
 import { IoIosArrowBack } from 'react-icons/io'
-
-const components = {
-  code: SyntaxHighlighterCustom
-}
 
 type PostProps = {
   post: {
@@ -102,7 +95,7 @@ const PostPage: NextPage<PostProps> = ({ post: { attributes }, mdxSource }) => {
               {formatDate(createdAt)}
             </span>
           </header>
-          <MDXRemote {...mdxSource} components={components} />
+          <Markdown mdxSource={mdxSource} />
         </article>
       </div>
     </>
@@ -142,12 +135,11 @@ const getStaticProps = async ({ params: { slug } }: any) => {
     const [post] = posts.filter(
       (post: IPost) => post.attributes.urlSlug === slug
     )
-    const mdxSource = await serialize(post.attributes.content)
 
     return {
       props: {
         post,
-        mdxSource
+        mdxSource: post.attributes.content
       }
     }
   } catch (error) {
