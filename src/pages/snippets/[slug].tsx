@@ -1,11 +1,7 @@
-import SyntaxHighlighterCustom from '@/components/syntaxHighlighterCustom'
+import Markdown from '@/components/markdown'
 import { ISnippet } from '@/types/snippet'
 import { api } from '@/utils/api'
 import { NextPage } from 'next'
-import { MDXRemote } from 'next-mdx-remote'
-import { serialize } from 'next-mdx-remote/serialize'
-
-const components = { code: SyntaxHighlighterCustom }
 
 type SnippetProps = {
   snippet: any
@@ -19,9 +15,9 @@ const SnippetPage: NextPage<SnippetProps> = ({
   const { name } = attributes
 
   return (
-    <div className='prose mt-4 '>
+    <div className='prose mt-4 px-6 '>
       <h1>{name}</h1>
-      <MDXRemote {...mdxSource} components={components} />
+      <Markdown mdxSource={mdxSource} />
     </div>
   )
 }
@@ -59,12 +55,10 @@ const getStaticProps = async ({ params: { slug } }: any) => {
     (snippet: ISnippet) => snippet.attributes.urlSlug === slug
   )
 
-  const mdxSource = await serialize(snippet.attributes.content)
-
   return {
     props: {
       snippet,
-      mdxSource
+      mdxSource: snippet.attributes.content
     }
   }
 }
