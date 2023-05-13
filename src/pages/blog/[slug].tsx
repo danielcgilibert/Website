@@ -87,7 +87,7 @@ const PostPage: NextPage<PostProps> = ({ post: { attributes }, mdxSource }) => {
 
         <article className='prose mx-auto w-full'>
           <header className='mb-5 flex flex-col items-center justify-center gap-2'>
-            <h1 className='m-0  text-3xl text-lightOrange md:text-5xl'>
+            <h1 className='m-0  text-3xl text-lightOrange md:text-4xl'>
               {name}
             </h1>
             <span className=' ml-1 flex items-center gap-2    md:text-lg '>
