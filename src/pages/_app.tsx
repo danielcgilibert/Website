@@ -21,7 +21,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
     <Container fonts={[inter]}>
       <NextNProgress color='#fde9ca' options={{ showSpinner: false }} />
       <Script
-        src='https://umami-production-e338.up.railway.app/script.js'
+        src='https://umami-seven-zeta.vercel.app/script.js'
         data-website-id='982e808a-db03-418e-a872-0c4b52247de9'
       />
       <DefaultSeo {...configSEO} />
