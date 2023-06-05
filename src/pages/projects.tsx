@@ -8,13 +8,18 @@ type ProjectsProps = {
 }
 
 const Projects: NextPage<ProjectsProps> = ({ projects }) => {
-  console.log(projects)
-
   return (
     <div className='grid gap-2 px-6  md:grid-cols-1 md:p-0    '>
-      {projects?.map((project) => (
-        <Project key={project.id} project={project.attributes} />
-      ))}
+      {projects
+        ?.sort(function (a, b) {
+          return (
+            new Date(b.attributes.publishedAt).valueOf() -
+            new Date(a.attributes.publishedAt).valueOf()
+          )
+        })
+        .map((project) => (
+          <Project key={project.id} project={project.attributes} />
+        ))}
     </div>
   )
 }
