@@ -16,37 +16,47 @@ const ProyectsSection = ({ projects }: ProyectsSectionProps) => {
         </h2>
       </header>
       <div className='grid  gap-4 md:grid-cols-2 md:grid-rows-2 [&>*:nth-child(4)]:hidden md:[&>*:nth-child(4)]:flex  '>
-        {projects?.slice(0, 4).map((project) => {
-          const {
-            attributes: { name, urlCode, urlWeb }
-          } = project
+        {projects
+          ?.sort(function (a, b) {
+            return (
+              new Date(b.attributes.publishedAt).valueOf() -
+              new Date(a.attributes.publishedAt).valueOf()
+            )
+          })
+          .slice(0, 4)
+          .map((project) => {
+            const {
+              attributes: { name, urlCode, urlWeb }
+            } = project
 
-          return (
-            <div
-              className='flex h-16 w-full items-center justify-between gap-2 rounded-lg border-2 border-lightGray px-4  delay-75 hover:bg-lightBrown  hover:bg-opacity-30'
-              key={name}
-            >
-              <ExternalLink href={urlCode}>
-                <span className='flex items-center justify-start gap-2 tracking-widest'>
-                  <BsCodeSquare size={20} name='website' />
-                  {name}
-                </span>
-              </ExternalLink>
-
-              <div className='m-0 flex justify-center gap-2 p-0  '>
-                <ExternalLink
-                  href={urlWeb ? urlWeb : ' '}
-                  className={`${!urlWeb && 'pointer-events-none  opacity-20 '}`}
-                >
-                  <TfiWorld size={20} name='website' />
-                </ExternalLink>
+            return (
+              <div
+                className='flex h-16 w-full items-center justify-between gap-2 rounded-lg border-2 border-lightGray px-4   hover:bg-lightBrown  hover:bg-opacity-30'
+                key={name}
+              >
                 <ExternalLink href={urlCode}>
-                  <BsGithub size={20} name='Github' />
+                  <span className='flex items-center justify-start gap-2 tracking-widest'>
+                    <BsCodeSquare size={20} name='website' />
+                    {name}
+                  </span>
                 </ExternalLink>
+
+                <div className='m-0 flex justify-center gap-2 p-0  '>
+                  <ExternalLink
+                    href={urlWeb ? urlWeb : ' '}
+                    className={`${
+                      !urlWeb && 'pointer-events-none  opacity-20 '
+                    }`}
+                  >
+                    <TfiWorld size={20} name='website' />
+                  </ExternalLink>
+                  <ExternalLink href={urlCode}>
+                    <BsGithub size={20} name='Github' />
+                  </ExternalLink>
+                </div>
               </div>
-            </div>
-          )
-        })}
+            )
+          })}
       </div>
     </section>
   )
