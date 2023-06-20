@@ -1,8 +1,9 @@
+'use client'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { IPost } from '@/types/post'
-import { formatDate } from '@/utils/date'
+import { formatDate } from '@/libs/date'
 
 type ListProps = {
   posts: IPost[]
@@ -24,8 +25,6 @@ const item = {
 }
 
 const ListPosts = ({ posts }: ListProps) => {
-  console.log(posts)
-
   return (
     <motion.ul
       variants={container}

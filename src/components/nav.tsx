@@ -1,14 +1,15 @@
+'use client'
 import { routes } from '@/data/routes'
 import { CustomLink } from '@/ui/link'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { AiOutlineClose, AiOutlineHome } from 'react-icons/ai'
 import { BiMenuAltRight } from 'react-icons/bi'
 
 const Nav = () => {
   const [openMenu, setOpenMenu] = useState(false)
-  const router = useRouter()
-  const path = router.pathname.split('/')[1]
+  const router = usePathname()
+  const path = router.split('/')[1]
 
   useEffect(() => {
     window.addEventListener('resize', listener)

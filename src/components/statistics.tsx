@@ -1,3 +1,4 @@
+'use client'
 import { ExternalLink } from '@/ui/link'
 import { useEffect, useState } from 'react'
 import { AiOutlinePlusCircle } from 'react-icons/ai'
