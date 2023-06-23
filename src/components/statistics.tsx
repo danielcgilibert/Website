@@ -1,3 +1,4 @@
+'use client'
 import { ExternalLink } from '@/ui/link'
 import { useEffect, useState } from 'react'
 import { AiOutlinePlusCircle } from 'react-icons/ai'
@@ -33,7 +34,7 @@ const Statistics = ({ repositories, totalContributions }: StatisticsProps) => {
       </h2>
       <ExternalLink href='https://github.com/danielcgilibert'>
         <div
-          className={`flex  h-16 w-full items-center justify-around gap-2 rounded-lg border-2 border-lightGray px-4  delay-75 hover:bg-lightBrown  hover:bg-opacity-30`}
+          className={`flex  h-16 w-full items-center justify-around gap-2 rounded-lg border-2 border-lightGray px-4   hover:bg-lightBrown  hover:bg-opacity-30`}
         >
           <div className='flex flex-col items-center justify-center'>
             <span>Contribuciones</span>

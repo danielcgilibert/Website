@@ -19,3 +19,15 @@
 .codeStyle > code {
   background: none !important;
 }
+
+.markdown > p > strong {
+  color: #ffd2b4;
+  @apply bg-[#252529];
+  @apply rounded-lg;
+  @apply bg-opacity-70;
+  @apply px-2 py-1;
+}
+
+.markdown img {
+  @apply rounded-lg;
+}

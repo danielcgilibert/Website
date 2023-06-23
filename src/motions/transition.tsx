@@ -1,4 +1,6 @@
+'use client'
 import { motion } from 'framer-motion'
+import { usePathname } from 'next/navigation'
 import { ReactNode } from 'react'
 
 type TransitionProps = {
@@ -11,7 +13,12 @@ const AnimationSettings = {
   exit: { opacity: 0, y: -20 }
 }
 const Transition = ({ children }: TransitionProps) => {
-  return <motion.div {...AnimationSettings}>{children}</motion.div>
+  const pathname = usePathname()
+  return (
+    <motion.div key={pathname} {...AnimationSettings}>
+      {children}
+    </motion.div>
+  )
 }
 
 export default Transition

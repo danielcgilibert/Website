@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
@@ -17,6 +18,7 @@ export default function Markdown({ mdxSource }: MarkdownProps) {
   return (
     <ReactMarkdown
       children={mdxSource}
+      className='markdown'
       components={{
         code({ node, inline, className, children, ...props }) {
           const match = /language-(\w+)/.exec(className || '')
