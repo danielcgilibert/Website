@@ -8,7 +8,7 @@ import {
 const SIZE = 20
 export const routes = [
   {
-    name: 'Projectos',
+    name: 'Proyectos',
     href: 'projects',
     icon: <BsLaptop size={SIZE} />
   },

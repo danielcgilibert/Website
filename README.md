@@ -8,14 +8,21 @@
 
 </div>
 
-## ⚒ Stack
+## ⚙️ Stack
 
-- [**NextJS**](https://nextjs.org/) - The React Framework.
-- [**Tailwind CSS**](https://tailwindcss.com/) - A utility-first CSS framework.
-- [**React 18**](https://reactjs.org/) - The library for web and native user interfaces.
+- [**Next.js 13** + **Typescript**](https://nextjs.org/) - The React Framework.
+- [**Tailwind CSS**](https://tailwindcss.com/) - Tailwind CSS is a utility-first CSS framework.
+- [**Headless UI**](https://headlessui.com/) - Completely unstyled, fully accessible UI components.
 - [**React Icons**](https://react-icons.github.io/react-icons/) - Set of icons for react
+- [**Framer Motion**](https://www.framer.com/motion/) - Framer Motion animation library.
+- [**Docker**](https://www.docker.com/) - Development environment.
 
-## 🎉 Deploys
 
-- ✅ Front-End : [Vercel](https://vercel.com/)
-- ✅ Back-End : [Railway](https://railway.app/)
+## ☁ Deploys
+
+-  Front-End : [Vercel](https://vercel.com/)
+-  Back-End : [Railway](https://railway.app/)
+
+## 🔑 License
+
+- [MIT](https://github.com/danielcgilibert/OpenLink/blob/main/LICENSE).
