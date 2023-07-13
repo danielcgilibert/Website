@@ -50,7 +50,7 @@ export default function RootLayout({
         </Container>
       </body>
       <Script
-        src='https://umami-seven-zeta.vercel.app/script.js'
+        src='https://umami-1-dv62wkj77-danielcgilibert.vercel.app/script.js'
         data-website-id='982e808a-db03-418e-a872-0c4b52247de9'
       />
     </html>
