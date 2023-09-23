@@ -5,14 +5,18 @@ import Project from '../../components/Project.astro'
 ---
 
 <Layout title='projects'>
-	<div class='grid grid-cols-1 md:grid-cols-2 gap-4 gap-y-6'>
-		{projects.map((project, index) => <Project project={project} />)}
-	</div>
+	<div class='flex flex-col gap-8'>
+		<h1 class='font-bold text-4xl md:text-5xl leading-tight text-black'>Proyectos</h1>
 
-	<a
-		href=''
-		class='w-fit mx-auto text-center text-accent font-medium text-lg px-8 py-1 border-[1.8px] border-gray-200 rounded-2xl'
-	>
-		View all projects</a
-	>
+		<div class='grid grid-cols-1 md:grid-cols-2 gap-4 gap-y-6'>
+			{projects.map((project, index) => <Project project={project} />)}
+		</div>
+
+		<a
+			href=''
+			class='w-fit mx-auto text-center text-accent font-medium text-lg px-8 py-1 border-[1.8px] border-gray-200 rounded-2xl'
+		>
+			View all projects</a
+		>
+	</div>
 </Layout>

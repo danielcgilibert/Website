@@ -4,22 +4,44 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer {
+@layer base {
 	:root {
 		--primary: #4c4c6d;
-		--accent: #588157;
+		--accent: #5e3a6a;
 		--secondary: #5c469c;
 		--lightOrange: #ffd2b4;
 		--darkOrange: #f89f64b1;
-		--lightGray: #272829;
+		--lightGray: #343a40;
 		--gray: #39394282;
 	}
 
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-		font-family: 'Inter', sans-serif !important;
+	@font-face {
+		font-family: 'Satoshi';
+		src: url('/fonts/Satoshi-Italic.woff2') format('woff2');
+		font-style: italic;
+	}
+	@font-face {
+		font-family: 'Satoshi';
+		src: url('/fonts/Satoshi-Medium.woff2') format('woff2');
+		font-weight: 500;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: 'Satoshi';
+		src: url('/fonts/Satoshi-Bold.woff2') format('woff2');
+		font-weight: 700;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: 'SatoshiSatoshi';
+		src: url('/fonts/Satoshi-Regular.woff2') format('woff2');
+		font-weight: 400;
+		font-style: normal;
+		font-display: swap;
 	}
 
 	.shadow22 {

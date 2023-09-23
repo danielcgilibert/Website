@@ -1,26 +1,30 @@
 ---
-import { GithubIcon, LinkedinIcon, PencilIcon, TwitterIcon } from 'lucide-preact'
-import { routes } from '../config/routes'
+import { GithubIcon, LinkedinIcon, TwitterIcon } from 'lucide-preact'
+
 import Link from './Link.astro'
 import ExternalLink from './ExternalLink.astro'
+import { routes } from '../config/routes'
 ---
 
-<header class='flex flex-col gap-5 pl-1 pr-8 mx-auto text-black' transition:animate='none'>
+<header
+	class='fixed z-50 bottom-0 min-w-full py-3 flex justify-center border-t-2 border-gray-200 md:border-none md:justify-start bg-white md:static md:flex md:flex-col gap-5 md:pl-2 md:pr-8 text-base mx-auto text-black'
+	transition:animate='none'
+>
 	<div class='flex flex-col gap-7'>
 		<img
 			src='/profile.jpeg'
-			class='w-[110px] h-[110px] rounded-full object-cover border-b-[3.5px] border-accent'
+			class='hidden md:block w-[110px] h-[110px] rounded-full object-cover shadow border-[2px] border-gray-200'
 		/>
-		<nav class=''>
-			<div class='flex flex-col gap-1.5 max-w-full'>
+		<nav>
+			<div class='flex justify-between md:flex-col gap-2 w-full md:gap-1.5 min-w-full'>
 				{routes.map((route) => <Link route={route} />)}
 			</div>
 		</nav>
 	</div>
 
-	<hr />
+	<hr class='hidden md:flex' />
 
-	<div class='flex flex-wrap justify-between items-center'>
+	<div class='hidden md:flex flex-wrap justify-between items-center'>
 		<ExternalLink href='google.com'>
 			<span
 				class='flex justify-center items-center gap-3 text-accent bg-accent rounded-full p-[5px] text-white'

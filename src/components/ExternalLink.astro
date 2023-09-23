@@ -1,7 +1,12 @@
 ---
-const { href } = Astro.props
+import { cn } from '../utils/cn'
+const { href, class: className = '' } = Astro.props
 ---
 
-<a class={'font-medium text-accent underline'} rel='noopener noreferrer ' href={href}>
+<a
+	class={cn('font-medium text-accent underline', className)}
+	rel='noopener noreferrer '
+	href={href}
+>
 	<slot />
 </a>

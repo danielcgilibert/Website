@@ -2,8 +2,10 @@
 const date = new Date()
 ---
 
-<footer class='flex w-full flex-col justify-between gap-2 border-t-[1.8px] border-gray-200 p-6'>
-	<div class='flex items-center justify-end gap-2'>
+<footer
+	class='hidden md:flex w-full flex-col justify-between gap-2 border-t-[1.8px] border-gray-200 p-6'
+>
+	<div class='flex items-center justify-end gap-2 text-sm'>
 		<div>© {date.getFullYear()} Daniel</div>
 		<img
 			class='h-4 w-4 rounded-full'

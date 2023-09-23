@@ -1,7 +1,6 @@
 ---
 import { cn } from '../utils/cn'
 const { route } = Astro.props
-console.log(route)
 
 const pathname = new URL(Astro.request.url).pathname
 const currentPath = pathname.split('/')[1]
@@ -9,10 +8,17 @@ const currentPath = pathname.split('/')[1]
 
 <a
 	class={cn(
-		'font-medium  py-1.5 px-3.5  w-fit border-[1.8px] border-white rounded-lg',
-		currentPath === route.href && ' border-gray-200 '
+		'flex justify-center items-center md:items-start flex-col-reverse font-medium px-4  md:py-1.5 md:px-3.5 md:border-[1.8px]  md:rounded-lg border-transparent md:opacity-100 opacity-60 md:w-fit ',
+		currentPath === route.href &&
+			'  opacity-100   md:text-black md:bg-transparent md:border-gray-200 '
 	)}
 	href={`/${route.href}`}
 >
-	{route.name}
+	<span class='md:block text-xs md:text-base'>
+		{route.name}
+	</span>
+
+	<figure class='md:hidden'>
+		<Fragment set:html={route.icon} />
+	</figure>
 </a>
