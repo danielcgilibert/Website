@@ -1,0 +1,18 @@
+---
+import { cn } from '../utils/cn'
+const { route } = Astro.props
+console.log(route)
+
+const pathname = new URL(Astro.request.url).pathname
+const currentPath = pathname.split('/')[1]
+---
+
+<a
+	class={cn(
+		'font-medium  py-1.5 px-3.5  w-fit border-[1.8px] border-white rounded-lg',
+		currentPath === route.href && ' border-gray-200 '
+	)}
+	href={`/${route.href}`}
+>
+	{route.name}
+</a>

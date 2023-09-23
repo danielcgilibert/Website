@@ -1,0 +1,116 @@
+---
+import ExternalLink from '../components/ExternalLink.astro'
+import Layout from '../layouts/Layout.astro'
+import {
+	ArrowUpRight,
+	BookMarked,
+	FolderDot,
+	GanttChart,
+	GanttChartSquare,
+	Github,
+	PenIcon
+} from 'lucide-preact'
+---
+
+<Layout title='Welcome to Astro.'>
+	<div class='flex flex-col gap-7'>
+		<div>
+			<h1 class='font-semibold text-4xl leading-tight text-black'>Daniel Carmona</h1>
+			<h2 class='text-xl font-medium text-accent mb-3 italic'>Frontend Developer</h2>
+		</div>
+
+		<div class='flex flex-col gap-2'>
+			<p class='pr-24 text-lightGray leading-7'>
+				Siempre interesado en seguir desarrollando en este apasionante mundo del desarrollo.
+				<br />
+				 Si quieres contactarme, háblame por <ExternalLink href='google.com'>LinkedIn</ExternalLink>
+				 y te responderé con la mayor brevedad posible.
+			</p>
+		</div>
+
+		<div class='flex gap-5'>
+			<button
+				class='flex gap-2 justify-center items-center px-10 py-3 border-[1.8px] border-gray-200 rounded-2xl font-semibold text-accent'
+			>
+				<Github size={24} strokeWidth={1.5} />
+				 1.075 Commits
+			</button>
+
+			<button
+				class='flex gap-2 justify-center items-center px-10 py-3 border-[1.8px] border-gray-200 rounded-2xl text-accent font-semibold'
+			>
+				<FolderDot size={24} strokeWidth={1.4} />
+				 45 Projects
+			</button>
+
+			<button
+				class='flex gap-2 justify-center items-center font-semibold px-10 py-3 border-[1.8px] border-gray-200 rounded-2xl text-accent'
+			>
+				<PenIcon size={24} strokeWidth={1.4} />
+				 5000 Lines
+			</button>
+		</div>
+
+		<div class='flex flex-col gap-2 leading-7'>
+			<p class='pr-24 text-lightGray'>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem sed cupiditate consequatur
+				natus perspiciatis sunt praesentium optio modi necessitatibus minima quam accusamus
+				doloremque reiciendis, tempora nisi aliquam laboriosam illo alias!
+			</p>
+		</div>
+
+		<hr />
+
+		<div class='flex flex-col gap-6'>
+			<div class='flex flex-col gap-2.5'>
+				<h3 class='font-semibold text-2xl text-black'>My recent projects</h3>
+				<span class=''
+					>I am currently developing <ExternalLink>OpenBlog</ExternalLink> and my own <ExternalLink>
+						website
+					</ExternalLink>
+					 :</span
+				>
+			</div>
+			<article
+				class='flex flex-col gap-3.5 p-4 py-5 border-[1.8px] border-gray-200 rounded-2xl hover:bg-[#f6f5f45b] ml-1'
+			>
+				<h4 class='text-xl font-semibold text-black flex items-center gap-1'>
+					<BookMarked class='text-gray-700' strokeWidth={2} size={18} /> Project <span
+						class='text-base'>|</span
+					> OpenBlog
+				</h4>
+				<p class='text-lightGray'>
+					Openblog is an elegant, simple, and user-friendly blog. Focused on accessibility, SEO <br
+					/> and performance.
+				</p>
+
+				<a href='' class='text-accent font-medium underline flex items-center gap-1'>
+					View project <ArrowUpRight size={15} /></a
+				>
+			</article>
+
+			<article
+				class='flex flex-col gap-3.5 p-4 py-5 border-[1.8px] border-gray-200 rounded-2xl hover:bg-[#f6f5f45b] ml-1'
+			>
+				<h4 class='text-xl font-semibold text-black flex items-center gap-1'>
+					<BookMarked class='text-gray-700' strokeWidth={2} size={18} /> Project <span
+						class='text-base'>|</span
+					>
+					 OpenLink
+				</h4>
+				<p class='text-lightGray'>Minimalist App for your links.</p>
+
+				<a href='' class='text-accent font-medium underline flex items-center gap-1'>
+					View project <ArrowUpRight size={15} /></a
+				>
+			</article>
+
+			<a
+				href=''
+				class='w-fit mx-auto text-center text-accent font-medium px-8 py-1 border-[1.8px] border-gray-200 rounded-2xl'
+			>
+				View more</a
+			>
+		</div>
+	</div>
+</Layout>

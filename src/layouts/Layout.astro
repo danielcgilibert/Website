@@ -1,0 +1,26 @@
+---
+import BaseHead from '../components/BaseHead.astro'
+import Footer from '../components/Footer.astro'
+import Header from '../components/Header.astro'
+
+interface Props {
+	title: string
+}
+
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html lang='en'>
+	<BaseHead title={title} />
+	<body class='bg-white text-black font-inter antialiased text-lightGray'>
+		<main class='mx-auto grid grid-rows-1 max-w-xl grid-cols-[150px_auto] gap-6 md:max-w-5xl mt-8'>
+			<Header />
+
+			<div class='flex flex-col gap-12 mt-5'>
+				<slot />
+				<Footer />
+			</div>
+		</main>
+	</body>
+</html>

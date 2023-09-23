@@ -1,0 +1,28 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content'
+import { getPosts } from '../../../utils/post'
+import Layout from '../../../layouts/Layout.astro'
+
+const posts = await getCollection('blog')
+
+export async function getStaticPaths() {
+	const posts = await getPosts()
+
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: post
+	}))
+}
+type Props = CollectionEntry<'blog'>
+
+const post = Astro.props
+const { Content, headings, remarkPluginFrontmatter } = await post.render()
+---
+
+<Layout title={post.data.title}>
+	<article>
+		<div class='prose mb-12 min-w-full'>
+			<Content />
+		</div>
+	</article>
+</Layout>

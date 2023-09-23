@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { projects } from '../../data/projects.json'
+import Project from '../../components/Project.astro'
+---
+
+<Layout title='projects'>
+	<div class='grid grid-cols-1 md:grid-cols-2 gap-4 gap-y-6'>
+		{projects.map((project, index) => <Project project={project} />)}
+	</div>
+
+	<a
+		href=''
+		class='w-fit mx-auto text-center text-accent font-medium text-lg px-8 py-1 border-[1.8px] border-gray-200 rounded-2xl'
+	>
+		View all projects</a
+	>
+</Layout>

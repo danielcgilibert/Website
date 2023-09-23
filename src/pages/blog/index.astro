@@ -1,0 +1,40 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { getPosts } from '../../utils/post'
+
+const posts = await getPosts()
+---
+
+<Layout title='Blog'>
+	<div class='grid grid-cols-1 gap-10'>
+		<div>
+			<form>
+				<input
+					class='w-full border-customGray bg-transparent p-2 pl-4 shadow-none outline-none transition-colors delay-75 placeholder:text-zinc-700 focus:border-gray-600 focus:border-opacity-30 border-[1.8px] rounded-2xl border-gray-200 font-medium'
+					type='text'
+					placeholder='Buscar posts...'
+				/>
+			</form>
+		</div>
+
+		<div class='grid grid-cols-3 gap-5'>
+			{
+				posts.map((post) => (
+					<div class='flex flex-col  gap-4 border-[1.8px] border-gray-200 rounded-2xl   '>
+						<img class='w-full h-32 object-cover rounded-t-md' src={post.data.heroImage.src} />
+						<div class='flex flex-col gap-4 px-4 pb-5'>
+							<h2 class='text-lg font-bold'>{post.data.title}</h2>
+							<p class='line-clamp-3'>{post.data.description}</p>
+							<a
+								href={'/blog/' + post.slug}
+								class='text-center border-[1.8px] border-gray-200 rounded-2xl px-4 py-2 '
+							>
+								Leer
+							</a>
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</Layout>

@@ -1,0 +1,44 @@
+---
+import { GithubIcon, LinkedinIcon, PencilIcon, TwitterIcon } from 'lucide-preact'
+import { routes } from '../config/routes'
+import Link from './Link.astro'
+import ExternalLink from './ExternalLink.astro'
+---
+
+<header class='flex flex-col gap-5 pl-1 pr-8 mx-auto text-black' transition:animate='none'>
+	<div class='flex flex-col gap-7'>
+		<img
+			src='/profile.jpeg'
+			class='w-[110px] h-[110px] rounded-full object-cover border-b-[3.5px] border-accent'
+		/>
+		<nav class=''>
+			<div class='flex flex-col gap-1.5 max-w-full'>
+				{routes.map((route) => <Link route={route} />)}
+			</div>
+		</nav>
+	</div>
+
+	<hr />
+
+	<div class='flex flex-wrap justify-between items-center'>
+		<ExternalLink href='google.com'>
+			<span
+				class='flex justify-center items-center gap-3 text-accent bg-accent rounded-full p-[5px] text-white'
+			>
+				<GithubIcon size={19} strokeWidth={2} />
+			</span>
+		</ExternalLink>
+
+		<span
+			class='flex justify-center items-center gap-3 text-accent bg-accent rounded-full p-[5px] text-white'
+		>
+			<LinkedinIcon size={19} strokeWidth={2} />
+		</span>
+
+		<span
+			class='flex justify-center items-center gap-3 text-accent bg-accent rounded-full p-[5px] text-white'
+		>
+			<TwitterIcon size={19} strokeWidth={2} />
+		</span>
+	</div>
+</header>

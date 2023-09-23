@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer {
+	:root {
+		--primary: #4c4c6d;
+		--accent: #588157;
+		--secondary: #5c469c;
+		--lightOrange: #ffd2b4;
+		--darkOrange: #f89f64b1;
+		--lightGray: #272829;
+		--gray: #39394282;
+	}
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: 'Inter', sans-serif !important;
+	}
+
+	.shadow22 {
+		box-shadow: 12px 12px 10px -13px rgba(0, 0, 0, 0.4);
+	}
+
+	.prose > pre {
+		border-radius: 0.5rem;
+		padding: 1rem;
+	}
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+}
+
+@keyframes fade-out {
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes slide-from-bottom {
+	from {
+		transform: translateY(50px);
+	}
+}
+
+@keyframes slide-to-top {
+	to {
+		transform: translateY(-50px);
+	}
+}
+
+::view-transition-old(root) {
+	animation:
+		90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+		300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-top;
+}
+
+::view-transition-new(root) {
+	animation:
+		210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+		300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-bottom;
+}
+
+@keyframes slide-from-cc {
+	from {
+		transform: translateY(250px);
+	}
+}
+/* Enter */
+::view-transition-new(project-transition):only-child {
+	animation: 300ms ease 50ms slide-from-cc;
+}
