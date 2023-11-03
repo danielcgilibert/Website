@@ -1,8 +1,7 @@
 ---
-import { type CollectionEntry } from "astro:content"
-import Layout from "../../../layouts/Layout.astro"
-import { getSnippets } from "../../../utils/snippet"
-
+import { type CollectionEntry } from 'astro:content'
+import Layout from '../../../layouts/Layout.astro'
+import { getSnippets } from '../../../utils/snippet'
 
 export async function getStaticPaths() {
 	const snippets = await getSnippets()
@@ -12,19 +11,17 @@ export async function getStaticPaths() {
 		props: snippet
 	}))
 }
-type Props = CollectionEntry<'snippet'>
+type Props = CollectionEntry<'snippets'>
 
 const snippet = Astro.props
 
 const { Content } = await snippet.render()
-
 ---
 
-
 <Layout title={snippet.data.title}>
-		<article>
-			<div class='prose prose-lg  dark:prose-invert mb-12 min-w-full markdown'>
-				<Content />
-			</div>
-		</article>
+	<article>
+		<div class='prose prose-lg dark:prose-invert mb-12 min-w-full markdown'>
+			<Content />
+		</div>
+	</article>
 </Layout>

@@ -14,13 +14,13 @@ const { title } = Astro.props
 <!doctype html>
 <html lang='en'>
 	<BaseHead title={title} />
-	<body class='relative antialiased'>
+	<body class='antialiased md:pt-6 md:pb-8 bg-gray-50'>
 		<main
-			class='md:mx-auto md:grid md:grid-rows-1 max-w-xl md:grid-cols-[150px_auto] md:gap-6 md:max-w-6xl md:mt-8 min-h-full'
+			class='relative md:m-auto md:grid md:grid-rows-1 max-w-xl md:grid-cols-[150px_auto] md:gap-4 md:max-w-5xl w-full shadow-xl p-0 md:p-8 md:py-3 min-h-screen bg-white rounded-3xl overflow-y-auto border-[1.8px] border-gray-200 m-auto'
 		>
 			<Header />
 
-			<div class='flex flex-col gap-6 md:mt-8 px-6 py-6 pb-28 md:p-0'>
+			<div class='flex flex-col gap-6 px-4 pt-4 pb-20 md:p-0 md:mt-7'>
 				<slot />
 				<Footer />
 			</div>

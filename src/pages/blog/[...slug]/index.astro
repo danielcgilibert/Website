@@ -2,6 +2,8 @@
 import { getCollection, type CollectionEntry } from 'astro:content'
 import { getPosts } from '../../../utils/post'
 import Layout from '../../../layouts/Layout.astro'
+import { Image } from 'astro:assets'
+import BlogLayout from '../../../layouts/BlogLayout.astro'
 
 const posts = await getCollection('blog')
 
@@ -19,10 +21,10 @@ const post = Astro.props
 const { Content, headings, remarkPluginFrontmatter } = await post.render()
 ---
 
-<Layout title={post.data.title}>
+<BlogLayout data={post.data}>
 	<article>
 		<div class='prose mb-12 min-w-full'>
 			<Content />
 		</div>
 	</article>
-</Layout>
+</BlogLayout>

@@ -1,5 +1,11 @@
 ---
 import { cn } from '../utils/cn'
+
+type Props = {
+	href: string
+	class?: string
+}
+
 const { href, class: className = '' } = Astro.props
 ---
 

@@ -2,7 +2,7 @@
 	"projects": [
 		{
 			"name": "OpenBlog",
-			"image": "openblog.webp",
+			"image": "openblog.png",
 			"desciption": "asd",
 			"github_url": "asd",
 			"web_url": "asd"
@@ -14,16 +14,17 @@
 			"github_url": "asd",
 			"web_url": "asd"
 		},
+
 		{
 			"name": "OpenLink",
-			"image": "link.png",
+			"image": "devbird.png",
 			"desciption": "asd",
 			"github_url": "asd",
 			"web_url": "asd"
 		},
 		{
 			"name": "OpenLink",
-			"image": "devbird.png",
+			"image": "link.png",
 			"desciption": "asd",
 			"github_url": "asd",
 			"web_url": "asd"

@@ -1,17 +1,18 @@
 ---
 interface Props {
-	project: {
-		name: string
-		image: string
-		desciption: string
-		github_url: string
-		web_url: string
-	}
+	name: string
+	image: string
+	desciption: string
+	github_url: string
+	web_url: string
 }
 
-const { project } = Astro.props
+const { name, image, desciption, github_url, web_url } = Astro.props
 ---
 
-<div class='h-64 project'>
-	<img class='h-full w-full object-fill rounded-2xl shadow22' src={project.image} />
+<div class='h-full'>
+	<img
+		class='h-full border-[1.8px] border-gray-200 min-w-full object-cover object-center rounded-xl'
+		src={image}
+	/>
 </div>
