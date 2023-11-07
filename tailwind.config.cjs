@@ -17,7 +17,7 @@ module.exports = {
 				}
 			}),
 			fontFamily: {
-				sans: ['Satoshi', 'Inter', ...defaultTheme.fontFamily.sans]
+				sans: ['Geist', 'Inter', ...defaultTheme.fontFamily.sans]
 			},
 			gridTemplateColumns: {
 				fluid: 'repeat(auto-fill, minmax(350px, 1fr))'

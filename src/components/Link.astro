@@ -1,24 +1,17 @@
 ---
 import { cn } from '../utils/cn'
-const { route } = Astro.props
+const { href, class: className = '' } = Astro.props
 
-const pathname = new URL(Astro.request.url).pathname
-const currentPath = pathname.split('/')[1]
+// const pathname = new URL(Astro.request.url).pathname
+// const currentPath = pathname.split('/')[1]
 ---
 
 <a
 	class={cn(
-		'flex justify-center items-center md:items-start flex-col-reverse font-medium px-4  md:py-1.5 md:px-3.5 md:border-[1.8px]  md:rounded-lg border-transparent md:opacity-100 opacity-60 md:w-fit ',
-		currentPath === route.href &&
-			'  opacity-100   md:text-black md:bg-transparent md:border-gray-200 '
+		'text-[#BEBEBE] flex justify-center gap-1 items-center hover:text-white hover:underline ',
+		className
 	)}
-	href={`/${route.href}`}
+	href={href}
 >
-	<span class='md:block text-xs md:text-base'>
-		{route.name}
-	</span>
-
-	<figure class='md:hidden'>
-		<Fragment set:html={route.icon} />
-	</figure>
+	<slot />
 </a>

@@ -1,0 +1,18 @@
+---
+import { cn } from '../utils/cn'
+
+type Props = {
+	class?: string
+}
+
+const { class: className = '' } = Astro.props
+---
+
+<section
+	class={cn(
+		'bg-[#121212] rounded-lg border-2 border-[#1C1C1C] pl-4 pr-8 py-4 flex flex-col gap-4',
+		className
+	)}
+>
+	<slot />
+</section>

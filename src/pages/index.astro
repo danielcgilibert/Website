@@ -1,114 +1,132 @@
 ---
-import ExternalLink from '../components/ExternalLink.astro'
-import Shape from '../components/Shape.astro'
+import { Copy, Linkedin, Github, ArrowUpRight, Check } from 'lucide-preact'
 import Layout from '../layouts/Layout.astro'
-import {
-	ArrowUpRight,
-	BookCopy,
-	BookMarked,
-	FolderDot,
-	GitCommit,
-	Github,
-	PenIcon,
-	Star
-} from 'lucide-preact'
+import Carousel from '../components/Carousel.astro'
+import { getPosts } from '../utils/post'
+import FormattedDate from '../components/FormattedDate.astro'
+import Marquee from '../components/Marquee.astro'
+import ExternalLink from '../components/ExternalLink.astro'
+import Section from '../components/Section.astro'
+import Link from '../components/Link.astro'
+import { Image } from 'astro:assets'
+const posts = await getPosts()
 ---
 
-<Layout title='Welcome to Astro.'>
-	<div>
-		<h1 class='font-bold text-4xl md:text-5xl leading-tight text-black'>Daniel Carmona</h1>
-		<h2 class='flex items-center gap-2 text-2xl text-accent italic'>
-			<Shape />
-			 Frontend Developer
-		</h2>
-	</div>
+<Layout title='Home'>
+	<header class='flex flex-col items-center gap-6 justify-center'>
+		<Image
+			src='/profile.jpeg'
+			width={120}
+			height={120}
+			alt='profile picture of Daniel Carmona'
+			quality={100}
+			loading={'eager'}
+			class='w-[120px] border-[#282828] border-4 h-[120px] rounded-full object-cover'
+		/>
+		<div class='flex flex-col gap-2 justify-center items-center'>
+			<h1 class='text-4xl font-semibold leading-6'>Daniel Carmona</h1>
+			<h2 class='text-xl text-[#BEBEBE]'>Frontend Developer</h2>
+		</div>
+		<div class='flex gap-8'>
+			<ExternalLink
+				href='https://www.linkedin.com/in/danielcarmonagilibert/'
+				class='flex gap-2 font-semibold items-center justify-center border-2 border-[#282828] bg-[#0E0F11] w-32 h-10 rounded-lg px-3 text-white'
+			>
+				<Linkedin size={16} color='#BEBEBE' /> Linkedin
+			</ExternalLink>
+			<button
+				class='flex gap-2 font-semibold items-center justify-center border-2 border-[#282828] bg-[#0E0F11] w-32 h-10 rounded-lg px-3 email-button hover:border-[#333333] transition-colors ease-in'
+			>
+				<span>
+					<Check
+						size={16}
+						class='text-green-600 absolute opacity-0 transition-opacity'
+						strokeWidth={4}
+					/>
+					<Copy size={16} color='#BEBEBE' class='transition-opacity' />
+				</span>
+				 Email</button
+			>
+		</div>
+	</header>
 
-	<div class='flex flex-col gap-7 md:pr-10'>
-		<div class='flex flex-col gap-2'>
-			<p class='text-lightGray leading-7'>
-				Siempre interesado en seguir desarrollando en este apasionante mundo del desarrollo. Si
-				quieres contactarme, háblame por <ExternalLink href='google.com'>
-					<span class='font-medium'>LinkedIn</span>
-				</ExternalLink>
-				 y te responderé con la mayor brevedad posible.
-			</p>
+	<Section>
+		<p class='leading-7 px-4 text-center'>
+			Hi there! I'm Daniel 👋, a Frontend Developer based in Mexico City, MX. I enjoy creating Ut
+			elit adipisicing excepteur ipsum elit mollit culpa fugiat aliqua. Quis labore cupidatat mollit
+			occaecat enim.
+		</p>
+	</Section>
+
+	<Section>
+		<div class='flex justify-between'>
+			<span class='font-semibold'>Proyectos</span>
+			<a
+				href='/projects'
+				class='text-sm text-[#BEBEBE] flex justify-center gap-1 items-center hover:text-white hover:underline group hover:gap-2 transition-all ease-in-out duration-300'
+				>Ver proyectos <ArrowUpRight
+					size={14}
+					class='transition-all ease-in-out duration-300 group-hover:rotate-45'
+				/></a
+			>
+		</div>
+		<Carousel client:load transition:persist />
+	</Section>
+
+	<Section>
+		<div class='flex justify-between items-center'>
+			<span class='font-semibold'> últimos post</span>
+			<Link href='/blog' class='text-sm group hover:gap-2 transition-all ease-in-out duration-300'>
+				Blog
+				<ArrowUpRight
+					size={14}
+					class='transition-all ease-in-out duration-300 group-hover:rotate-45'
+				/>
+			</Link>
 		</div>
 
+		<ul class='flex flex-col gap-3.5'>
+			{
+				posts.map((post) => (
+					<Link href={`/blog/${post.slug}`} class='flex justify-between '>
+						<span class='underline text-[#BEBEBE]'>{post.data.title}</span>
+						<span class=' text-[#BEBEBE] '>
+							<FormattedDate date={post.data.pubDate} />
+						</span>
+					</Link>
+				))
+			}
+		</ul>
+	</Section>
+
+	<Section class='pr-4 overflow-hidden'>
+		<span class='font-semibold'>Stack</span>
+		<Marquee />
+	</Section>
+
+	<Section class='bg-transparent border-none p-0'>
 		<ExternalLink
-			href='google.com'
-			class='no-underline flex justify-around px-8 py-1 text-base md:gap-32 md:w-11/12 md:py-4 border-[1.8px] border-gray-200 rounded-2xl hover:bg-[#f6f5f45b]'
+			href='https://github.com/danielcgilibert'
+			class='w-24 h-24 opacity-80 ease-in transition-all hover:opacity-100'
 		>
-			<span class='flex flex-col md:flex-row gap-1 items-center'>
-				<GitCommit size={24} strokeWidth={1.5} />
-				 1.075 Commits
-			</span>
-
-			<span class='flex flex-col md:flex-row gap-1 items-center'>
-				<BookCopy size={24} strokeWidth={1.5} />
-				 45 Repositories
-			</span>
+			<Github size={36} />
 		</ExternalLink>
-
-		<div class='flex flex-col gap-2 leading-7'>
-			<p class='text-lightGray'>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem sed cupiditate consequatur
-				natus perspiciatis sunt praesentium optio modi necessitatibus minima quam accusamus
-				doloremque reiciendis, tempora nisi aliquam laboriosam illo alias!
-			</p>
-		</div>
-	</div>
-
-	<hr />
-
-	<div class='flex flex-col gap-6'>
-		<div class='flex flex-col gap-2.5'>
-			<h3 class='font-semibold text-2xl text-black'>My recent projects</h3>
-			<span class='text-base'
-				>I am currently developing <ExternalLink>OpenBlog</ExternalLink> and my own <ExternalLink>
-					website.
-				</ExternalLink></span
-			>
-		</div>
-		<article
-			class='flex flex-col gap-3.5 p-4 py-5 border-[1.8px] border-gray-200 rounded-2xl hover:bg-[#f6f5f45b]'
-		>
-			<h4 class='text-xl font-semibold text-black flex items-center gap-1'>
-				<BookMarked class='text-gray-700' strokeWidth={2} size={18} /> Project <span
-					class='text-base'>|</span
-				>OpenBlog
-			</h4>
-
-			<p class='text-lightGray'>
-				Openblog is an elegant, simple, and user-friendly blog. Focused on accessibility, SEO <br />
-				 and performance.
-			</p>
-
-			<a href='' class='text-accent font-medium underline flex items-center gap-1'>
-				View project <ArrowUpRight size={15} /></a
-			>
-		</article>
-
-		<article
-			class='flex flex-col gap-3.5 p-4 py-5 border-[1.8px] border-gray-200 rounded-2xl hover:bg-[#f6f5f45b]'
-		>
-			<h4 class='text-xl font-semibold text-black flex items-center gap-1'>
-				<BookMarked class='text-gray-700' strokeWidth={2} size={18} /> Project <span
-					class='text-base'>|</span
-				>OpenLink
-			</h4>
-
-			<p class='text-lightGray'>Minimalist App for your links.</p>
-
-			<a href='' class='text-accent font-medium underline flex items-center gap-1'>
-				View project <ArrowUpRight size={15} /></a
-			>
-		</article>
-
-		<a
-			href=''
-			class='w-fit mx-auto text-center text-accent font-medium px-8 py-1 border-[1.8px] border-gray-200 rounded-2xl'
-		>
-			View more</a
-		>
-	</div>
+	</Section>
 </Layout>
+
+<script>
+	document.addEventListener('astro:page-load', () => {
+		const emailButton = document.querySelector('.email-button')
+
+		emailButton?.addEventListener('click', () => {
+			emailButton.querySelector('svg')!.classList.remove('opacity-0')
+			emailButton.querySelector('svg:nth-child(2)')!.classList.add('opacity-0')
+			navigator.clipboard.writeText('danielcgilibert@gmail.com')
+
+			setTimeout(() => {
+				emailButton.querySelector('svg')!.classList.add('opacity-0')
+				emailButton.querySelector('svg:nth-child(2)')!.classList.remove('opacity-0')
+			}, 4000)
+		})
+	})
+</script>

@@ -15,35 +15,23 @@
 		--gray: #39394282;
 	}
 
-	@font-face {
-		font-family: 'Satoshi';
-		src: url('/fonts/Satoshi-Italic.woff2') format('woff2');
-		font-style: italic;
-	}
-	@font-face {
-		font-family: 'Satoshi';
-		src: url('/fonts/Satoshi-Medium.woff2') format('woff2');
-		font-weight: 500;
-		font-style: normal;
-		font-display: swap;
+	body {
+		background-image: url('/bg.svg');
 	}
 
 	@font-face {
-		font-family: 'Satoshi';
-		src: url('/fonts/Satoshi-Bold.woff2') format('woff2');
-		font-weight: 700;
+		font-family: 'Geist';
 		font-style: normal;
-		font-display: swap;
-	}
-
-	@font-face {
-		font-family: 'SatoshiSatoshi';
-		src: url('/fonts/Satoshi-Regular.woff2') format('woff2');
 		font-weight: 400;
-		font-style: normal;
-		font-display: swap;
+		src: url('/fonts/Geist-Regular.woff2') format('woff2');
 	}
 
+	@font-face {
+		font-family: 'Geist';
+		font-style: normal;
+		font-weight: 600;
+		src: url('/fonts/Geist-SemiBold.woff2') format('woff2');
+	}
 	.shadow22 {
 		box-shadow: 12px 12px 10px -13px rgba(0, 0, 0, 0.4);
 	}
@@ -52,8 +40,32 @@
 		border-radius: 0.5rem;
 		padding: 1rem;
 	}
+
+	.gradient {
+		background: radial-gradient(
+			140.12% 140.12% at 50.42% -35.12%,
+			rgba(14, 15, 17, 0) 10%,
+			#0e0f11 80.88%
+		);
+	}
+
+	.slide[data-active] {
+		opacity: 1;
+		z-index: 1;
+		/* transition-delay: 400ms; */
+		@apply translate-x-0 transition-all  ease-in-out duration-700;
+	}
+
+	.slide {
+		position: absolute;
+		inset: 0;
+		opacity: 0;
+		/* transition: 400ms opacity ease-in-out;
+		transition-delay: 400ms; */
+		@apply translate-x-full transition-all  ease-in-out duration-700;
+	}
 }
-/* 
+
 @keyframes fade-in {
 	from {
 		opacity: 0;
@@ -94,4 +106,37 @@
 	from {
 		transform: translateY(250px);
 	}
-} */
+}
+
+.marquee {
+	--gap: 8px;
+	display: flex;
+	overflow: hidden;
+	user-select: none;
+	gap: var(--gap);
+	-webkit-mask-image: linear-gradient(
+		to right,
+		rgba(0, 0, 0, 0) 0%,
+		rgb(0, 0, 0) 10%,
+		rgb(0, 0, 0) 90%,
+		rgba(0, 0, 0, 0) 100%
+	);
+}
+
+.marquee__content {
+	flex-shrink: 0;
+	display: flex;
+	justify-content: space-around;
+	min-width: 100%;
+	gap: var(--gap);
+	animation: scroll 25s linear infinite;
+}
+
+@keyframes scroll {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(calc(-100% - var(--gap)));
+	}
+}

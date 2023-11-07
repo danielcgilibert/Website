@@ -1,0 +1,11 @@
+---
+import { ArrowLeft } from 'lucide-preact'
+import Link from './Link.astro'
+---
+
+<Link
+	class='p-4 h-fit border-2 border-[#282828] bg-[#0E0F11] hover:border-white transition-colors rounded-full'
+	href='javascript: history.go(-1)'
+>
+	<ArrowLeft size={16} />
+</Link>

@@ -10,7 +10,10 @@ const { href, class: className = '' } = Astro.props
 ---
 
 <a
-	class={cn('font-medium text-accent underline', className)}
+	class={cn(
+		'bg-[#121212]  text-[#BEBEBE] rounded-lg border-2 border-[#1C1C1C]  flex justify-center items-center hover:border-[#333333]',
+		className
+	)}
 	rel='noopener noreferrer '
 	href={href}
 >

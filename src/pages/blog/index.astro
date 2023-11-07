@@ -1,7 +1,8 @@
 ---
-import { Clock2 } from 'lucide-preact'
+import { ArrowLeft, Clock2 } from 'lucide-preact'
 import Layout from '../../layouts/Layout.astro'
 import { getCategories, getPosts } from '../../utils/post'
+import BackLink from '../../components/BackLink.astro'
 
 const posts = await getPosts()
 
@@ -10,25 +11,16 @@ const categories = await getCategories()
 
 <Layout title='Blog'>
 	<div class='grid grid-cols-1 gap-8'>
-		<h1 class='font-bold text-4xl md:text-5xl leading-tight text-black'>Blog</h1>
-		<!-- <div class='flex gap-3'>
-			{
-				categories.map((category) => (
-					<a
-						href={'/blog/category/' + category}
-						class=' text-base px-3.5 py-1  border-[1.8px] border-gray-200 rounded-2xl text-accent hover:bg-[#f6f5f45b] '
-					>
-						{category}
-					</a>
-				))
-			}
-		</div> -->
+		<header class='flex justify-between w-full'>
+			<h1 class='font-bold text-4xl md:text-5xl leading-tight'>Blog</h1>
+			<BackLink />
+		</header>
 
 		<div class='grid grid-cols-1 gap-10'>
 			{
 				posts.map((post) => (
 					<a href={'/blog/' + post.slug} class=' flex flex-col gap-1 group border-gray-200    '>
-						<h2 class='font-bold text-lg underline  decoration-accent  group-hover:decoration-dotted text-accent'>
+						<h2 class='font-bold text-lg underline    group-hover:decoration-dotted '>
 							{post.data.title}
 						</h2>
 						<p class='line-clamp-3  opacity-80'>{post.data.description}</p>

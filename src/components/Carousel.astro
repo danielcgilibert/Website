@@ -1,0 +1,154 @@
+<section aria-label='Newest Photos' class='relative w-full min-h-full'>
+	<div class='relative h-56 overflow-hidden rounded-lg md:h-96 group' data-carousel>
+		<button
+			type='button'
+			class='absolute top-0 left-0 z-30 group-hover:opacity-100 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none opacity-0 transition-opacity ease-in'
+			data-carousel-button='prev'
+		>
+			<span
+				class='inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#121212]/60 border-2'
+			>
+				<svg
+					class='w-4 h-4 text-white'
+					aria-hidden='true'
+					xmlns='http://www.w3.org/2000/svg'
+					fill='none'
+					viewBox='0 0 6 10'
+				>
+					<path
+						stroke='currentColor'
+						stroke-linecap='round'
+						stroke-linejoin='round'
+						stroke-width='1.5'
+						d='M5 1 1 5l4 4'></path>
+				</svg>
+				<span class='sr-only'>Previous</span>
+			</span>
+		</button>
+		<button
+			type='button'
+			class='absolute top-0 right-0 z-30 group-hover:opacity-100 opacity-0 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none transition-opacity ease-in'
+			data-carousel-button='next'
+		>
+			<span
+				class='inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#121212]/60 border-2'
+			>
+				<svg
+					class='w-4 h-4 text-white'
+					aria-hidden='true'
+					xmlns='http://www.w3.org/2000/svg'
+					fill='none'
+					viewBox='0 0 6 10'
+				>
+					<path
+						stroke='currentColor'
+						stroke-linecap='round'
+						stroke-linejoin='round'
+						stroke-width='2'
+						d='m1 9 4-4-4-4'></path>
+				</svg>
+				<span class='sr-only'>Next</span>
+			</span>
+		</button>
+		<ul data-slides>
+			<li class='slide' data-active>
+				<img
+					src='/link.png'
+					class='block w-full h-full object-cover object-center'
+					alt='Nature Image #1'
+				/>
+			</li>
+			<li class='slide'>
+				<img
+					src='/website.png'
+					class='block w-full h-full object-cover object-center'
+					alt='Nature Image #1'
+				/>
+			</li>
+			<li class='slide'>
+				<img
+					src='/photo2.png'
+					class='block w-full h-full object-cover object-center'
+					alt='Nature Image #1'
+				/>
+			</li>
+			<li class='slide'>
+				<img
+					src='/openblog22.png'
+					class='block w-full h-full object-cover object-center'
+					alt='Nature Image #1'
+				/>
+			</li>
+			<li class='slide'>
+				<img
+					src='/devbird4.png'
+					class='block w-full h-full object-cover object-center'
+					alt='Nature Image #1'
+				/>
+			</li>
+			<li class='slide'>
+				<img
+					src='/jira.png'
+					class='block w-full h-full object-cover object-center'
+					alt='Nature Image #2'
+				/>
+			</li>
+			<li class='slide'>
+				<img
+					src='/prueba.png'
+					class='block w-full h-full object-cover object-center'
+					alt='Nature Image #3'
+				/>
+			</li>
+		</ul>
+	</div>
+</section>
+
+<script>
+	const ChangeSlide = (button: any) => {
+		const offset = (button as HTMLButtonElement).dataset.carouselButton === 'next' ? 1 : -1
+		const slides = button.closest('[data-carousel]')?.querySelector('[data-slides]')
+		const activeSlide = slides?.querySelector('[data-active]')
+		let newIndex = [...slides!.children].indexOf(activeSlide as HTMLElement) + offset
+		if (newIndex < 0) newIndex = slides!.children.length - 1 // back to last slide
+		if (newIndex >= slides!.children.length) newIndex = 0 // back to first slide
+		//@ts-ignore
+		slides!.children[newIndex].dataset.active = true
+		//@ts-ignore
+		delete activeSlide.dataset.active
+	}
+
+	document.addEventListener('astro:page-load', () => {
+		const carousel = document.querySelector('[data-carousel]')
+		const buttons = document.querySelectorAll('[data-carousel-button]')
+
+		buttons.forEach((button) => {
+			button.addEventListener('click', () => {
+				ChangeSlide(button)
+			})
+		})
+
+		carousel?.addEventListener('mouseenter', () => {
+			carousel.classList.add('stop')
+		})
+		carousel?.addEventListener('mouseleave', () => {
+			carousel.classList.remove('stop')
+		})
+	})
+
+	setInterval(() => {
+		// refactor this to avoid code duplication
+		const carousel = document.querySelector('[data-carousel]')
+		if (!carousel) return
+		if (carousel?.classList.contains('stop')) return
+		const slides = document.querySelector('[data-slides]')
+		const activeSlide = slides?.querySelector('[data-active]')
+		let newIndex = [...slides!.children].indexOf(activeSlide as HTMLElement) + 1
+		if (newIndex < 0) newIndex = slides!.children.length - 1
+		if (newIndex >= slides!.children.length) newIndex = 0
+		//@ts-ignore
+		slides!.children[newIndex].dataset.active = true
+		//@ts-ignore
+		delete activeSlide.dataset.active
+	}, 4500)
+</script>

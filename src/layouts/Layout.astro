@@ -1,8 +1,6 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
 import BaseHead from '../components/BaseHead.astro'
 import Footer from '../components/Footer.astro'
-import Header from '../components/Header.astro'
 
 interface Props {
 	title: string
@@ -14,16 +12,45 @@ const { title } = Astro.props
 <!doctype html>
 <html lang='en'>
 	<BaseHead title={title} />
-	<body class='antialiased md:pt-6 md:pb-8 bg-gray-50'>
-		<main
-			class='relative md:m-auto md:grid md:grid-rows-1 max-w-xl md:grid-cols-[150px_auto] md:gap-4 md:max-w-5xl w-full shadow-xl p-0 md:p-8 md:py-3 min-h-screen bg-white rounded-3xl overflow-y-auto border-[1.8px] border-gray-200 m-auto'
-		>
-			<Header />
-
-			<div class='flex flex-col gap-6 px-4 pt-4 pb-20 md:p-0 md:mt-7'>
-				<slot />
-				<Footer />
-			</div>
+	<body class='antialiased bg-[#0E0F11] text-white h-screen'>
+		<main class='max-w-2xl mx-auto py-8 pt-24 flex flex-col gap-4'>
+			<slot />
+			<Footer />
 		</main>
+
+		<div class='fixed -z-10 inset-0 gradient'></div>
+		<script>
+			import { animate, spring } from 'motion'
+
+			document.querySelectorAll('main > *').forEach((el, i) => {
+				animate(
+					el,
+					{
+						y: [i + 1 * 20, 0],
+						opacity: [0, 1]
+					},
+					{ delay: i * 0.3, easing: spring() }
+				)
+			})
+
+			document.querySelectorAll('img').forEach((el, i) => {
+				animate(
+					el,
+					{
+						filter: ['grayscale(100%)', 'grayscale(0%)']
+					},
+
+					{ delay: 1.5, easing: 'ease-in' }
+				)
+			})
+
+			animate(
+				'.gradient',
+				{
+					opacity: [0.5, 1]
+				},
+				{ delay: 1.5, easing: 'ease-in' }
+			)
+		</script>
 	</body>
 </html>
