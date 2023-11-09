@@ -1,0 +1,22 @@
+---
+import { cn } from '../utils/cn'
+
+type Props = {
+	href: string
+	class?: string
+}
+
+const { href, class: className = '' } = Astro.props
+---
+
+<a
+	class={cn(
+		'bg-[#121212]  text-[#BEBEBE] rounded-lg border-2 border-[#1C1C1C]  flex justify-center items-center hover:border-[#333333]',
+		className
+	)}
+	rel='noopener noreferrer '
+	target='_blank'
+	href={href}
+>
+	<slot />
+</a>

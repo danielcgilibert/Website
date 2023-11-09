@@ -1,0 +1,34 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getSnippets } from '../../utils/snippet';
+
+const snippets = await getSnippets()
+
+
+---
+
+
+<Layout title='Snippets'>
+
+<div class="flex ">
+
+
+  <div class="grid grid-cols-1 md:grid-cols-3  gap-10  ">
+    
+    {
+      snippets.map((snippet) => (
+        <a href={'/snippets/' + snippet.slug} class="flex gap-3 justify-center items-center border-2 border-lightBrown rounded-md p-4  hover:bg-lightBrown ">
+          <img class="w-12 h-12 object-cover rounded-full"  src={snippet.data.icon.src} />
+          <div>
+            
+            <h2 class="text-xl font-bold ">{snippet.data.title}</h2>
+          <p class="text-sm text-white text-opacity-70">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+        </a>
+      ))
+    }
+
+  </div>
+    
+</div>
+</Layout>

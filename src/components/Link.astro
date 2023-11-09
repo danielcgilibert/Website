@@ -1,0 +1,17 @@
+---
+import { cn } from '../utils/cn'
+const { href, class: className = '' } = Astro.props
+
+// const pathname = new URL(Astro.request.url).pathname
+// const currentPath = pathname.split('/')[1]
+---
+
+<a
+	class={cn(
+		'text-[#BEBEBE] flex justify-center gap-1 items-center hover:text-white hover:underline ',
+		className
+	)}
+	href={href}
+>
+	<slot />
+</a>

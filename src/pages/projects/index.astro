@@ -1,0 +1,35 @@
+---
+import ExternalLink from '../../components/ExternalLink.astro'
+import Project from '../../components/Project.astro'
+import { projects } from '../../data/projects.json'
+import Layout from '../../layouts/Layout.astro'
+import BackLink from '../../components/BackLink.astro'
+---
+
+<Layout title='projects'>
+	<div class='flex flex-col gap-8'>
+		<header class='flex justify-between w-full'>
+			<h1 class='font-bold text-4xl md:text-5xl leading-tight'>Proyectos</h1>
+			<BackLink />
+		</header>
+
+		<div class='grid grid-cols-1 md:grid-cols-3 gap-2 gap-y-2'>
+			{
+				projects.map((project, i) => (
+					<ExternalLink
+						href={project.github_url}
+						class={`   ${i === 3 && 'md:col-span-2'} ${
+							i === 4 && 'md:row-span-2'
+						} bg-none border-none `}
+					>
+						<Project {...project} />
+					</ExternalLink>
+				))
+			}
+		</div>
+
+		<ExternalLink href='https://github.com/danielcgilibert' class='py-4'>
+			View all projects
+		</ExternalLink>
+	</div>
+</Layout>

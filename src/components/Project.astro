@@ -1,0 +1,20 @@
+---
+import { Image, getImage } from 'astro:assets'
+interface Props {
+	name: string
+	image: string
+	desciption: string
+	github_url: string
+	web_url: string
+}
+
+const { name, image, desciption, github_url, web_url } = Astro.props
+---
+
+<div class='h-full'>
+	<img
+		class='h-full border-2 border-[#282828] object-cover object-center rounded-xl hover:border-[#BEBEBE] max-w-full transition-all duration-300 ease-in-out'
+		src={image}
+		alt={name}
+	/>
+</div>

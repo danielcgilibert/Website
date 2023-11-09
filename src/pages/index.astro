@@ -1,0 +1,85 @@
+---
+import { Copy, Linkedin, Github, ArrowUpRight, Check } from 'lucide-preact'
+import Layout from '../layouts/Layout.astro'
+import ExternalLink from '../components/ExternalLink.astro'
+import Section from '../components/Section.astro'
+import Link from '../components/Link.astro'
+import { Image } from 'astro:assets'
+import SocialSection from '../components/SocialSection.astro'
+import StackSection from '../components/StackSection.astro'
+import BlogSection from '../components/BlogSection.astro'
+import ProjectSection from '../components/ProjectSection.astro'
+---
+
+<Layout title='Home'>
+	<header class='flex flex-col items-center gap-6 justify-center'>
+		<Image
+			src='/profile.jpeg'
+			width={120}
+			height={120}
+			alt='profile picture of Daniel Carmona'
+			quality={100}
+			loading={'eager'}
+			class='w-[120px] border-[#282828] border-4 h-[120px] rounded-full object-cover'
+		/>
+		<div class='flex flex-col gap-2 justify-center items-center'>
+			<h1 class='text-4xl font-semibold leading-6'>Daniel Carmona</h1>
+			<h2 class='text-xl text-[#BEBEBE]'>Frontend Developer</h2>
+		</div>
+		<div class='flex gap-8'>
+			<ExternalLink
+				href='https://www.linkedin.com/in/danielcarmonagilibert/'
+				class='flex gap-2 font-semibold items-center justify-center border-2 border-[#282828] bg-[#0E0F11] w-32 h-10 rounded-lg px-3 text-white'
+			>
+				<Linkedin size={16} class='#BEBEBE' /> Linkedin
+			</ExternalLink>
+			<button
+				class='flex gap-2 font-semibold items-center justify-center border-2 border-[#282828] bg-[#0E0F11] w-32 h-10 rounded-lg px-3 email-button hover:border-[#333333] transition-colors ease-in'
+			>
+				<span>
+					<Check
+						size={16}
+						class='text-green-600 absolute opacity-0 transition-opacity'
+						strokeWidth={4}
+					/>
+					<Copy size={16} color='#BEBEBE' class='transition-opacity' />
+				</span>
+				 Email</button
+			>
+		</div>
+	</header>
+
+	<Section>
+		<p class='leading-7 sm:px-4 sm:text-center'>
+			Apasionado por el desarrollo y ansioso por crecer en este fascinante campo. Encuéntrame en
+			<Link
+				href='https://www.linkedin.com/in/danielcarmonagilibert/'
+				class='inline-flex underline decoration-dotted underline-offset-2'
+			>
+				LinkedIn
+			</Link> para una respuesta rápida.
+		</p>
+	</Section>
+
+	<ProjectSection />
+	<BlogSection />
+	<StackSection />
+	<SocialSection />
+</Layout>
+
+<script>
+	document.addEventListener('astro:page-load', () => {
+		const emailButton = document.querySelector('.email-button')
+
+		emailButton?.addEventListener('click', () => {
+			emailButton.querySelector('svg')!.classList.remove('opacity-0')
+			emailButton.querySelector('svg:nth-child(2)')!.classList.add('opacity-0')
+			navigator.clipboard.writeText('danielcgilibert@gmail.com')
+
+			setTimeout(() => {
+				emailButton.querySelector('svg')!.classList.add('opacity-0')
+				emailButton.querySelector('svg:nth-child(2)')!.classList.remove('opacity-0')
+			}, 4000)
+		})
+	})
+</script>

@@ -1,0 +1,49 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { Image } from 'astro:assets'
+import Layout from './Layout.astro'
+import FormattedDate from '../components/FormattedDate.astro'
+import BackLink from '../components/BackLink.astro'
+
+type Props = {
+	data: CollectionEntry<'blog'>['data']
+}
+
+const { data } = Astro.props
+const { title, description, pubDate, heroImage, tags } = data
+---
+
+<Layout title={title}>
+	<article class='min-w-full sm:max-w-none md:max-w-none'>
+		<header class='flex flex-col gap-10'>
+			<div class='flex justify-between gap-8'>
+				<div class='flex flex-col gap-2'>
+					<h1 class='font-semibold text-3xl md:text-4xl'>{title}</h1>
+					<FormattedDate date={pubDate} />
+				</div>
+
+				<BackLink />
+			</div>
+			<div>
+				{
+					heroImage && (
+						<Image
+							src={heroImage}
+							width={1000}
+							height={500}
+							quality={100}
+							format='jpg'
+							loading='eager'
+							class='rounded-xl min-w-full max-h-[250px]  md:max-h-[300px] mb-8 object-cover heroImage'
+							alt={`img of ${title}`}
+						/>
+					)
+				}
+			</div>
+		</header>
+
+		<div>
+			<slot />
+		</div>
+	</article>
+</Layout>

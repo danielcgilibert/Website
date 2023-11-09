@@ -1,0 +1,70 @@
+{
+	"projects": [
+		{
+			"name": "OpenBlog",
+			"image": "openblog.webp",
+			"desciption": "asd",
+			"github_url": "https://github.com/danielcgilibert/blog-template",
+			"web_url": "asd"
+		},
+		{
+			"name": "Gallery",
+			"image": "photo.webp",
+			"desciption": "asd",
+			"github_url": "https://github.com/danielcgilibert/minimal-photography",
+			"web_url": "asd"
+		},
+
+		{
+			"name": "devbird",
+			"image": "devbird.webp",
+			"desciption": "asd",
+			"github_url": "https://github.com/danielcgilibert/DevBird",
+			"web_url": "asd"
+		},
+		{
+			"name": "OpenLink",
+			"image": "link.webp",
+			"desciption": "asd",
+			"github_url": "https://github.com/danielcgilibert/OpenLink",
+			"web_url": "https://github.com/danielcgilibert/OpenLink"
+		},
+
+		{
+			"name": "Infojobs",
+			"image": "infojobs.webp",
+			"desciption": "asd",
+			"github_url": "https://github.com/danielcgilibert/infojobs-hackathon",
+			"web_url": "asd"
+		},
+
+		{
+			"name": "PRue",
+			"image": "prueba.webp",
+			"desciption": "asd",
+			"github_url": "https://github.com/danielcgilibert/pruebas-tecnicas/tree/main/pruebas/01-reading-list/danielcgilibert",
+			"web_url": "asd"
+		},
+		{
+			"name": "Webiste",
+			"image": "website.webp",
+			"desciption": "asd",
+			"github_url": "https://github.com/danielcgilibert/Website",
+			"web_url": "asd"
+		},
+		{
+			"name": "Filmoteca",
+			"image": "filmoteca.webp",
+			"desciption": "asd",
+			"github_url": "https://github.com/danielcgilibert/Filmoteca",
+			"web_url": "asd"
+		},
+		{
+			"name": "JiraClone",
+			"image": "jira.webp",
+			"desciption": "asd",
+			"github_url": "https://github.com/danielcgilibert/Jira-Clone",
+			"web_url": "asd"
+		}
+	]
+}
