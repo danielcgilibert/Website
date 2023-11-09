@@ -6,18 +6,26 @@ import mdx from '@astrojs/mdx'
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://www.danielcg.dev/',
 	image: {
 		service: passthroughImageService()
 	},
 	markdown: {
-		syntaxHighlight: 'prism',
-		// remarkPlugins: [remarkPlugin1],
-		gfm: false
+		drafts: true,
+		shikiConfig: {
+			theme: 'min-dark',
+			wrap: true
+		}
 	},
 	integrations: [
 		tailwind(),
 		preact(),
 		mdx({
+			syntaxHighlight: 'shiki',
+			shikiConfig: {
+				theme: 'min-dark',
+				wrap: true
+			},
 			drafts: true
 		})
 	]

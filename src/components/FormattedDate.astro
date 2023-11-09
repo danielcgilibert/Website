@@ -1,12 +1,14 @@
 ---
+import { cn } from '../utils/cn'
 export interface Props {
 	date: Date
+	class?: string
 }
 
-const { date } = Astro.props
+const { date, class: className = '' } = Astro.props
 ---
 
-<time class='text-sm font-bold text-opacity-60' datetime={date.toISOString()}>
+<time class={cn('text-sm font-semibold text-opacity-60', className)} datetime={date.toISOString()}>
 	{
 		date.toLocaleDateString('en-us', {
 			year: 'numeric',

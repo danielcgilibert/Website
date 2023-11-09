@@ -1,15 +1,14 @@
 ---
 import { Copy, Linkedin, Github, ArrowUpRight, Check } from 'lucide-preact'
 import Layout from '../layouts/Layout.astro'
-import Carousel from '../components/Carousel.astro'
-import { getPosts } from '../utils/post'
-import FormattedDate from '../components/FormattedDate.astro'
-import Marquee from '../components/Marquee.astro'
 import ExternalLink from '../components/ExternalLink.astro'
 import Section from '../components/Section.astro'
 import Link from '../components/Link.astro'
 import { Image } from 'astro:assets'
-const posts = await getPosts()
+import SocialSection from '../components/SocialSection.astro'
+import StackSection from '../components/StackSection.astro'
+import BlogSection from '../components/BlogSection.astro'
+import ProjectSection from '../components/ProjectSection.astro'
 ---
 
 <Layout title='Home'>
@@ -32,7 +31,7 @@ const posts = await getPosts()
 				href='https://www.linkedin.com/in/danielcarmonagilibert/'
 				class='flex gap-2 font-semibold items-center justify-center border-2 border-[#282828] bg-[#0E0F11] w-32 h-10 rounded-lg px-3 text-white'
 			>
-				<Linkedin size={16} color='#BEBEBE' /> Linkedin
+				<Linkedin size={16} class='#BEBEBE' /> Linkedin
 			</ExternalLink>
 			<button
 				class='flex gap-2 font-semibold items-center justify-center border-2 border-[#282828] bg-[#0E0F11] w-32 h-10 rounded-lg px-3 email-button hover:border-[#333333] transition-colors ease-in'
@@ -51,67 +50,21 @@ const posts = await getPosts()
 	</header>
 
 	<Section>
-		<p class='leading-7 px-4 text-center'>
-			Hi there! I'm Daniel 👋, a Frontend Developer based in Mexico City, MX. I enjoy creating Ut
-			elit adipisicing excepteur ipsum elit mollit culpa fugiat aliqua. Quis labore cupidatat mollit
-			occaecat enim.
+		<p class='leading-7 sm:px-4 sm:text-center'>
+			Apasionado por el desarrollo y ansioso por crecer en este fascinante campo. Encuéntrame en
+			<Link
+				href='https://www.linkedin.com/in/danielcarmonagilibert/'
+				class='inline-flex underline decoration-dotted underline-offset-2'
+			>
+				LinkedIn
+			</Link> para una respuesta rápida.
 		</p>
 	</Section>
 
-	<Section>
-		<div class='flex justify-between'>
-			<span class='font-semibold'>Proyectos</span>
-			<a
-				href='/projects'
-				class='text-sm text-[#BEBEBE] flex justify-center gap-1 items-center hover:text-white hover:underline group hover:gap-2 transition-all ease-in-out duration-300'
-				>Ver proyectos <ArrowUpRight
-					size={14}
-					class='transition-all ease-in-out duration-300 group-hover:rotate-45'
-				/></a
-			>
-		</div>
-		<Carousel client:load transition:persist />
-	</Section>
-
-	<Section>
-		<div class='flex justify-between items-center'>
-			<span class='font-semibold'> últimos post</span>
-			<Link href='/blog' class='text-sm group hover:gap-2 transition-all ease-in-out duration-300'>
-				Blog
-				<ArrowUpRight
-					size={14}
-					class='transition-all ease-in-out duration-300 group-hover:rotate-45'
-				/>
-			</Link>
-		</div>
-
-		<ul class='flex flex-col gap-3.5'>
-			{
-				posts.map((post) => (
-					<Link href={`/blog/${post.slug}`} class='flex justify-between '>
-						<span class='underline text-[#BEBEBE]'>{post.data.title}</span>
-						<span class=' text-[#BEBEBE] '>
-							<FormattedDate date={post.data.pubDate} />
-						</span>
-					</Link>
-				))
-			}
-		</ul>
-	</Section>
-
-	<Section class='pr-4 overflow-hidden'>
-		<span class='font-semibold'>Stack</span>
-		<Marquee />
-	</Section>
-
-	<Section class='bg-transparent border-none p-0'>
-		<ExternalLink
-			href='https://github.com/danielcgilibert'
-			class='w-24 h-24 opacity-80 ease-in transition-all hover:opacity-100'
-		>
-			<Github size={36} />
-		</ExternalLink>
-	</Section>
+	<ProjectSection />
+	<BlogSection />
+	<StackSection />
+	<SocialSection />
 </Layout>
 
 <script>

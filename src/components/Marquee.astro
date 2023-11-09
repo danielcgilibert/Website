@@ -1,37 +1,110 @@
-<div class='marquee'>
-	<ul class='marquee__content'>
+---
+import { Image } from 'astro:assets'
+import react from '../../public/React.svg'
+import next from '../../public/Next.js Cover.jpg'
+import docker from '../../public/Docker Icon.svg'
+import js from '../../public/js.jpg'
+import tailwind from '../../public/tailwindcss.png'
+---
+
+<div class='marquee grayscale gap-2'>
+	<ul class='marquee__content gap-8 sm:gap-2'>
 		<li aria-hidden='true'>
-			<img src='React.svg' class='w-16 h-16 rounded-lg object-cover' />
+			<Image
+				width={64}
+				height={64}
+				src={react}
+				class='w-16 h-16 rounded-lg object-cover'
+				alt={'react icon'}
+			/>
 		</li>
 		<li aria-hidden='true'>
-			<img src='Next.js Cover.jpg' class='w-16 h-16 rounded-lg object-cover' />
+			<Image
+				width={64}
+				height={64}
+				src={next}
+				class='w-16 h-16 rounded-lg object-cover'
+				alt={'Next.js icon'}
+			/>
 		</li>
 
 		<li aria-hidden='true'>
-			<img src='Docker Icon.svg' class='w-16 h-16 rounded-lg object-cover' />
+			<Image
+				width={64}
+				height={64}
+				src={docker}
+				class='w-16 h-16 rounded-lg object-cover'
+				alt={'docker icon'}
+			/>
 		</li>
 		<li aria-hidden='true'>
-			<img src='js.jpg' class='w-16 h-16 rounded-lg object-cover' />
+			<Image
+				width={64}
+				height={64}
+				src={js}
+				class='w-16 h-16 rounded-lg object-cover'
+				alt={'js icon'}
+			/>
 		</li>
 
 		<li aria-hidden='true'>
-			<img src='tailwindcss.png' class='w-16 h-16 rounded-lg object-cover' />
+			<Image
+				width={64}
+				height={64}
+				src={tailwind}
+				class='w-16 h-16 rounded-lg object-cover'
+				alt={'tailwind icon'}
+			/>
 		</li>
 	</ul>
 
 	<ul class='marquee__content' aria-hidden='true'>
 		<li aria-hidden='true'>
-			<img src='React.svg' class='w-16 h-16 rounded-lg object-cover' />
+			<Image
+				width={64}
+				height={64}
+				src={react}
+				class='w-16 h-16 rounded-lg object-cover'
+				alt={'react icon'}
+			/>
 		</li>
 		<li aria-hidden='true'>
-			<img src='Next.js Cover.jpg' class='w-16 h-16 rounded-lg object-cover' />
+			<Image
+				width={64}
+				height={64}
+				src={next}
+				class='w-16 h-16 rounded-lg object-cover'
+				alt={'Next.js icon'}
+			/>
+		</li>
+
+		<li aria-hidden='true'>
+			<Image
+				width={64}
+				height={64}
+				src={docker}
+				class='w-16 h-16 rounded-lg object-cover'
+				alt={'docker icon'}
+			/>
 		</li>
 		<li aria-hidden='true'>
-			<img src='Docker Icon.svg' class='w-16 h-16 rounded-lg object-cover' />
+			<Image
+				width={64}
+				height={64}
+				src={js}
+				class='w-16 h-16 rounded-lg object-cover'
+				alt={'js icon'}
+			/>
 		</li>
+
 		<li aria-hidden='true'>
-			<img src='js.jpg' class='w-16 h-16 rounded-lg object-cover' />
+			<Image
+				width={64}
+				height={64}
+				src={tailwind}
+				class='w-16 h-16 rounded-lg object-cover'
+				alt={'tailwind icon'}
+			/>
 		</li>
-		<img src='tailwindcss.png' class='w-16 h-16 rounded-lg object-cover' />
 	</ul>
 </div>
