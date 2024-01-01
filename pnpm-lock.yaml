@@ -15,8 +15,8 @@ dependencies:
     specifier: ^4.0.7
     version: 4.0.7
   lucide-preact:
-    specifier: ^0.299.0
-    version: 0.299.0(preact@10.19.3)
+    specifier: ^0.303.0
+    version: 0.303.0(preact@10.19.3)
   motion:
     specifier: ^10.16.4
     version: 10.16.4
@@ -24,7 +24,7 @@ dependencies:
 devDependencies:
   '@astrojs/preact':
     specifier: ^3.0.1
-    version: 3.0.1(@babel/core@7.22.20)(preact@10.19.3)(vite@4.4.9)
+    version: 3.0.1(@babel/core@7.23.6)(preact@10.19.3)(vite@4.4.9)
   '@astrojs/tailwind':
     specifier: ^5.0.4
     version: 5.0.4(astro@4.0.7)(tailwindcss@3.4.0)
@@ -123,17 +123,17 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/preact@3.0.1(@babel/core@7.22.20)(preact@10.19.3)(vite@4.4.9):
+  /@astrojs/preact@3.0.1(@babel/core@7.23.6)(preact@10.19.3)(vite@4.4.9):
     resolution: {integrity: sha512-pAfN+U7J4hw7qijqkBx1ZBpPO+ooa+MkKIgshCozfqsHTp18uPflxQUviz0TEzB5nn7hSndzncWuc3pz/HbtJw==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       preact: ^10.6.5
     dependencies:
-      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.22.20)
-      '@babel/plugin-transform-react-jsx-development': 7.22.5(@babel/core@7.22.20)
-      '@preact/preset-vite': 2.5.0(@babel/core@7.22.20)(preact@10.19.3)(vite@4.4.9)
+      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.23.6)
+      '@babel/plugin-transform-react-jsx-development': 7.22.5(@babel/core@7.23.6)
+      '@preact/preset-vite': 2.5.0(@babel/core@7.23.6)(preact@10.19.3)(vite@4.4.9)
       '@preact/signals': 1.2.1(preact@10.19.3)
-      babel-plugin-transform-hook-names: 1.0.2(@babel/core@7.22.20)
+      babel-plugin-transform-hook-names: 1.0.2(@babel/core@7.23.6)
       preact: 10.19.3
       preact-render-to-string: 6.2.1(preact@10.19.3)
     transitivePeerDependencies:
@@ -440,16 +440,6 @@ packages:
     dependencies:
       '@babel/types': 7.23.6
 
-  /@babel/plugin-syntax-jsx@7.22.5(@babel/core@7.22.20):
-    resolution: {integrity: sha512-gvyP4hZrgrs/wWMaocvxZ44Hw0b3W8Pe+cMxc8V1ULQ07oh8VNbIRaoD1LRZVTvD+0nieDKjfgKg89sD7rrKrg==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.22.20
-      '@babel/helper-plugin-utils': 7.22.5
-    dev: true
-
   /@babel/plugin-syntax-jsx@7.22.5(@babel/core@7.23.6):
     resolution: {integrity: sha512-gvyP4hZrgrs/wWMaocvxZ44Hw0b3W8Pe+cMxc8V1ULQ07oh8VNbIRaoD1LRZVTvD+0nieDKjfgKg89sD7rrKrg==}
     engines: {node: '>=6.9.0'}
@@ -459,28 +449,14 @@ packages:
       '@babel/core': 7.23.6
       '@babel/helper-plugin-utils': 7.22.5
 
-  /@babel/plugin-transform-react-jsx-development@7.22.5(@babel/core@7.22.20):
+  /@babel/plugin-transform-react-jsx-development@7.22.5(@babel/core@7.23.6):
     resolution: {integrity: sha512-bDhuzwWMuInwCYeDeMzyi7TaBgRQei6DqxhbyniL7/VG4RSS7HtSL2QbY4eESy1KJqlWt8g3xeEBGPuo+XqC8A==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.22.20
-      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.22.20)
-    dev: true
-
-  /@babel/plugin-transform-react-jsx@7.22.15(@babel/core@7.22.20):
-    resolution: {integrity: sha512-oKckg2eZFa8771O/5vi7XeTvmM6+O9cxZu+kanTU7tD4sin5nO/G8jGJhq8Hvt2Z0kUoEDRayuZLaUlYl8QuGA==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.22.20
-      '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-module-imports': 7.22.15
-      '@babel/helper-plugin-utils': 7.22.5
-      '@babel/plugin-syntax-jsx': 7.22.5(@babel/core@7.22.20)
-      '@babel/types': 7.22.19
+      '@babel/core': 7.23.6
+      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.23.6)
     dev: true
 
   /@babel/plugin-transform-react-jsx@7.22.15(@babel/core@7.23.6):
@@ -1078,18 +1054,18 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
-  /@preact/preset-vite@2.5.0(@babel/core@7.22.20)(preact@10.19.3)(vite@4.4.9):
+  /@preact/preset-vite@2.5.0(@babel/core@7.23.6)(preact@10.19.3)(vite@4.4.9):
     resolution: {integrity: sha512-BUhfB2xQ6ex0yPkrT1Z3LbfPzjpJecOZwQ/xJrXGFSZD84+ObyS//41RdEoQCMWsM0t7UHGaujUxUBub7WM1Jw==}
     peerDependencies:
       '@babel/core': 7.x
       vite: 2.x || 3.x || 4.x
     dependencies:
-      '@babel/core': 7.22.20
-      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.22.20)
-      '@babel/plugin-transform-react-jsx-development': 7.22.5(@babel/core@7.22.20)
+      '@babel/core': 7.23.6
+      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.23.6)
+      '@babel/plugin-transform-react-jsx-development': 7.22.5(@babel/core@7.23.6)
       '@prefresh/vite': 2.4.1(preact@10.19.3)(vite@4.4.9)
       '@rollup/pluginutils': 4.2.1
-      babel-plugin-transform-hook-names: 1.0.2(@babel/core@7.22.20)
+      babel-plugin-transform-hook-names: 1.0.2(@babel/core@7.23.6)
       debug: 4.3.4
       kolorist: 1.8.0
       resolve: 1.22.6
@@ -1499,12 +1475,12 @@ packages:
     requiresBuild: true
     optional: true
 
-  /babel-plugin-transform-hook-names@1.0.2(@babel/core@7.22.20):
+  /babel-plugin-transform-hook-names@1.0.2(@babel/core@7.23.6):
     resolution: {integrity: sha512-5gafyjyyBTTdX/tQQ0hRgu4AhNHG/hqWi0ZZmg2xvs2FgRkJXzDNKBZCyoYqgFkovfDrgM8OoKg8karoUvWeCw==}
     peerDependencies:
       '@babel/core': ^7.12.10
     dependencies:
-      '@babel/core': 7.22.20
+      '@babel/core': 7.23.6
     dev: true
 
   /bail@2.0.2:
@@ -2596,8 +2572,8 @@ packages:
     dependencies:
       yallist: 4.0.0
 
-  /lucide-preact@0.299.0(preact@10.19.3):
-    resolution: {integrity: sha512-7rY1yEkgP6nSnghv/6TB4FYJiurhBrmQObIq+Fhre0Rlla4OOlW9GsfH9m2sM8LdxJTEsax6yubadnw2C3ONQA==}
+  /lucide-preact@0.303.0(preact@10.19.3):
+    resolution: {integrity: sha512-96MR+H1SB0vl3DnefeBs7ZNBeIntMo9AmaZakoOSRzFh6fZ4/gA/dboVWZAK7SA5Q9FkmAZwlmTzy2YO/VFECQ==}
     peerDependencies:
       preact: ^10.5.13
     dependencies:
@@ -4412,7 +4388,7 @@ packages:
         optional: true
     dependencies:
       esbuild: 0.18.20
-      postcss: 8.4.30
+      postcss: 8.4.32
       rollup: 3.29.2
     optionalDependencies:
       fsevents: 2.3.3
