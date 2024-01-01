@@ -12,7 +12,7 @@
 	"dependencies": {
 		"@astrojs/mdx": "^2.0.2",
 		"@astrojs/prism": "^3.0.0",
-		"astro": "^4.0.7",
+		"astro": "^4.0.8",
 		"lucide-preact": "^0.299.0",
 		"motion": "^10.16.4"
 	},
