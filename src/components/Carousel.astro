@@ -8,174 +8,53 @@ import jira from '../../public/jira.png'
 import prueba from '../../public/prueba.png'
 
 import { Image } from 'astro:assets'
+
+const images = [link, website, photo2, openblog22, devbird4, jira, prueba]
 ---
 
-<section aria-label='Newest Photos' class='relative w-full min-h-full'>
-	<div class='relative h-56 overflow-hidden rounded-lg md:h-96 group' data-carousel>
-		<button
-			type='button'
-			class='absolute top-0 left-0 z-30 group-hover:opacity-100 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none opacity-0 transition-opacity ease-in'
-			data-carousel-button='prev'
-		>
-			<span
-				class='inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#121212]/60 border-2'
-			>
-				<svg
-					class='w-4 h-4 text-white'
-					aria-hidden='true'
-					xmlns='http://www.w3.org/2000/svg'
-					fill='none'
-					viewBox='0 0 6 10'
-				>
-					<path
-						stroke='currentColor'
-						stroke-linecap='round'
-						stroke-linejoin='round'
-						stroke-width='1.5'
-						d='M5 1 1 5l4 4'></path>
-				</svg>
-				<span class='sr-only'>Previous</span>
-			</span>
-		</button>
-		<button
-			type='button'
-			class='absolute top-0 right-0 z-30 group-hover:opacity-100 opacity-0 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none transition-opacity ease-in'
-			data-carousel-button='next'
-		>
-			<span
-				class='inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#121212]/60 border-2'
-			>
-				<svg
-					class='w-4 h-4 text-white'
-					aria-hidden='true'
-					xmlns='http://www.w3.org/2000/svg'
-					fill='none'
-					viewBox='0 0 6 10'
-				>
-					<path
-						stroke='currentColor'
-						stroke-linecap='round'
-						stroke-linejoin='round'
-						stroke-width='2'
-						d='m1 9 4-4-4-4'></path>
-				</svg>
-				<span class='sr-only'>Next</span>
-			</span>
-		</button>
-		<ul data-slides>
-			<li class='slide' data-active>
-				<Image
-					src={link}
-					width={500}
-					height={500}
-					class='block w-full h-full object-cover object-center'
-					alt='Nature Image #1'
-				/>
-			</li>
-			<li class='slide'>
-				<Image
-					width={500}
-					height={500}
-					quality={70}
-					src={website}
-					class='block w-full h-full object-cover object-center'
-					alt='Nature Image #1'
-				/>
-			</li>
-			<li class='slide'>
-				<Image
-					width={500}
-					height={500}
-					src={photo2}
-					class='block w-full h-full object-cover object-center'
-					alt='Nature Image #1'
-				/>
-			</li>
-			<li class='slide'>
-				<Image
-					width={500}
-					height={500}
-					src={openblog22}
-					class='block w-full h-full object-cover object-center'
-					alt='Nature Image #1'
-				/>
-			</li>
-			<li class='slide'>
-				<Image
-					width={500}
-					height={500}
-					src={devbird4}
-					class='block w-full h-full object-cover object-center'
-					alt='Nature Image #1'
-				/>
-			</li>
-			<li class='slide'>
-				<Image
-					width={500}
-					height={500}
-					src={jira}
-					class='block w-full h-full object-cover object-center'
-					alt='Nature Image #2'
-				/>
-			</li>
-			<li class='slide'>
-				<Image
-					width={500}
-					height={500}
-					src={prueba}
-					class='block w-full h-full object-cover object-center'
-					alt='Nature Image #3'
-				/>
-			</li>
-		</ul>
+<div class='embla min-h-full min-w-full'>
+	<div class='embla__container h-96'>
+		{
+			images.map((image) => (
+				<div class='embla__slide'>
+					<Image
+						width={500}
+						height={500}
+						src={image}
+						class='rounded-lg w-full min-h-full object-cover'
+						alt='Nature  #1'
+					/>
+				</div>
+			))
+		}
 	</div>
-</section>
+</div>
+
+<style>
+	.embla {
+		overflow: hidden;
+	}
+	.embla__container {
+		display: flex;
+	}
+	.embla__slide {
+		flex: 0 0 100%;
+		min-width: 0;
+	}
+</style>
 
 <script>
-	const ChangeSlide = (button: any) => {
-		const offset = (button as HTMLButtonElement).dataset.carouselButton === 'next' ? 1 : -1
-		const slides = button.closest('[data-carousel]')?.querySelector('[data-slides]')
-		const activeSlide = slides?.querySelector('[data-active]')
-		let newIndex = [...slides!.children].indexOf(activeSlide as HTMLElement) + offset
-		if (newIndex < 0) newIndex = slides!.children.length - 1 // back to last slide
-		if (newIndex >= slides!.children.length) newIndex = 0 // back to first slide
-		//@ts-ignore
-		slides!.children[newIndex].dataset.active = true
-		//@ts-ignore
-		delete activeSlide.dataset.active
-	}
+	import EmblaCarousel from 'embla-carousel'
+	import Autoplay from 'embla-carousel-autoplay'
 
-	document.addEventListener('astro:page-load', () => {
-		const carousel = document.querySelector('[data-carousel]')
-		const buttons = document.querySelectorAll('[data-carousel-button]')
-
-		buttons.forEach((button) => {
-			button.addEventListener('click', () => {
-				ChangeSlide(button)
-			})
-		})
-
-		carousel?.addEventListener('mouseenter', () => {
-			carousel.classList.add('stop')
-		})
-		carousel?.addEventListener('mouseleave', () => {
-			carousel.classList.remove('stop')
-		})
-	})
-
-	setInterval(() => {
-		// refactor this to avoid code duplication
-		const carousel = document.querySelector('[data-carousel]')
-		if (!carousel) return
-		if (carousel?.classList.contains('stop')) return
-		const slides = document.querySelector('[data-slides]')
-		const activeSlide = slides?.querySelector('[data-active]')
-		let newIndex = [...slides!.children].indexOf(activeSlide as HTMLElement) + 1
-		if (newIndex < 0) newIndex = slides!.children.length - 1
-		if (newIndex >= slides!.children.length) newIndex = 0
-		//@ts-ignore
-		slides!.children[newIndex].dataset.active = true
-		//@ts-ignore
-		delete activeSlide.dataset.active
-	}, 4500)
+	document.addEventListener(
+		'astro:page-load',
+		() => {
+			const emblaNode = document.querySelector('.embla')
+			if (!emblaNode) return
+			const options = { loop: true }
+			const emblaApi = EmblaCarousel(emblaNode, options, [Autoplay()])
+		},
+		{}
+	)
 </script>

@@ -14,6 +14,12 @@ dependencies:
   astro:
     specifier: ^4.0.7
     version: 4.0.7
+  embla-carousel:
+    specifier: 8.0.0-rc19
+    version: 8.0.0-rc19
+  embla-carousel-autoplay:
+    specifier: 8.0.0-rc19
+    version: 8.0.0-rc19(embla-carousel@8.0.0-rc19)
   lucide-preact:
     specifier: ^0.299.0
     version: 0.299.0(preact@10.19.3)
@@ -24,13 +30,16 @@ dependencies:
 devDependencies:
   '@astrojs/preact':
     specifier: ^3.0.1
-    version: 3.0.1(@babel/core@7.22.20)(preact@10.19.3)(vite@4.4.9)
+    version: 3.0.1(@babel/core@7.23.6)(preact@10.19.3)(vite@4.4.9)
   '@astrojs/tailwind':
     specifier: ^5.0.4
     version: 5.0.4(astro@4.0.7)(tailwindcss@3.4.0)
   '@tailwindcss/typography':
     specifier: ^0.5.10
     version: 0.5.10(tailwindcss@3.4.0)
+  astro-meta-tags:
+    specifier: ^0.2.1
+    version: 0.2.1(astro@4.0.7)
   clsx:
     specifier: ^2.0.0
     version: 2.0.0
@@ -123,17 +132,17 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/preact@3.0.1(@babel/core@7.22.20)(preact@10.19.3)(vite@4.4.9):
+  /@astrojs/preact@3.0.1(@babel/core@7.23.6)(preact@10.19.3)(vite@4.4.9):
     resolution: {integrity: sha512-pAfN+U7J4hw7qijqkBx1ZBpPO+ooa+MkKIgshCozfqsHTp18uPflxQUviz0TEzB5nn7hSndzncWuc3pz/HbtJw==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       preact: ^10.6.5
     dependencies:
-      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.22.20)
-      '@babel/plugin-transform-react-jsx-development': 7.22.5(@babel/core@7.22.20)
-      '@preact/preset-vite': 2.5.0(@babel/core@7.22.20)(preact@10.19.3)(vite@4.4.9)
+      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.23.6)
+      '@babel/plugin-transform-react-jsx-development': 7.22.5(@babel/core@7.23.6)
+      '@preact/preset-vite': 2.5.0(@babel/core@7.23.6)(preact@10.19.3)(vite@4.4.9)
       '@preact/signals': 1.2.1(preact@10.19.3)
-      babel-plugin-transform-hook-names: 1.0.2(@babel/core@7.22.20)
+      babel-plugin-transform-hook-names: 1.0.2(@babel/core@7.23.6)
       preact: 10.19.3
       preact-render-to-string: 6.2.1(preact@10.19.3)
     transitivePeerDependencies:
@@ -440,16 +449,6 @@ packages:
     dependencies:
       '@babel/types': 7.23.6
 
-  /@babel/plugin-syntax-jsx@7.22.5(@babel/core@7.22.20):
-    resolution: {integrity: sha512-gvyP4hZrgrs/wWMaocvxZ44Hw0b3W8Pe+cMxc8V1ULQ07oh8VNbIRaoD1LRZVTvD+0nieDKjfgKg89sD7rrKrg==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.22.20
-      '@babel/helper-plugin-utils': 7.22.5
-    dev: true
-
   /@babel/plugin-syntax-jsx@7.22.5(@babel/core@7.23.6):
     resolution: {integrity: sha512-gvyP4hZrgrs/wWMaocvxZ44Hw0b3W8Pe+cMxc8V1ULQ07oh8VNbIRaoD1LRZVTvD+0nieDKjfgKg89sD7rrKrg==}
     engines: {node: '>=6.9.0'}
@@ -459,28 +458,14 @@ packages:
       '@babel/core': 7.23.6
       '@babel/helper-plugin-utils': 7.22.5
 
-  /@babel/plugin-transform-react-jsx-development@7.22.5(@babel/core@7.22.20):
+  /@babel/plugin-transform-react-jsx-development@7.22.5(@babel/core@7.23.6):
     resolution: {integrity: sha512-bDhuzwWMuInwCYeDeMzyi7TaBgRQei6DqxhbyniL7/VG4RSS7HtSL2QbY4eESy1KJqlWt8g3xeEBGPuo+XqC8A==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.22.20
-      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.22.20)
-    dev: true
-
-  /@babel/plugin-transform-react-jsx@7.22.15(@babel/core@7.22.20):
-    resolution: {integrity: sha512-oKckg2eZFa8771O/5vi7XeTvmM6+O9cxZu+kanTU7tD4sin5nO/G8jGJhq8Hvt2Z0kUoEDRayuZLaUlYl8QuGA==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.22.20
-      '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-module-imports': 7.22.15
-      '@babel/helper-plugin-utils': 7.22.5
-      '@babel/plugin-syntax-jsx': 7.22.5(@babel/core@7.22.20)
-      '@babel/types': 7.22.19
+      '@babel/core': 7.23.6
+      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.23.6)
     dev: true
 
   /@babel/plugin-transform-react-jsx@7.22.15(@babel/core@7.23.6):
@@ -1078,18 +1063,18 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
-  /@preact/preset-vite@2.5.0(@babel/core@7.22.20)(preact@10.19.3)(vite@4.4.9):
+  /@preact/preset-vite@2.5.0(@babel/core@7.23.6)(preact@10.19.3)(vite@4.4.9):
     resolution: {integrity: sha512-BUhfB2xQ6ex0yPkrT1Z3LbfPzjpJecOZwQ/xJrXGFSZD84+ObyS//41RdEoQCMWsM0t7UHGaujUxUBub7WM1Jw==}
     peerDependencies:
       '@babel/core': 7.x
       vite: 2.x || 3.x || 4.x
     dependencies:
-      '@babel/core': 7.22.20
-      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.22.20)
-      '@babel/plugin-transform-react-jsx-development': 7.22.5(@babel/core@7.22.20)
+      '@babel/core': 7.23.6
+      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.23.6)
+      '@babel/plugin-transform-react-jsx-development': 7.22.5(@babel/core@7.23.6)
       '@prefresh/vite': 2.4.1(preact@10.19.3)(vite@4.4.9)
       '@rollup/pluginutils': 4.2.1
-      babel-plugin-transform-hook-names: 1.0.2(@babel/core@7.22.20)
+      babel-plugin-transform-hook-names: 1.0.2(@babel/core@7.23.6)
       debug: 4.3.4
       kolorist: 1.8.0
       resolve: 1.22.6
@@ -1399,6 +1384,14 @@ packages:
     hasBin: true
     dev: false
 
+  /astro-meta-tags@0.2.1(astro@4.0.7):
+    resolution: {integrity: sha512-IFAQG6Ymwke+53H5hcBFtdYyCpF2KEVpp5wA7Qrx8O2+4hUx3N9wE6Vy6QgRHH2Lkgv48PUN7t5fUDBpCMEbAA==}
+    peerDependencies:
+      astro: ^4.0.0
+    dependencies:
+      astro: 4.0.7
+    dev: true
+
   /astro@4.0.7:
     resolution: {integrity: sha512-K+Ms2AAQvi6yERPuglcI69tnHyTT44JCjzqprSjw3uOwFX7N9obpLgbhmLMH1fPFTgzt3ZD7APjmtDPN51makw==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
@@ -1499,12 +1492,12 @@ packages:
     requiresBuild: true
     optional: true
 
-  /babel-plugin-transform-hook-names@1.0.2(@babel/core@7.22.20):
+  /babel-plugin-transform-hook-names@1.0.2(@babel/core@7.23.6):
     resolution: {integrity: sha512-5gafyjyyBTTdX/tQQ0hRgu4AhNHG/hqWi0ZZmg2xvs2FgRkJXzDNKBZCyoYqgFkovfDrgM8OoKg8karoUvWeCw==}
     peerDependencies:
       '@babel/core': ^7.12.10
     dependencies:
-      '@babel/core': 7.22.20
+      '@babel/core': 7.23.6
     dev: true
 
   /bail@2.0.2:
@@ -1870,6 +1863,18 @@ packages:
 
   /electron-to-chromium@1.4.615:
     resolution: {integrity: sha512-/bKPPcgZVUziECqDc+0HkT87+0zhaWSZHNXqF8FLd2lQcptpmUFwoCSWjCdOng9Gdq+afKArPdEg/0ZW461Eng==}
+
+  /embla-carousel-autoplay@8.0.0-rc19(embla-carousel@8.0.0-rc19):
+    resolution: {integrity: sha512-c1pxsGHuWbYD3outH5y4L+kzg15smyHKFIDmXLaXlI6rCiizzf6hWMW0ZgxJLV4y4nUwDrYhM6TtzxvvOcsfUw==}
+    peerDependencies:
+      embla-carousel: 8.0.0-rc19
+    dependencies:
+      embla-carousel: 8.0.0-rc19
+    dev: false
+
+  /embla-carousel@8.0.0-rc19:
+    resolution: {integrity: sha512-PAChVyYoVZo8subkBN8LjZ7+0vk4CmVvMnxH0Y2ux76VUEUBl1wk5xDo8+MUhH5MXU6ZrgkBpMe++bKob1Z+2g==}
+    dev: false
 
   /emoji-regex@10.2.1:
     resolution: {integrity: sha512-97g6QgOk8zlDRdgq1WxwgTMgEWGVAQvB5Fdpgc1MkNy56la5SKP9GsMXKDOdqwn90/41a8yPwIGk1Y6WVbeMQA==}
@@ -4412,7 +4417,7 @@ packages:
         optional: true
     dependencies:
       esbuild: 0.18.20
-      postcss: 8.4.30
+      postcss: 8.4.32
       rollup: 3.29.2
     optionalDependencies:
       fsevents: 2.3.3

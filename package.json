@@ -13,6 +13,8 @@
 		"@astrojs/mdx": "^2.0.2",
 		"@astrojs/prism": "^3.0.0",
 		"astro": "^4.0.7",
+		"embla-carousel": "8.0.0-rc19",
+		"embla-carousel-autoplay": "8.0.0-rc19",
 		"lucide-preact": "^0.299.0",
 		"motion": "^10.16.4"
 	},
@@ -20,6 +22,7 @@
 		"@astrojs/preact": "^3.0.1",
 		"@astrojs/tailwind": "^5.0.4",
 		"@tailwindcss/typography": "^0.5.10",
+		"astro-meta-tags": "^0.2.1",
 		"clsx": "^2.0.0",
 		"preact": "^10.19.3",
 		"prettier": "^3.1.1",
