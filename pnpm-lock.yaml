@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@astrojs/mdx':
-    specifier: ^2.0.2
-    version: 2.0.2(astro@4.0.7)
+    specifier: ^2.0.4
+    version: 2.0.4(astro@4.0.7)
   '@astrojs/prism':
     specifier: ^3.0.0
     version: 3.0.0
@@ -106,8 +106,8 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@astrojs/mdx@2.0.2(astro@4.0.7):
-    resolution: {integrity: sha512-pTkUb0+aiVU8MZU6XQKA/FyXdNOKxHwq+3uCIuzWyqjZyRB9hN3G3iokmkXFJhwgxl6gilkYeAKmmciVwnpq6w==}
+  /@astrojs/mdx@2.0.4(astro@4.0.7):
+    resolution: {integrity: sha512-8q8p7AfiGa6CEKUEEWDLZ7HsfonmZlzx8HITZp8eJnkh+n6mmD9vQTpuFNjJc3hiiMEEKLGTIjOUGAU4aGBkrA==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       astro: ^4.0.0
