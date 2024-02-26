@@ -12,7 +12,7 @@
 	"dependencies": {
 		"@astrojs/mdx": "^2.0.2",
 		"@astrojs/prism": "^3.0.0",
-		"astro": "^4.0.7",
+		"astro": "^4.4.5",
 		"embla-carousel": "8.0.0-rc19",
 		"embla-carousel-autoplay": "8.0.0-rc19",
 		"lucide-preact": "^0.299.0",
