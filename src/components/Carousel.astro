@@ -1,11 +1,11 @@
 ---
-import link from '../../public/link.png'
-import website from '../../public/website.png'
-import photo2 from '../../public/photo2.png'
-import openblog22 from '../../public/openblog22.png'
-import devbird4 from '../../public/devbird4.png'
-import jira from '../../public/jira.png'
-import prueba from '../../public/prueba.png'
+import link from '../../public/link.webp'
+import website from '../../public/Website2.webp'
+import photo2 from '../../public/PhotoLow.webp'
+import openblog22 from '../../public/Openblog.webp'
+import devbird4 from '../../public/devbird4.webp'
+import jira from '../../public/JiraLow.webp'
+import prueba from '../../public/pruebaLow.webp'
 
 import { Image } from 'astro:assets'
 
@@ -13,7 +13,7 @@ const images = [link, website, photo2, openblog22, devbird4, jira, prueba]
 ---
 
 <div class='embla min-h-full min-w-full'>
-	<div class='embla__container h-96'>
+	<div class='embla__container md:h-96'>
 		{
 			images.map((image) => (
 				<div class='embla__slide'>
@@ -21,7 +21,8 @@ const images = [link, website, photo2, openblog22, devbird4, jira, prueba]
 						width={500}
 						height={500}
 						src={image}
-						class='rounded-lg w-full min-h-full object-cover'
+						loading={'eager'}
+						class='rounded-lg w-full min-h-full object-cover aspect-auto '
 						alt='Nature  #1'
 					/>
 				</div>

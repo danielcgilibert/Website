@@ -5,16 +5,16 @@ import ExternalLink from '../components/ExternalLink.astro'
 import Section from '../components/Section.astro'
 import Link from '../components/Link.astro'
 import { Image } from 'astro:assets'
-import SocialSection from '../components/SocialSection.astro'
-import StackSection from '../components/StackSection.astro'
-import BlogSection from '../components/BlogSection.astro'
-import ProjectSection from '../components/ProjectSection.astro'
+import SocialSection from '../components/sections/SocialSection.astro'
+import StackSection from '../components/sections/StackSection.astro'
+import BlogSection from '../components/sections/BlogSection.astro'
+import ProjectSection from '../components/sections/ProjectSection.astro'
 ---
 
 <Layout title='Home'>
 	<header class='flex flex-col items-center gap-6 justify-center'>
 		<Image
-			src='/profile.jpeg'
+			src='/profile.webp'
 			width={120}
 			height={120}
 			alt='profile picture of Daniel Carmona'

@@ -17,6 +17,7 @@ const { href, class: className = '' } = Astro.props
 	rel='noopener noreferrer '
 	target='_blank'
 	href={href}
+	aria-label={`Link to the social media ${href}`}
 >
 	<slot />
 </a>

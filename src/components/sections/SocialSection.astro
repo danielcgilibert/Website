@@ -1,0 +1,21 @@
+---
+import { Github } from 'lucide-preact'
+import ExternalLink from '../ExternalLink.astro'
+import Section from '../Section.astro'
+import { networks } from '../../config/social'
+---
+
+<Section
+	class='bg-transparent border-none p-0 grid grid-cols-4 md:grid-cols-5 justify-between sm:p-0 [&>*:last-child]:col-span-4 md:[&>*:last-child]:col-span-1'
+>
+	{
+		networks.map((network) => (
+			<ExternalLink
+				href={network.url}
+				class=' w-full h-full p-2.5 md:py-4  opacity-80 ease-in transition-all hover:opacity-100  '
+			>
+				<Fragment set:html={network.icon} />
+			</ExternalLink>
+		))
+	}
+</Section>

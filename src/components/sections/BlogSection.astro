@@ -1,9 +1,9 @@
 ---
 import { ArrowUpRight } from 'lucide-preact'
-import FormattedDate from './FormattedDate.astro'
-import Section from './Section.astro'
-import { getPosts } from '../utils/post'
-import Link from './Link.astro'
+import FormattedDate from '../FormattedDate.astro'
+import Section from '../Section.astro'
+import { getPosts } from '../../utils/post'
+import Link from '../Link.astro'
 
 const posts = await getPosts()
 ---
@@ -23,12 +23,14 @@ const posts = await getPosts()
 	<ul class='flex flex-col gap-3.5'>
 		{
 			posts.map((post) => (
-				<Link href={`/blog/${post.slug}`} class='flex justify-between '>
-					<span class='underline text-[#BEBEBE]'>{post.data.title}</span>
-					<span class=' text-[#BEBEBE] hidden sm:block '>
-						<FormattedDate date={post.data.pubDate} />
-					</span>
-				</Link>
+				<li>
+					<Link href={`/blog/${post.slug}`} class='flex justify-between '>
+						<span class='underline text-[#BEBEBE]'>{post.data.title}</span>
+						<span class=' text-[#BEBEBE] hidden sm:block '>
+							<FormattedDate date={post.data.pubDate} />
+						</span>
+					</Link>
+				</li>
 			))
 		}
 	</ul>
