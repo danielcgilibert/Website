@@ -1,14 +1,13 @@
 ---
-import { Copy, Linkedin, Github, ArrowUpRight, Check } from 'lucide-preact'
+import StackSection from '../components/sections/StackSection.astro'
+import SocialSection from '../components/sections/SocialSection.astro'
+import ProjectSection from '../components/sections/ProjectSection.astro'
 import Layout from '../layouts/Layout.astro'
 import ExternalLink from '../components/ExternalLink.astro'
-import Section from '../components/Section.astro'
-import Link from '../components/Link.astro'
-import { Image } from 'astro:assets'
-import SocialSection from '../components/sections/SocialSection.astro'
-import StackSection from '../components/sections/StackSection.astro'
 import BlogSection from '../components/sections/BlogSection.astro'
-import ProjectSection from '../components/sections/ProjectSection.astro'
+import AboutMeSection from '../components/sections/AboutMeSection.astro'
+import { Image } from 'astro:assets'
+import { Copy, Linkedin, Github, ArrowUpRight, Check } from 'lucide-preact'
 ---
 
 <Layout title='Home'>
@@ -49,18 +48,7 @@ import ProjectSection from '../components/sections/ProjectSection.astro'
 		</div>
 	</header>
 
-	<Section>
-		<p class='leading-7 sm:px-4 sm:text-center'>
-			Apasionado por el desarrollo y ansioso por crecer en este fascinante campo. Encuéntrame en
-			<Link
-				href='https://www.linkedin.com/in/danielcarmonagilibert/'
-				class='inline-flex underline decoration-dotted underline-offset-2'
-			>
-				LinkedIn
-			</Link> para una respuesta rápida.
-		</p>
-	</Section>
-
+	<AboutMeSection />
 	<ProjectSection />
 	<BlogSection />
 	<StackSection />

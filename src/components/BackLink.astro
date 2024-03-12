@@ -1,11 +1,28 @@
 ---
 import { ArrowLeft } from 'lucide-preact'
 import Link from './Link.astro'
+
+const { href } = Astro.props
 ---
 
 <Link
-	class='p-4 h-fit border-2 border-[#282828] bg-[#0E0F11] hover:border-white transition-colors rounded-full'
-	href='javascript: history.go(-1)'
+	class='p-4 h-fit border-2 border-[#282828] bg-[#0E0F11] hover:border-white transition-colors rounded-full cursor-pointer'
 >
 	<ArrowLeft size={16} />
 </Link>
+
+<script>
+	import { navigate } from 'astro:transitions/client'
+
+	document.addEventListener('astro:page-load', () => {
+		const button = document.querySelector('a')
+
+		button?.addEventListener('click', () => {
+			if (document.referrer.includes(window.location.origin)) {
+				history.back()
+			} else {
+				navigate('/')
+			}
+		})
+	})
+</script>
