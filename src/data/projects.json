@@ -2,7 +2,7 @@
 	"projects": [
 		{
 			"name": "OpenBlog",
-			"image": "Openblog.webp",
+			"image": "openblog.webp",
 			"desciption": "asd",
 			"github_url": "https://github.com/danielcgilibert/blog-template",
 			"web_url": "asd"
