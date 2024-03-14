@@ -1,0 +1,54 @@
+---
+
+---
+
+<form class='w-full'>
+	<div class='mb-5'>
+		<label for='email' class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+			>Your Email</label
+		>
+		<input
+			type='email'
+			name='email'
+			id='email'
+			required
+			placeholder='Email'
+			class='w-full p-4 text-lg bg-black/30 rounded-lg'
+		/>
+	</div>
+	<div class='mb-5'></div>
+
+	<label for='message' class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+		>Your message</label
+	>
+	<textarea
+		id='message'
+		required
+		minlength='2'
+		name='message'
+		rows='10'
+		class='w-full p-4 text-lg bg-black/30 rounded-lg'></textarea>
+	<button
+		type='submit'
+		class='w-full p-4 text-lg bg-black/40 hover:border-2 border-white/20 rounded-lg'
+		'>Send</button
+	>
+</form>
+
+<script>
+	const form = document.querySelector('form')
+	form!.addEventListener('submit', async (e) => {
+		console.log('hola')
+
+		e.preventDefault()
+		const email = form!.email.value
+		const message = form!.message.value
+		const response = await fetch('/api/contact', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ email, message })
+		})
+	})
+</script>
