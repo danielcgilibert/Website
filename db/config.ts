@@ -3,7 +3,7 @@ import { NOW, column, defineDb, defineTable } from 'astro:db'
 const Contact = defineTable({
 	columns: {
 		id: column.number({ primaryKey: true }),
-		test: column.text({ optional: true }),
+
 		// A string of text.
 		email: column.text(),
 		// A whole integer value.
