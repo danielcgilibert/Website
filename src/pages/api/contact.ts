@@ -16,7 +16,6 @@ export async function POST({ params, request, clientAddress }: APIContext) {
 
 	const { email, message } = await request.json()
 	console.log(email, message)
-	console.log(clientAddress)
 
 	//check email and message
 	if (!email || !message) {
