@@ -24,7 +24,7 @@
 		"@astrojs/preact": "^3.1.1",
 		"@astrojs/tailwind": "^5.1.0",
 		"@tailwindcss/typography": "^0.5.10",
-		"astro-meta-tags": "^0.2.1",
+		"astro-meta-tags": "^0.2.2",
 		"clsx": "^2.1.0",
 		"preact": "^10.19.6",
 		"prettier": "^3.2.5",
