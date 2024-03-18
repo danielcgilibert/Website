@@ -27,8 +27,8 @@ dependencies:
     specifier: 8.0.0-rc19
     version: 8.0.0-rc19(embla-carousel@8.0.0-rc19)
   lucide-preact:
-    specifier: ^0.299.0
-    version: 0.299.0(preact@10.19.6)
+    specifier: ^0.359.0
+    version: 0.359.0(preact@10.19.6)
   motion:
     specifier: ^10.17.0
     version: 10.17.0
@@ -2862,8 +2862,8 @@ packages:
     dependencies:
       yallist: 4.0.0
 
-  /lucide-preact@0.299.0(preact@10.19.6):
-    resolution: {integrity: sha512-7rY1yEkgP6nSnghv/6TB4FYJiurhBrmQObIq+Fhre0Rlla4OOlW9GsfH9m2sM8LdxJTEsax6yubadnw2C3ONQA==}
+  /lucide-preact@0.359.0(preact@10.19.6):
+    resolution: {integrity: sha512-zC5cVO9RMG40qzzQs2zcEH7nmDv6taWAQnshT4BRXRpZJ/bSUmrOlz1Mumt0KGsNuh3bMHY6VYD4s4O75qzSLA==}
     peerDependencies:
       preact: ^10.5.13
     dependencies:
