@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@astrojs/db':
-    specifier: ^0.8.1
-    version: 0.8.1
+    specifier: ^0.8.7
+    version: 0.8.7
   '@astrojs/mdx':
     specifier: ^2.2.0
     version: 2.2.0(astro@4.5.2)
@@ -89,8 +89,8 @@ packages:
   /@astrojs/compiler@2.7.0:
     resolution: {integrity: sha512-XpC8MAaWjD1ff6/IfkRq/5k1EFj6zhCNqXRd5J43SVJEBj/Bsmizkm8N0xOYscGcDFQkRgEw6/eKnI5x/1l6aA==}
 
-  /@astrojs/db@0.8.1:
-    resolution: {integrity: sha512-EOM9IGe46zAmxq8nbPmoIvWjQ61HdclD1PsgW2JBY0m04GKhexC8lfGCGFWSUF2HlscRwAkW6UeEocqvOu/rGA==}
+  /@astrojs/db@0.8.7:
+    resolution: {integrity: sha512-WSwl+IZVIY2/4s6HQ96YDZekl0qLDEm988LKHuRBMY6k/mmHrPZVvA9owFBqy7kTgIbnlGSyQLjRFi+0HwW7IA==}
     dependencies:
       '@libsql/client': 0.5.6
       async-listen: 3.0.1
