@@ -21,11 +21,11 @@ dependencies:
     specifier: ^4.5.2
     version: 4.5.2
   embla-carousel:
-    specifier: 8.0.0-rc19
-    version: 8.0.0-rc19
+    specifier: 8.0.1
+    version: 8.0.1
   embla-carousel-autoplay:
-    specifier: 8.0.0-rc19
-    version: 8.0.0-rc19(embla-carousel@8.0.0-rc19)
+    specifier: 8.0.1
+    version: 8.0.1(embla-carousel@8.0.1)
   lucide-preact:
     specifier: ^0.299.0
     version: 0.299.0(preact@10.19.6)
@@ -2031,16 +2031,16 @@ packages:
   /electron-to-chromium@1.4.702:
     resolution: {integrity: sha512-LYLXyEUsZ3nNSwiOWjI88N1PJUAMU2QphQSgGLVkFnb3FxZxNui2Vzi2PaKPgPWbsWbZstZnh6BMf/VQJamjiQ==}
 
-  /embla-carousel-autoplay@8.0.0-rc19(embla-carousel@8.0.0-rc19):
-    resolution: {integrity: sha512-c1pxsGHuWbYD3outH5y4L+kzg15smyHKFIDmXLaXlI6rCiizzf6hWMW0ZgxJLV4y4nUwDrYhM6TtzxvvOcsfUw==}
+  /embla-carousel-autoplay@8.0.1(embla-carousel@8.0.1):
+    resolution: {integrity: sha512-4zcB6jVSGTJSXL7uroccjak9U+lyyoZTO4NISwdCHNMYVbIra8aZGEz0I/4Ql753do6jqjaRE8MsCBhJbt6u6A==}
     peerDependencies:
-      embla-carousel: 8.0.0-rc19
+      embla-carousel: 8.0.1
     dependencies:
-      embla-carousel: 8.0.0-rc19
+      embla-carousel: 8.0.1
     dev: false
 
-  /embla-carousel@8.0.0-rc19:
-    resolution: {integrity: sha512-PAChVyYoVZo8subkBN8LjZ7+0vk4CmVvMnxH0Y2ux76VUEUBl1wk5xDo8+MUhH5MXU6ZrgkBpMe++bKob1Z+2g==}
+  /embla-carousel@8.0.1:
+    resolution: {integrity: sha512-RsaMRyBCd144N95gb3XoI+H9zj3RI4y0qcfvKYEh2tIAIEenL9CW9vwzltCeoYkWYipGdkvup+HGT9ewG1YTEw==}
     dev: false
 
   /emoji-regex@10.3.0:
