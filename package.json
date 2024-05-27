@@ -17,7 +17,7 @@
 		"astro": "^4.5.2",
 		"embla-carousel": "8.0.0-rc19",
 		"embla-carousel-autoplay": "8.0.0-rc19",
-		"lucide-preact": "^0.299.0",
+		"lucide-preact": "^0.379.0",
 		"motion": "^10.17.0"
 	},
 	"devDependencies": {
