@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
+import { ClientRouter } from 'astro:transitions'
 
 import '../styles/global.css'
 import { siteConfig } from '../config/site.config'
@@ -66,5 +66,5 @@ const siteTitle = `${titleUpperCase} ${titleSeparator} ${siteConfig.title}`
 		src='https://umami.danielcg.dev/script.js'
 		data-website-id='982e808a-db03-418e-a872-0c4b52247de9'></script>
 
-	<ViewTransitions />
+	<ClientRouter />
 </head>

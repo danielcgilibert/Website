@@ -10,8 +10,8 @@ interface SiteConfig {
 export const siteConfig: SiteConfig = {
 	author: 'Daniel Carmona Gilibert',
 	title: 'Daniel Web',
-	description: 'Daniel Carmona Gilibert personal website',
-	lang: 'en-GB',
-	ogLocale: 'en_GB',
-	shareMessage: 'Share this post' // Message to share a post on social media
+	description: 'Sitio web personal de Daniel Carmona Gilibert',
+	lang: 'es-ES',
+	ogLocale: 'es_ES',
+	shareMessage: 'Compartir esta publicación' // Mensaje para compartir una publicación en redes sociales
 }
