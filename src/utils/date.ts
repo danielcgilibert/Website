@@ -1,4 +1,4 @@
-export const getDateFromString = (str) => {
+export const getDateFromString = (str: string) => {
 	const [date, time] = str.split(' ')
 	// reformat string into YYYY-MM-DDTHH:mm:ss.sssZ
 	str = `${date}T${time}.000Z`
